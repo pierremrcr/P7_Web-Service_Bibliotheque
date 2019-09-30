@@ -3,6 +3,39 @@
            targetNamespace="http://www.bibliotheque.com/livres-ws"
            elementFormDefault="qualified">
 
+
+    <!-- ==== STATUT ==== -->
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ========================= -->
+    <!-- ==== SERVICES LIVRE ===== -->
+    <!-- ========================= -->
+
+    <!-- ==== LIVRE TYPE ==== -->
+
+    <xs:complexType name="livreType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="titre" type="xs:string" />
+            <xs:element name="auteur" type="xs:string" />
+            <xs:element name="genre" type="xs:string" />
+            <xs:element name="date_publication" type="xs:date" />
+            <xs:element name="resume" type="xs:string" />
+            <xs:element name="bibliothequeid" type="xs:int" />
+            <xs:element name="bibliotheque" type="tns:bibliothequeType"/>
+
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GET LIVRE BY ID ==== -->
+
     <xs:element name="getLivreByIdRequest">
         <xs:complexType>
             <xs:sequence>
@@ -18,18 +51,9 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="livreType">
-        <xs:sequence>
-            <xs:element name="id" type="xs:int" />
-            <xs:element name="titre" type="xs:string" />
-            <xs:element name="auteur" type="xs:string" />
-            <xs:element name="genre" type="xs:string" />
-            <xs:element name="date_publication" type="xs:date" />
-            <xs:element name="resume" type="xs:string" />
-            <xs:element name="bibliothequeid" type="xs:int" />
 
-        </xs:sequence>
-    </xs:complexType>
+
+    <!-- ==== GET ALL LIVRES ==== -->
 
     <xs:element name="getAllLivresRequest">
         <xs:complexType/>
@@ -41,12 +65,9 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="serviceStatus">
-        <xs:sequence>
-            <xs:element name="statusCode" type="xs:string"/>
-            <xs:element name="message" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
+
+    <!-- ==== ADD LIVRE ==== -->
+
     <xs:element name="addLivreRequest">
         <xs:complexType>
             <xs:sequence>
@@ -69,6 +90,9 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <!-- ==== UPDATE LIVRE ==== -->
+
     <xs:element name="updateLivreRequest">
         <xs:complexType>
             <xs:sequence>
@@ -90,6 +114,9 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <!-- ==== DELETE LIVRE ==== -->
+
     <xs:element name="deleteLivreRequest">
         <xs:complexType>
             <xs:sequence>
@@ -98,6 +125,407 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="deleteLivreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ========================= -->
+    <!-- ==== SERVICES MEMBRE===== -->
+    <!-- ========================= -->
+
+    <!-- ==== TYPE MEMBRE ==== -->
+
+    <xs:complexType name="membreType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="nom" type="xs:string" />
+            <xs:element name="prenom" type="xs:string" />
+            <xs:element name="adresse_mail" type="xs:string" />
+            <xs:element name="mot_de_passe" type="xs:string" />
+            <xs:element name="telephone" type="xs:string" />
+            <xs:element name="num_carte_bibliotheque" type="xs:string" />
+            <xs:element name="adresseid" type="xs:int" />
+            <xs:element name="adresse" type="tns:adresseType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GET MEMBRE BY ID ==== -->
+
+    <xs:element name="getMembreByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMembreByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="membreType" type="tns:membreType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== GET ALL MEMBRES ==== -->
+
+    <xs:element name="getAllMembresRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllMembresResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="membreType" type="tns:membreType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== ADD MEMBRE ==== -->
+
+    <xs:element name="addMembreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="membreType" type="tns:membreType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addMembreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="membreType" type="tns:membreType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE MEMBRE ==== -->
+
+    <xs:element name="updateMembreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="membreType" type="tns:membreType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateMembreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== DELETE MEMBRE ==== -->
+
+    <xs:element name="deleteMembreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteMembreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- ================================ -->
+    <!-- ==== SERVICES BIBLIOTHEQUE ===== -->
+    <!-- ================================ -->
+
+
+    <!-- ==== BIBLIOTHEQUE TYPE ==== -->
+
+    <xs:complexType name="bibliothequeType">
+    <xs:sequence>
+    <xs:element name="id" type="xs:int" />
+    <xs:element name="nom" type="xs:string" />
+    <xs:element name="telephone" type="xs:string" />
+        <xs:element name="adresseid" type="xs:int" />
+        <xs:element name="adresse" type="tns:adresseType" />
+        <xs:element name="listeLivres" type="tns:livreType" />
+
+
+    </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GET BIBLIOTHEQUE BY ID ==== -->
+
+    <xs:element name="getBibliothequeByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBibliothequeByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== GET ALL BIBLIOTHEQUES ==== -->
+
+    <xs:element name="getAllBibliothequesRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllBibliothequesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bibliothequeType" type="tns:bibliothequeType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== ADD BIBLIOTHEQUE ==== -->
+
+    <xs:element name="addBibliothequeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addBibliothequeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE BIBLIOTHEQUE ==== -->
+
+    <xs:element name="updateBibliothequeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateBibliothequeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== DELETE BIBLIOTHEQUE ==== -->
+
+    <xs:element name="deleteBibliothequeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteBibliothequeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ========================= -->
+    <!-- ==== SERVICES EMPRUNT ===== -->
+    <!-- ========================= -->
+
+    <!-- ==== EMPRUNT TYPE ==== -->
+
+    <xs:complexType name="empruntType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="date_debut" type="xs:date" />
+            <xs:element name="date_fin" type="xs:date" />
+            <xs:element name="prolongation" type="xs:boolean" />
+            <xs:element name="membreid" type="xs:int" />
+            <xs:element name="livreid" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GET EMPRUNT BY ID ==== -->
+    <xs:element name="getEmpruntByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getEmpruntByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntType" type="tns:empruntType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== GET ALL EMPRUNT ==== -->
+    <xs:element name="getAllEmpruntRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllEmpruntResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntType" type="tns:empruntType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== ADD EMPRUNT ==== -->
+    <xs:element name="addEmpruntRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntType" type="tns:empruntType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addEmpruntResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="empruntType" type="tns:empruntType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE EMPRUNT ==== -->
+    <xs:element name="updateEmpruntRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntType" type="tns:empruntType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateEmpruntResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== DELETE EMPRUNT ==== -->
+    <xs:element name="deleteEmpruntRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteEmpruntResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ========================= -->
+    <!-- ==== SERVICES ADRESSE ===== -->
+    <!-- ========================= -->
+
+    <!-- ==== ADRESSE TYPE ==== -->
+
+    <xs:complexType name="adresseType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="numero" type="xs:int" />
+            <xs:element name="rue" type="xs:string" />
+            <xs:element name="code_postal" type="xs:string" />
+            <xs:element name="ville" type="xs:string" />
+            <xs:element name="pays" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GET ADRESSE BY ID ==== -->
+
+    <xs:element name="getAdresseByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAdresseByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="adresseType" type="tns:adresseType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== GET ALL ADRESSES ==== -->
+
+    <xs:element name="getAllAdressesRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllAdressesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="adresseType" type="tns:adresseType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== ADD ADRESSE ==== -->
+
+    <xs:element name="addAdresseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="adresseType" type="tns:adresseType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addAdresseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="adresseType" type="tns:adresseType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE ADRESSE ==== -->
+
+    <xs:element name="updateAdresseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="adresseType" type="tns:adresseType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateAdresseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== DELETE ADRESSE ==== -->
+
+    <xs:element name="deleteAdresseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteAdresseResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>

@@ -3,6 +3,7 @@ package com.bibliotheque.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="bibliotheque")
@@ -13,22 +14,29 @@ public class BibliothequeEntity implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+
     @Column(name = "nom")
     @Size(min = 1, max = 50)
     private String nom;
+
     @Column(name = "telephone")
     @Size(min = 1, max = 10)
     private String telephone;
+
+    @Column(name="adresseid")
+    private int adresseid;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adresseid", insertable = false, updatable = false)
+    private AdresseEntity adresse;
+
+    @OneToMany(mappedBy = "bibliotheque")
+    private List<LivreEntity> listeLivres;
 
 
     public BibliothequeEntity() {
     }
 
-    public BibliothequeEntity(int id, String nom, String telephone) {
-        this.id = id;
-        this.nom = nom;
-        this.telephone = telephone;
-    }
 
     public int getId() {
         return id;
@@ -53,6 +61,34 @@ public class BibliothequeEntity implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public List<LivreEntity> getListeLivres() {
+        return listeLivres;
+    }
+
+    public void setListeLivres(List<LivreEntity> listeLivres) {
+       this.listeLivres = listeLivres;
+    }
+
+
+    public int getAdresseid() {
+        return adresseid;
+    }
+
+    public void setAdresseid(int adresseid) {
+        this.adresseid = adresseid;
+    }
+
+
+
+    public AdresseEntity getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(AdresseEntity adresse) {
+        this.adresse = adresse;
+    }
+
 
     @Override
     public String toString() {

@@ -1,7 +1,8 @@
-package com.bibliotheque.service;
+package com.bibliotheque.service.impl;
 
 import com.bibliotheque.repository.LivreEntityRepository;
 import com.bibliotheque.entity.LivreEntity;
+import com.bibliotheque.service.contract.LivreEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +14,22 @@ import java.util.List;
 @Transactional
 public class LivreEntityServiceImpl implements LivreEntityService {
 
+    @Autowired
     private LivreEntityRepository repository;
 
-    public LivreEntityServiceImpl(){
-
+    public LivreEntityServiceImpl() {
     }
 
-    @Autowired
-    public LivreEntityServiceImpl(LivreEntityRepository repository) {
-        this.repository = repository;
-    }
+  //  @Autowired
+  //  public LivreEntityServiceImpl(LivreEntityRepository repository) {
+  //      this.repository = repository;
+  //  }
 
 
     @Override
     public LivreEntity getLivreById(int id) {
 
-        return this.repository.findById(id);
+           return this.repository.findById(id);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class LivreEntityServiceImpl implements LivreEntityService {
     @Override
     public List<LivreEntity> getAllLivres() {
         List<LivreEntity> listeLivres = new ArrayList<>();
-        repository.findAll().forEach(livreEntity -> listeLivres.add(livreEntity));
+        this.repository.findAll().forEach(livreEntity -> listeLivres.add(livreEntity));
         return listeLivres;
     }
 
@@ -75,3 +76,5 @@ public class LivreEntityServiceImpl implements LivreEntityService {
         }
     }
 }
+
+

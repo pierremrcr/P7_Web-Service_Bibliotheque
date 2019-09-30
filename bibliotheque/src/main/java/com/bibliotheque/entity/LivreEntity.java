@@ -1,5 +1,8 @@
 package com.bibliotheque.entity;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -29,7 +32,6 @@ public class LivreEntity implements Serializable {
     private String genre;
 
     @Column(name = "date_publication")
-    @Size(min = 1, max = 15)
     private Date date_publication;
 
     @Column(name="resume")
@@ -42,7 +44,6 @@ public class LivreEntity implements Serializable {
 
     @Column(name="bibliothequeid")
     private int bibliothequeid;
-
 
     @ManyToOne
     @JoinColumn(name = "bibliothequeid", insertable = false, updatable = false)
@@ -112,11 +113,11 @@ public class LivreEntity implements Serializable {
 
     public BibliothequeEntity getBibliotheque() {
         return bibliotheque;
-    }
+   }
 
     public void setBibliotheque(BibliothequeEntity bibliotheque) {
         this.bibliotheque = bibliotheque;
-    }
+  }
 
     public String getUrl_photo() {
         return url_photo;
@@ -143,7 +144,6 @@ public class LivreEntity implements Serializable {
                 ", genre='" + genre + '\'' +
                 ", date_publication='" + date_publication + '\'' +
                 ", resume='" + resume + '\'' +
-                ", bibliotheque=" + bibliotheque +
-                '}';
+                ", bibliotheque=";
     }
 }

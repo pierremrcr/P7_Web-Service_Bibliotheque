@@ -4,14 +4,19 @@ package com.bibliotheque.endpoint;
 
 import com.bibliotheque.entity.LivreEntity;
 import com.bibliotheque.gs_ws.*;
-import com.bibliotheque.service.LivreEntityService;
+import com.bibliotheque.service.contract.LivreEntityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Endpoint
@@ -33,11 +38,18 @@ public class LivreEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getLivreByIdRequest")
     @ResponsePayload
-    public GetLivreByIdResponse getLivreById(@RequestPayload GetLivreByIdRequest request) {
+    public GetLivreByIdResponse getLivreById(@RequestPayload GetLivreByIdRequest request) throws DatatypeConfigurationException {
         GetLivreByIdResponse response = new GetLivreByIdResponse();
         LivreEntity livreEntity = service.getLivreById(request.getId());
         LivreType livreType = new LivreType();
+
+        GregorianCalendar calendar = new GregorianCalendar();
+
+        calendar.setTime(livreEntity.getDate_publication());
+        XMLGregorianCalendar datePublication = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+        livreType.setDatePublication(datePublication);
         BeanUtils.copyProperties(livreEntity, livreType);
+
         response.setLivreType(livreType);
         return response;
 
@@ -92,7 +104,7 @@ public class LivreEndpoint {
         UpdateLivreResponse response = new UpdateLivreResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
 
-        // 1. Find if movie available
+        // 1. Find if livre available
         LivreEntity livreFromDB = service.getLivreByTitle(request.getTitre());
 
         if(livreFromDB == null) {
@@ -100,7 +112,7 @@ public class LivreEndpoint {
             serviceStatus.setMessage("Livre = " + request.getTitre() + " not found");
         } else {
 
-            // 2. Get updated movie information from the request
+            // 2. Get updated livre information from the request
             livreFromDB.setTitre(request.getTitre());
             livreFromDB.setAuteur(request.getAuteur());
             livreFromDB.setGenre(request.getGenre());
@@ -108,7 +120,7 @@ public class LivreEndpoint {
             livreFromDB.setResume(request.getResume());
             livreFromDB.setUrl_photo(request.getUrlPhoto());
 
-            // 3. update the movie in database
+            // 3. update the livre in database
             boolean flag = service.updateLivre(livreFromDB);
 
             if(flag == false) {

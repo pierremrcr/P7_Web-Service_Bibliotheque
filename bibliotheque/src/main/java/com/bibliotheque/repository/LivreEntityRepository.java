@@ -9,11 +9,11 @@ import java.util.List;
 @Repository
 public interface LivreEntityRepository extends JpaRepository<LivreEntity, Integer > {
 
-    List<LivreEntity> findAll();
+   List<LivreEntity> findAll();
 
-    LivreEntity findByTitre(String titre);
+   LivreEntity findByTitre(String titre);
 
-    LivreEntity findById(int id);
+   LivreEntity findById(int id);
 
-    LivreEntity save(LivreEntity livreEntity);
+   LivreEntity save(LivreEntity livreEntity);
 }

@@ -1,4 +1,4 @@
-package com.bibliotheque.service;
+package com.bibliotheque.service.contract;
 
 import com.bibliotheque.entity.LivreEntity;
 

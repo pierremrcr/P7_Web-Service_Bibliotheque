@@ -1,5 +1,7 @@
 package com.bibliotheque;
 
+import com.bibliotheque.repository.LivreClient;
+import com.bibliotheque.repository.configSoap.SoapClientConfig;
 import livres.wsdl.GetLivreByIdResponse;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

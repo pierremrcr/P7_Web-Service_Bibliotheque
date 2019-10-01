@@ -149,6 +149,8 @@
             <xs:element name="num_carte_bibliotheque" type="xs:string" />
             <xs:element name="adresseid" type="xs:int" />
             <xs:element name="adresse" type="tns:adresseType" />
+            <xs:element name="bibliothequeid" type="xs:int" />
+            <xs:element name="bibliotheque" type="tns:bibliothequeType"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -251,6 +253,7 @@
         <xs:element name="adresseid" type="xs:int" />
         <xs:element name="adresse" type="tns:adresseType" />
         <xs:element name="listeLivres" type="tns:livreType" />
+        <xs:element name="listeMembres" type="tns:membreType" />
 
 
     </xs:sequence>

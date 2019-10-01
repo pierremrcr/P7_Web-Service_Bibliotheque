@@ -33,6 +33,9 @@ public class BibliothequeEntity implements Serializable {
     @OneToMany(mappedBy = "bibliotheque")
     private List<LivreEntity> listeLivres;
 
+    @OneToMany(mappedBy = "bibliotheque")
+    private List<MembreEntity> listeMembres;
+
 
     public BibliothequeEntity() {
     }
@@ -70,7 +73,6 @@ public class BibliothequeEntity implements Serializable {
        this.listeLivres = listeLivres;
     }
 
-
     public int getAdresseid() {
         return adresseid;
     }
@@ -78,8 +80,6 @@ public class BibliothequeEntity implements Serializable {
     public void setAdresseid(int adresseid) {
         this.adresseid = adresseid;
     }
-
-
 
     public AdresseEntity getAdresse() {
         return adresse;
@@ -89,6 +89,13 @@ public class BibliothequeEntity implements Serializable {
         this.adresse = adresse;
     }
 
+    public List<MembreEntity> getListeMembres() {
+        return listeMembres;
+    }
+
+    public void setListeMembres(List<MembreEntity> listeMembres) {
+        this.listeMembres = listeMembres;
+    }
 
     @Override
     public String toString() {

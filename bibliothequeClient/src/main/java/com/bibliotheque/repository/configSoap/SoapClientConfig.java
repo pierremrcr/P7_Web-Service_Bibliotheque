@@ -1,5 +1,6 @@
-package com.bibliotheque;
+package com.bibliotheque.repository.configSoap;
 
+import com.bibliotheque.repository.LivreClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;

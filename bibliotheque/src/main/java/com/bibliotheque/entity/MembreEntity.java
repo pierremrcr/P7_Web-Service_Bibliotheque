@@ -23,11 +23,11 @@ public class MembreEntity implements Serializable {
     private String prenom;
     @Column(name = "adresse_mail")
     @Size(min = 1, max = 50)
-    private String adresse_mail;
+    private String adresseMail;
 
     @Column(name = "mot_de_passe")
     @Size(min = 1, max = 50)
-    private String mot_de_passe;
+    private String motDePasse;
 
     @Column(name = "telephone")
     @Size(min = 1, max = 50)
@@ -35,11 +35,21 @@ public class MembreEntity implements Serializable {
 
     @Column(name = "num_carte_bibliotheque")
     @Size(min = 1, max = 50)
-    private int num_carte_bibliotheque;
+    private String numCarteBibliotheque;
+
+    @Column(name="adresseid")
+    private int adresseid;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adresseid")
+    @JoinColumn(name = "adresseid", insertable = false, updatable = false)
     private AdresseEntity adresse;
+
+    @Column(name="bibliothequeid")
+    private int bibliothequeid;
+
+    @ManyToOne
+    @JoinColumn(name = "bibliothequeid", insertable = false, updatable = false)
+    private BibliothequeEntity bibliotheque;
 
     public MembreEntity() {
     }
@@ -68,22 +78,6 @@ public class MembreEntity implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getAdresse_mail() {
-        return adresse_mail;
-    }
-
-    public void setAdresse_mail(String adresse_mail) {
-        this.adresse_mail = adresse_mail;
-    }
-
-    public String getMot_de_passe() {
-        return mot_de_passe;
-    }
-
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -91,16 +85,6 @@ public class MembreEntity implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-
-    public int getNum_carte_bibliotheque() {
-        return num_carte_bibliotheque;
-    }
-
-    public void setNum_carte_bibliotheque(int num_carte_bibliotheque) {
-        this.num_carte_bibliotheque = num_carte_bibliotheque;
-    }
-
-    /*
 
     public int getAdresseid() {
         return adresseid;
@@ -110,13 +94,51 @@ public class MembreEntity implements Serializable {
         this.adresseid = adresseid;
     }
 
-    */
-
     public AdresseEntity getAdresse() {
         return adresse;
     }
 
     public void setAdresse(AdresseEntity adresse) {
         this.adresse = adresse;
+    }
+
+    public String getAdresseMail() {
+        return adresseMail;
+    }
+
+    public void setAdresseMail(String adresseMail) {
+        this.adresseMail = adresseMail;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    public String getNumCarteBibliotheque() {
+        return numCarteBibliotheque;
+    }
+
+    public void setNumCarteBibliotheque(String numCarteBibliotheque) {
+        this.numCarteBibliotheque = numCarteBibliotheque;
+    }
+
+    public int getBibliothequeid() {
+        return bibliothequeid;
+    }
+
+    public void setBibliothequeid(int bibliothequeid) {
+        this.bibliothequeid = bibliothequeid;
+    }
+
+    public BibliothequeEntity getBibliotheque() {
+        return bibliotheque;
+    }
+
+    public void setBibliotheque(BibliothequeEntity bibliotheque) {
+        this.bibliotheque = bibliotheque;
     }
 }

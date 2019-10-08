@@ -1,12 +1,11 @@
 package com.bibliotheque.entity;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="livre")
@@ -14,9 +13,8 @@ public class LivreEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "titre")
@@ -32,7 +30,7 @@ public class LivreEntity implements Serializable {
     private String genre;
 
     @Column(name = "date_publication")
-    private Date date_publication;
+    private Date datePublication;
 
     @Column(name="resume")
     @Size(min = 1, max = 2500)
@@ -40,28 +38,14 @@ public class LivreEntity implements Serializable {
 
     @Column(name="url_photo")
     @Size(min = 1, max = 500)
-    private String url_photo;
+    private String urlPhoto;
 
-    @Column(name="bibliothequeid")
-    private int bibliothequeid;
-
-    @ManyToOne
-    @JoinColumn(name = "bibliothequeid", insertable = false, updatable = false)
-    private BibliothequeEntity bibliotheque;
+    @OneToMany(mappedBy = "livre")
+    private List<ExemplaireEntity> listeExemplaires;
 
     public LivreEntity() {
-        this.titre = titre;
     }
 
-    public LivreEntity(String titre, String auteur, String genre, Date date_publication, String resume, String url_photo, int bibliothequeid) {
-        this.titre = titre;
-        this.auteur = auteur;
-        this.genre = genre;
-        this.date_publication = date_publication;
-        this.resume = resume;
-        this.url_photo = url_photo;
-        this.bibliothequeid = bibliothequeid;
-    }
 
     public int getId() {
         return id;
@@ -95,12 +79,12 @@ public class LivreEntity implements Serializable {
         this.genre = genre;
     }
 
-    public Date getDate_publication() {
-        return date_publication;
+    public Date getDatePublication() {
+        return datePublication;
     }
 
-    public void setDate_publication(Date date_publication) {
-        this.date_publication = date_publication;
+    public void setDatePublication(Date datePublication) {
+        this.datePublication = datePublication;
     }
 
     public String getResume() {
@@ -111,28 +95,20 @@ public class LivreEntity implements Serializable {
         this.resume = resume;
     }
 
-    public BibliothequeEntity getBibliotheque() {
-        return bibliotheque;
-   }
-
-    public void setBibliotheque(BibliothequeEntity bibliotheque) {
-        this.bibliotheque = bibliotheque;
-  }
-
-    public String getUrl_photo() {
-        return url_photo;
+    public String getUrlPhoto() {
+        return urlPhoto;
     }
 
-    public void setUrl_photo(String url_photo) {
-        this.url_photo = url_photo;
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
     }
 
-    public int getBibliothequeid() {
-        return bibliothequeid;
+    public List<ExemplaireEntity> getListeExemplaires() {
+        return listeExemplaires;
     }
 
-    public void setBibliothequeid(int bibliothequeid) {
-        this.bibliothequeid = bibliothequeid;
+    public void setListeExemplaires(List<ExemplaireEntity> listeExemplaires) {
+        this.listeExemplaires = listeExemplaires;
     }
 
     @Override
@@ -142,8 +118,10 @@ public class LivreEntity implements Serializable {
                 ", titre='" + titre + '\'' +
                 ", auteur='" + auteur + '\'' +
                 ", genre='" + genre + '\'' +
-                ", date_publication='" + date_publication + '\'' +
+                ", datePublication=" + datePublication +
                 ", resume='" + resume + '\'' +
-                ", bibliotheque=";
+                ", urlPhoto='" + urlPhoto + '\'' +
+                ", listeExemplaires=" + listeExemplaires +
+                '}';
     }
 }

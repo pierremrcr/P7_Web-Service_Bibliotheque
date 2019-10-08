@@ -1,7 +1,6 @@
 package com.bibliotheque.repository;
 
 import com.bibliotheque.entity.AdresseEntity;
-import com.bibliotheque.entity.MembreEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

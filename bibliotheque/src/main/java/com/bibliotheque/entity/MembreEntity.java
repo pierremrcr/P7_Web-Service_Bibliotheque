@@ -3,6 +3,7 @@ package com.bibliotheque.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="membre")
@@ -11,7 +12,7 @@ public class MembreEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "nom")
@@ -21,6 +22,7 @@ public class MembreEntity implements Serializable {
     @Column(name = "prenom")
     @Size(min = 1, max = 50)
     private String prenom;
+
     @Column(name = "adresse_mail")
     @Size(min = 1, max = 50)
     private String adresseMail;
@@ -44,12 +46,8 @@ public class MembreEntity implements Serializable {
     @JoinColumn(name = "adresseid", insertable = false, updatable = false)
     private AdresseEntity adresse;
 
-    @Column(name="bibliothequeid")
-    private int bibliothequeid;
-
-    @ManyToOne
-    @JoinColumn(name = "bibliothequeid", insertable = false, updatable = false)
-    private BibliothequeEntity bibliotheque;
+    @OneToMany(mappedBy = "membreEntity")
+    private List<EmpruntEntity> listeEmprunts;
 
     public MembreEntity() {
     }
@@ -126,19 +124,12 @@ public class MembreEntity implements Serializable {
         this.numCarteBibliotheque = numCarteBibliotheque;
     }
 
-    public int getBibliothequeid() {
-        return bibliothequeid;
+
+    public List<EmpruntEntity> getListeEmprunts() {
+        return listeEmprunts;
     }
 
-    public void setBibliothequeid(int bibliothequeid) {
-        this.bibliothequeid = bibliothequeid;
-    }
-
-    public BibliothequeEntity getBibliotheque() {
-        return bibliotheque;
-    }
-
-    public void setBibliotheque(BibliothequeEntity bibliotheque) {
-        this.bibliotheque = bibliotheque;
+    public void setListeEmprunts(List<EmpruntEntity> listeEmprunts) {
+        this.listeEmprunts = listeEmprunts;
     }
 }

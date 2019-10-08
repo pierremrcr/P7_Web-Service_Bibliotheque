@@ -66,6 +66,8 @@ public class MembreEndpoint {
         ServiceStatus serviceStatus = new ServiceStatus();
 
         MembreEntity newMembreEntity = new MembreEntity();
+
+        BeanUtils.copyProperties(request.getMembreType(),newMembreEntity);
         MembreEntity savedMembreEntity = membreEntityService.addMembre(newMembreEntity);
 
         if (savedMembreEntity == null) {

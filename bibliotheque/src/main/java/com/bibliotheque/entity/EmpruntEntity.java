@@ -8,8 +8,8 @@ import java.util.Date;
 @Table(name="emprunt")
 public class EmpruntEntity implements Serializable {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "date_debut")
@@ -24,8 +24,16 @@ public class EmpruntEntity implements Serializable {
     @Column(name = "membreid")
     private int membreid;
 
-    @Column(name = "livreid")
-    private int livreid;
+    @ManyToOne
+    @JoinColumn(name = "membreid", insertable = false, updatable = false)
+    private MembreEntity membreEntity;
+
+    @Column(name = "exemplaireid")
+    private int exemplaireid;
+
+    @ManyToOne
+    @JoinColumn(name = "exemplaireid", insertable = false, updatable = false)
+    private ExemplaireEntity exemplaireEntity;
 
     public EmpruntEntity() {
     }
@@ -70,12 +78,27 @@ public class EmpruntEntity implements Serializable {
         this.membreid = membreid;
     }
 
-    public int getLivreid() {
-        return livreid;
+    public MembreEntity getMembreEntity() {
+        return membreEntity;
     }
 
-    public void setLivreid(int livreid) {
-        this.livreid = livreid;
+    public void setMembreEntity(MembreEntity membreEntity) {
+        this.membreEntity = membreEntity;
     }
 
+    public int getExemplaireid() {
+        return exemplaireid;
+    }
+
+    public void setExemplaireid(int exemplaireid) {
+        this.exemplaireid = exemplaireid;
+    }
+
+    public ExemplaireEntity getExemplaireEntity() {
+        return exemplaireEntity;
+    }
+
+    public void setExemplaireEntity(ExemplaireEntity exemplaireEntity) {
+        this.exemplaireEntity = exemplaireEntity;
+    }
 }

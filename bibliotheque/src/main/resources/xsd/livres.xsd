@@ -27,10 +27,8 @@
             <xs:element name="genre" type="xs:string" />
             <xs:element name="date_publication" type="xs:date" />
             <xs:element name="resume" type="xs:string" />
-            <xs:element name="bibliothequeid" type="xs:int" />
-            <xs:element name="bibliotheque" type="tns:bibliothequeType"/>
-
-
+            <xs:element name="url_photo" type="xs:string" />
+            <xs:element name="listeExemplaires" type="tns:exemplaireType"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -71,14 +69,7 @@
     <xs:element name="addLivreRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:int" />
-                <xs:element name="titre" type="xs:string" />
-                <xs:element name="auteur" type="xs:string" />
-                <xs:element name="genre" type="xs:string" />
-                <xs:element name="date_publication" type="xs:date" />
-                <xs:element name="resume" type="xs:string" />
-                <xs:element name="url_photo" type="xs:string" />
-                <xs:element name="bibliothequeid" type="xs:int" />
+                <xs:element name="livreType" type="tns:livreType" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -96,14 +87,7 @@
     <xs:element name="updateLivreRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:int" />
-                <xs:element name="titre" type="xs:string" />
-                <xs:element name="auteur" type="xs:string" />
-                <xs:element name="genre" type="xs:string" />
-                <xs:element name="date_publication" type="xs:date" />
-                <xs:element name="resume" type="xs:string" />
-                <xs:element name="url_photo" type="xs:string" />
-                <xs:element name="bibliothequeid" type="xs:int" />
+                <xs:element name="livreType" type="tns:livreType" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -133,6 +117,106 @@
     </xs:element>
 
     <!-- ========================= -->
+    <!-- == SERVICES EXEMPLAIRE == -->
+    <!-- ========================= -->
+
+    <!-- ==== TYPE EXEMPLAIRE ==== -->
+
+    <xs:complexType name="exemplaireType">
+    <xs:sequence>
+    <xs:element name="id" type="xs:int" />
+    <xs:element name="disponibilite" type="xs:boolean" />
+    <xs:element name="livreid" type="xs:int" />
+    <xs:element name="livre" type="tns:livreType" />
+        <xs:element name="listeEmprunts" type="tns:empruntType" />
+    </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GET EXEMPLAIRE BY ID ==== -->
+
+    <xs:element name="getExemplaireByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExemplaireByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireType" type="tns:exemplaireType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== GET ALL EXEMPLAIRES ==== -->
+
+    <xs:element name="getAllExemplairesRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllExemplairesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireType" type="tns:exemplaireType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== ADD EXEMPLAIRE ==== -->
+
+    <xs:element name="addExemplaireRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireType" type="tns:exemplaireType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addExemplaireResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="exemplaireType" type="tns:exemplaireType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE EXEMPLAIRE ==== -->
+
+    <xs:element name="updateExemplaireRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireType" type="tns:exemplaireType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateExemplaireResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== DELETE EXEMPLAIRE ==== -->
+
+    <xs:element name="deleteExemplaireRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteExemplaireResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- ========================= -->
     <!-- ==== SERVICES MEMBRE===== -->
     <!-- ========================= -->
 
@@ -149,8 +233,7 @@
             <xs:element name="num_carte_bibliotheque" type="xs:string" />
             <xs:element name="adresseid" type="xs:int" />
             <xs:element name="adresse" type="tns:adresseType" />
-            <xs:element name="bibliothequeid" type="xs:int" />
-            <xs:element name="bibliotheque" type="tns:bibliothequeType"/>
+            <xs:element name="listeEmprunts" type="tns:empruntType" />
         </xs:sequence>
     </xs:complexType>
 
@@ -238,109 +321,6 @@
     </xs:element>
 
 
-    <!-- ================================ -->
-    <!-- ==== SERVICES BIBLIOTHEQUE ===== -->
-    <!-- ================================ -->
-
-
-    <!-- ==== BIBLIOTHEQUE TYPE ==== -->
-
-    <xs:complexType name="bibliothequeType">
-    <xs:sequence>
-    <xs:element name="id" type="xs:int" />
-    <xs:element name="nom" type="xs:string" />
-    <xs:element name="telephone" type="xs:string" />
-        <xs:element name="adresseid" type="xs:int" />
-        <xs:element name="adresse" type="tns:adresseType" />
-        <xs:element name="listeLivres" type="tns:livreType" />
-        <xs:element name="listeMembres" type="tns:membreType" />
-
-
-    </xs:sequence>
-    </xs:complexType>
-
-    <!-- ==== GET BIBLIOTHEQUE BY ID ==== -->
-
-    <xs:element name="getBibliothequeByIdRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="id" type="xs:int" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="getBibliothequeByIdResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- ==== GET ALL BIBLIOTHEQUES ==== -->
-
-    <xs:element name="getAllBibliothequesRequest">
-        <xs:complexType/>
-    </xs:element>
-    <xs:element name="getAllBibliothequesResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="bibliothequeType" type="tns:bibliothequeType" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- ==== ADD BIBLIOTHEQUE ==== -->
-
-    <xs:element name="addBibliothequeRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="addBibliothequeResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
-                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- ==== UPDATE BIBLIOTHEQUE ==== -->
-
-    <xs:element name="updateBibliothequeRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="bibliothequeType" type="tns:bibliothequeType" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="updateBibliothequeResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <!-- ==== DELETE BIBLIOTHEQUE ==== -->
-
-    <xs:element name="deleteBibliothequeRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="id" type="xs:int"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="deleteBibliothequeResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
 
     <!-- ========================= -->
     <!-- ==== SERVICES EMPRUNT ===== -->
@@ -355,7 +335,9 @@
             <xs:element name="date_fin" type="xs:date" />
             <xs:element name="prolongation" type="xs:boolean" />
             <xs:element name="membreid" type="xs:int" />
-            <xs:element name="livreid" type="xs:int" />
+            <xs:element name="membreEntity" type="tns:membreType" />
+            <xs:element name="exemplaireid" type="xs:int" />
+            <xs:element name="exemplaireEntity" type="tns:exemplaireType" />
         </xs:sequence>
     </xs:complexType>
 
@@ -445,7 +427,7 @@
     <xs:complexType name="adresseType">
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
-            <xs:element name="numero" type="xs:int" />
+            <xs:element name="numero" type="xs:integer" />
             <xs:element name="rue" type="xs:string" />
             <xs:element name="code_postal" type="xs:string" />
             <xs:element name="ville" type="xs:string" />

@@ -15,7 +15,10 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -40,12 +43,12 @@ public class LivreEndpoint {
     @ResponsePayload
     public GetLivreByIdResponse getLivreById(@RequestPayload GetLivreByIdRequest request) throws DatatypeConfigurationException {
         GetLivreByIdResponse response = new GetLivreByIdResponse();
-        LivreEntity livreEntity = service.getLivreById(request.getId());
+        LivreEntity livreEntity = this.service.getLivreById(request.getId());
         LivreType livreType = new LivreType();
 
         GregorianCalendar calendar = new GregorianCalendar();
 
-        calendar.setTime(livreEntity.getDate_publication());
+        calendar.setTime(livreEntity.getDatePublication());
         XMLGregorianCalendar datePublication = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
         livreType.setDatePublication(datePublication);
         BeanUtils.copyProperties(livreEntity, livreType);
@@ -57,12 +60,18 @@ public class LivreEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllLivresRequest")
     @ResponsePayload
-    public GetAllLivresResponse getAllLivres(@RequestPayload GetAllLivresRequest request) {
+    public GetAllLivresResponse getAllLivres(@RequestPayload GetAllLivresRequest request)  throws DatatypeConfigurationException {
         GetAllLivresResponse response = new GetAllLivresResponse();
         List<LivreType> livreTypeList = new ArrayList<LivreType>();
-        List<LivreEntity> livreEntityList = service.getAllLivres();
+        List<LivreEntity> livreEntityList = this.service.getAllLivres();
+
+        GregorianCalendar calendar = new GregorianCalendar();
+
         for (LivreEntity entity : livreEntityList) {
             LivreType livreType = new LivreType();
+            calendar.setTime(entity.getDatePublication());
+            XMLGregorianCalendar datePublication = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+            livreType.setDatePublication(datePublication);
             BeanUtils.copyProperties(entity, livreType);
             livreTypeList.add(livreType);
         }
@@ -74,17 +83,23 @@ public class LivreEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addLivreRequest")
     @ResponsePayload
-    public AddLivreResponse addLivre(@RequestPayload AddLivreRequest request) {
+    public AddLivreResponse addLivre(@RequestPayload AddLivreRequest request) throws ParseException {
         AddLivreResponse response = new AddLivreResponse();
         LivreType newLivreType = new LivreType();
+        LivreEntity newLivreEntity = new LivreEntity();
         ServiceStatus serviceStatus = new ServiceStatus();
 
-        LivreEntity newLivreEntity = new LivreEntity();
-        LivreEntity savedLivreEntity = service.addLivre(newLivreEntity);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date datePublication = dateFormat.parse(request.getLivreType().getDatePublication().toString());
+        newLivreEntity.setDatePublication(datePublication);
+
+        BeanUtils.copyProperties(request.getLivreType(),newLivreEntity);
+        LivreEntity savedLivreEntity = this.service.addLivre(newLivreEntity);
 
         if (savedLivreEntity == null) {
             serviceStatus.setStatusCode("CONFLICT");
             serviceStatus.setMessage("Exception while adding Entity");
+
         } else {
 
             BeanUtils.copyProperties(savedLivreEntity,newLivreType);
@@ -105,32 +120,32 @@ public class LivreEndpoint {
         ServiceStatus serviceStatus = new ServiceStatus();
 
         // 1. Find if livre available
-        LivreEntity livreFromDB = service.getLivreByTitle(request.getTitre());
+        LivreEntity livreFromDB = this.service.getLivreByTitle(request.getLivreType().getTitre());
 
         if(livreFromDB == null) {
             serviceStatus.setStatusCode("NOT FOUND");
-            serviceStatus.setMessage("Livre = " + request.getTitre() + " not found");
+            serviceStatus.setMessage("Livre = " + request.getLivreType().getTitre() + " not found");
+
         } else {
 
             // 2. Get updated livre information from the request
-            livreFromDB.setTitre(request.getTitre());
-            livreFromDB.setAuteur(request.getAuteur());
-            livreFromDB.setGenre(request.getGenre());
+            livreFromDB.setTitre(request.getLivreType().getTitre());
+            livreFromDB.setAuteur(request.getLivreType().getAuteur());
+            livreFromDB.setGenre(request.getLivreType().getGenre());
             //livreFromDB.setDate_publication(request.getDatePublication());
-            livreFromDB.setResume(request.getResume());
-            livreFromDB.setUrl_photo(request.getUrlPhoto());
+            livreFromDB.setResume(request.getLivreType().getResume());
+            livreFromDB.setUrlPhoto(request.getLivreType().getUrlPhoto());
 
             // 3. update the livre in database
-            boolean flag = service.updateLivre(livreFromDB);
+            boolean flag = this.service.updateLivre(livreFromDB);
 
             if(flag == false) {
                 serviceStatus.setStatusCode("CONFLICT");
-                serviceStatus.setMessage("Exception while updating Entity=" + request.getTitre());;
-            }else {
+                serviceStatus.setMessage("Exception while updating Entity=" + request.getLivreType().getTitre());
+            } else {
                 serviceStatus.setStatusCode("SUCCESS");
                 serviceStatus.setMessage("Content updated Successfully");
             }
-
 
         }
 
@@ -144,7 +159,7 @@ public class LivreEndpoint {
         DeleteLivreResponse response = new DeleteLivreResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
 
-        boolean flag = service.deleteLivreById(request.getId());
+        boolean flag = this.service.deleteLivreById(request.getId());
 
         if (flag == false) {
             serviceStatus.setStatusCode("FAIL");

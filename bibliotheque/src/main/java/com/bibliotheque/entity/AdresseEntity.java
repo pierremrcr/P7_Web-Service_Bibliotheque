@@ -1,8 +1,10 @@
 package com.bibliotheque.entity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigInteger;
 
 @Entity
 @Table(name="adresse")
@@ -11,26 +13,26 @@ public class AdresseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "numero")
-    @Size(min = 1, max = 50)
-    private int numero;
+
+    @Column(nullable = true, name="numero")
+    private BigInteger numero;
+
     @Column(name = "rue")
-    @Size(min = 1, max = 50)
     private String rue;
+
     @Column(name = "code_postal")
     @Size(min = 1, max = 50)
     private String codePostal;
+
     @Column(name = "ville")
     @Size(min = 1, max = 50)
     private String ville;
+
     @Column(name = "pays")
     @Size(min = 1, max = 50)
     private String pays;
-
-    @OneToOne(mappedBy ="adresse")
-    private BibliothequeEntity bibliotheque;
 
     @OneToOne(mappedBy = "adresse")
     private MembreEntity membre;
@@ -46,11 +48,11 @@ public class AdresseEntity implements Serializable {
         this.id = id;
     }
 
-    public int getNumero() {
+    public BigInteger getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(BigInteger numero) {
         this.numero = numero;
     }
 
@@ -84,14 +86,6 @@ public class AdresseEntity implements Serializable {
 
     public void setPays(String pays) {
         this.pays = pays;
-    }
-
-    public BibliothequeEntity getBibliotheque() {
-        return bibliotheque;
-    }
-
-    public void setBibliotheque(BibliothequeEntity bibliotheque) {
-        this.bibliotheque = bibliotheque;
     }
 
     public MembreEntity getMembre() {

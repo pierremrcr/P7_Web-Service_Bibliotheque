@@ -72,7 +72,6 @@ public class ExemplaireEndpoint {
         AddExemplaireResponse response = new AddExemplaireResponse();
         ExemplaireType newExemplaireType = new ExemplaireType();
         ServiceStatus serviceStatus = new ServiceStatus();
-
         ExemplaireEntity newExemplaireEntity = new ExemplaireEntity();
 
         BeanUtils.copyProperties(request.getExemplaireType(), newExemplaireEntity);

@@ -104,8 +104,10 @@ public class MembreEndpoint {
             membreFromDB.setPrenom(request.getMembreType().getPrenom());
             membreFromDB.setAdresseMail(request.getMembreType().getAdresseMail());
             membreFromDB.setMotDePasse((request.getMembreType().getMotDePasse()));
-            //livreFromDB.setDate_publication(request.getDatePublication());
             membreFromDB.setTelephone(request.getMembreType().getTelephone());
+            membreFromDB.setAdresse(request.getMembreType().getAdresse());
+            membreFromDB.setCodePostal(request.getMembreType().getCodePostal());
+            membreFromDB.setVille(request.getMembreType().getVille());
 
             // 3. update the livre in database
             boolean flag = membreEntityService.updateMembre(membreFromDB);

@@ -17,9 +17,6 @@ public class ExemplaireEntity implements Serializable {
     @Column(name="disponibilite")
     private boolean disponibilite;
 
-    @Column(name="livreid")
-    private int livreid;
-
     @ManyToOne
     @JoinColumn(name = "livreid", insertable = false, updatable = false)
     private LivreEntity livre;
@@ -45,14 +42,6 @@ public class ExemplaireEntity implements Serializable {
 
     public void setDisponibilite(boolean disponibilite) {
         this.disponibilite = disponibilite;
-    }
-
-    public int getLivreid() {
-        return livreid;
-    }
-
-    public void setLivreid(int livreid) {
-        this.livreid = livreid;
     }
 
     public LivreEntity getLivre() {

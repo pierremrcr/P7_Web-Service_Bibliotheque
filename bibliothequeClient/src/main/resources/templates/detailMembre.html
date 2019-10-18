@@ -9,6 +9,7 @@
           href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
 
 </head>
+
 <body>
 
 <div layout:fragment="content">
@@ -17,29 +18,25 @@
     <div class="container">
 
 
+
         <div class="row">
+
             <div class="col-md-4 mx-auto mt-5 text-center">
 
+                <h3>Mes informations</h3>
 
-                <p th:text="${livre.titre}" class="font-weight-bold"></p>
-
-                <p th:text="${livre.auteur}"></p>
-
-                <p th:text="${livre.genre}"></p>
-
-                <p th:text="${livre.resume}"></p>
-
+                <p th:text="${membre.nom} + ' '+ ${membre.prenom}"></p>
+                <p th:text="'Adresse mail : ' + ${membre.adresseMail}"></p>
+                <p th:text="'Adresse : ' + ${membre.adresse} + ' '+ ${membre.codePostal} + ' ' + ${membre.ville}"></p>
+                <p th:text="'Téléphone : ' + ${membre.telephone}"></p>
 
             </div>
         </div>
 
-
-
     </div>
-
 
     <script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
 </div>
-
 </body>
+
 </html>

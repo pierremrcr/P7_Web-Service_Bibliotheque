@@ -23,26 +23,37 @@
 
     <div class="container-fluid">
 
+        <div class="logout text-right align-bottom" th:if="${session.user != null}">
+            <span th:text="'Bienvenue ' + ${session.user.prenom} + ' /'"> </span>
+            <span> <a th:href="@{/logout}">logout</a> </span>
+        </div>
+
+
+
         <div class="jumbotron">
             <h1 class="display-4">Médiathèque</h1>
             <h3 class="display-6">Agglomération de La Rochelle</h3>
             <p class="lead">Bienvenue sur le site officiel de la médiathèque de votre ville !</p>
             <hr class="my-4">
 
+            <div th:if="${session.user == null}">
+
 
             <p>Connectez-vous pour un accès étendu au site.</p>
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Connectez-vous</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Nouveau compte</a>
+                <a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Connectez-vous</a>
+                <a class="btn btn-primary btn-lg" th:href="@{/addmembre}" role="button">Nouveau compte</a>
 
             </p>
-
 
         </div>
 
 
-
     </div>
+
+
+
+</div>
 
 
 </div>

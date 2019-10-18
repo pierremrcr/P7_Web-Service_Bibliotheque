@@ -28,23 +28,21 @@ public class MembreEntity implements Serializable {
     private String adresseMail;
 
     @Column(name = "mot_de_passe")
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 10)
     private String motDePasse;
 
     @Column(name = "telephone")
-    @Size(min = 1, max = 50)
     private String telephone;
 
-    @Column(name = "num_carte_bibliotheque")
+    @Column(name = "adresse")
+    private String adresse;
+
+    @Column(name = "code_postal")
+    private String codePostal;
+
+    @Column(name = "ville")
     @Size(min = 1, max = 50)
-    private String numCarteBibliotheque;
-
-    @Column(name="adresseid")
-    private int adresseid;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adresseid", insertable = false, updatable = false)
-    private AdresseEntity adresse;
+    private String ville;
 
     @OneToMany(mappedBy = "membreEntity")
     private List<EmpruntEntity> listeEmprunts;
@@ -84,22 +82,6 @@ public class MembreEntity implements Serializable {
         this.telephone = telephone;
     }
 
-    public int getAdresseid() {
-        return adresseid;
-    }
-
-    public void setAdresseid(int adresseid) {
-        this.adresseid = adresseid;
-    }
-
-    public AdresseEntity getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(AdresseEntity adresse) {
-        this.adresse = adresse;
-    }
-
     public String getAdresseMail() {
         return adresseMail;
     }
@@ -116,14 +98,29 @@ public class MembreEntity implements Serializable {
         this.motDePasse = motDePasse;
     }
 
-    public String getNumCarteBibliotheque() {
-        return numCarteBibliotheque;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setNumCarteBibliotheque(String numCarteBibliotheque) {
-        this.numCarteBibliotheque = numCarteBibliotheque;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
 
     public List<EmpruntEntity> getListeEmprunts() {
         return listeEmprunts;

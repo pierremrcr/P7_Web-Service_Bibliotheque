@@ -14,10 +14,12 @@ public class LivreService {
     private LivreRepository repository;
 
     public LivreType livreById(int id){
-        return repository.livreById(id);
+
+        return this.repository.livreById(id);
     }
 
     public List<LivreType> livreTypeList(){
-        return repository.livreTypeList();
+
+        return this.repository.livreTypeList();
     }
 }

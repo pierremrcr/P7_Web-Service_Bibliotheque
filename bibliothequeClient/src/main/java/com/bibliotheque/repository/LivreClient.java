@@ -17,7 +17,7 @@ public class LivreClient extends WebServiceGatewaySupport {
         GetLivreByIdRequest request = new GetLivreByIdRequest();
         request.setId(id);
 
-        log.info("Requesting Movie By id= " + id);
+        log.info("Requesting Livre By id= " + id);
         return(GetLivreByIdResponse) getWebServiceTemplate().marshalSendAndReceive(request);
     }
 

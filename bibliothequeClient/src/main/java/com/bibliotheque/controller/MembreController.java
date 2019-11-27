@@ -1,6 +1,10 @@
 package com.bibliotheque.controller;
 
+import com.bibliotheque.service.EmpruntService;
+import com.bibliotheque.service.ExemplaireService;
+import com.bibliotheque.service.LivreService;
 import com.bibliotheque.service.MembreService;
+import livres.wsdl.LivreType;
 import livres.wsdl.MembreType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +13,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 
 @Controller
@@ -17,24 +24,34 @@ public class MembreController {
 
     private MembreService service;
 
+    private EmpruntService empruntService;
+
     @Autowired
-    public MembreController(MembreService service) {
+    private LivreService livreService;
 
+    private ExemplaireService exemplaireService;
+
+
+    @Autowired
+    public MembreController(MembreService service, EmpruntService empruntService) {
         this.service = service;
-    }
-
-    @RequestMapping(value = "/membre", method = RequestMethod.GET)
-    public String compte(){
-
-        return "membre";
+        this.empruntService = empruntService;
     }
 
     @RequestMapping(value="/detail-membre", method= RequestMethod.GET)
-    public String membreDetail(Model model, @RequestParam(name="id") Integer id){
+    public String membreDetail(Model model, HttpSession session){
 
-        MembreType membreType = this.service.membreById(id);
+        MembreType membreType = (MembreType) session.getAttribute("user");
 
-        model.addAttribute("membre", membreType);
+        int id = membreType.getId();
+
+        List<LivreType> listeLivres = this.livreService.getAllLivresEmpruntes(id);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        model.addAttribute("dateFormat", dateFormat);
+
+        model.addAttribute("listeLivres", listeLivres);
 
         return "detailMembre";
 

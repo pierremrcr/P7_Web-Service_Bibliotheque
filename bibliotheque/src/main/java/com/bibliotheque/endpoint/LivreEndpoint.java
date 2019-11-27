@@ -2,6 +2,8 @@
 
 package com.bibliotheque.endpoint;
 
+import com.bibliotheque.entity.EmpruntEntity;
+import com.bibliotheque.entity.ExemplaireEntity;
 import com.bibliotheque.entity.LivreEntity;
 import com.bibliotheque.gs_ws.*;
 import com.bibliotheque.service.contract.LivreEntityService;
@@ -12,6 +14,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import javax.transaction.Transactional;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -21,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+
 
 @Endpoint
 public class LivreEndpoint {
@@ -46,6 +51,13 @@ public class LivreEndpoint {
         LivreEntity livreEntity = this.service.getLivreById(request.getId());
         LivreType livreType = new LivreType();
 
+        for(ExemplaireEntity exemplaireEntity : livreEntity.getListeExemplaires()){
+            ExemplaireType exemplaireType = new ExemplaireType();
+            BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
+            livreType.getListeExemplaires().add(exemplaireType);
+
+        }
+
         GregorianCalendar calendar = new GregorianCalendar();
 
         calendar.setTime(livreEntity.getDatePublication());
@@ -69,6 +81,15 @@ public class LivreEndpoint {
 
         for (LivreEntity entity : livreEntityList) {
             LivreType livreType = new LivreType();
+
+            for(ExemplaireEntity exemplaireEntity: entity.getListeExemplaires()){
+                ExemplaireType exemplaireType = new ExemplaireType();
+
+                BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
+                livreType.getListeExemplaires().add(exemplaireType);
+            }
+
+
             calendar.setTime(entity.getDatePublication());
             XMLGregorianCalendar datePublication = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
             livreType.setDatePublication(datePublication);
@@ -76,7 +97,56 @@ public class LivreEndpoint {
             livreTypeList.add(livreType);
         }
         response.getLivreType().addAll(livreTypeList);
+        return response;
 
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllLivresEmpruntesRequest")
+    @ResponsePayload
+    public GetAllLivresEmpruntesResponse getAllLivresEmpruntes(@RequestPayload GetAllLivresEmpruntesRequest request)  throws DatatypeConfigurationException {
+        GetAllLivresEmpruntesResponse response = new GetAllLivresEmpruntesResponse();
+        List<LivreType> livreTypeList = new ArrayList<LivreType>();
+        List<LivreEntity> livreEntityList = this.service.getAllLivreEmpruntesByUser(request.getId());
+
+
+        for (LivreEntity entity : livreEntityList) {
+            LivreType livreType = new LivreType();
+
+
+            for(ExemplaireEntity exemplaireEntity: entity.getListeExemplaires()){
+                ExemplaireType exemplaireType = new ExemplaireType();
+
+                BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
+                livreType.getListeExemplaires().add(exemplaireType);
+
+                for (EmpruntEntity empruntEntity : exemplaireEntity.getListeEmprunts()){
+                    EmpruntType empruntType = new EmpruntType();
+
+                    GregorianCalendar dateDebut = new GregorianCalendar();
+                    GregorianCalendar dateFin = new GregorianCalendar();
+                    dateDebut.setTime(empruntEntity.getDate_debut());
+                    dateFin.setTime(empruntEntity.getDate_fin());
+                    XMLGregorianCalendar dateConvertedDebut = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateDebut);
+                    XMLGregorianCalendar dateConvertedFin = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFin);
+
+                    empruntType.setDateDebut(dateConvertedDebut);
+                    empruntType.setDateFin(dateConvertedFin);
+
+                    BeanUtils.copyProperties(empruntEntity, empruntType);
+                    exemplaireType.getListeEmprunts().add(empruntType);
+                }
+            }
+
+
+
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(entity.getDatePublication());
+            XMLGregorianCalendar datePublication = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+            livreType.setDatePublication(datePublication);
+            BeanUtils.copyProperties(entity, livreType);
+            livreTypeList.add(livreType);
+        }
+        response.getLivreType().addAll(livreTypeList);
         return response;
 
     }
@@ -172,6 +242,36 @@ public class LivreEndpoint {
         response.setServiceStatus(serviceStatus);
         return response;
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getSearchByKeywordRequest")
+    @ResponsePayload
+    @Transactional
+    public GetSearchByKeywordResponse getSearchByKeyword(@RequestPayload GetSearchByKeywordRequest request){
+        GetSearchByKeywordResponse response = new GetSearchByKeywordResponse();
+        List<LivreEntity> listeLivresEntity = this.service.getAllLivresByKeyword("%" + request.getKeyword() + "%");
+        List<LivreType>  listeLivreType = new ArrayList<>();
+
+        for(LivreEntity entity : listeLivresEntity){
+            LivreType livreType = new LivreType();
+
+            for(ExemplaireEntity exemplaireEntity : entity.getListeExemplaires()){
+                ExemplaireType exemplaireType = new ExemplaireType();
+
+                BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
+                livreType.getListeExemplaires().add(exemplaireType);
+
+            }
+
+            BeanUtils.copyProperties(entity, livreType);
+            listeLivreType.add(livreType);
+
+        }
+
+        response.getLivreType().addAll(listeLivreType);
+        return response;
+    }
+
+
 
 }
 

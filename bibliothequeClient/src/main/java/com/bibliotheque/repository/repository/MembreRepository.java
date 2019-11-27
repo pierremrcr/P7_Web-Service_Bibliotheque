@@ -2,10 +2,13 @@ package com.bibliotheque.repository.repository;
 
 import com.bibliotheque.repository.MembreClient;
 import livres.wsdl.AddMembreResponse;
+import livres.wsdl.GetAllMembresResponse;
 import livres.wsdl.GetMembreByIdResponse;
 import livres.wsdl.MembreType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class MembreRepository {
@@ -26,6 +29,11 @@ public class MembreRepository {
         AddMembreResponse response = this.client.addMembre(membreType);
 
         return response.getServiceStatus().getStatusCode();
+    }
+
+    public List<MembreType> getAllMembres(){
+        GetAllMembresResponse response = this.client.getAllMembres();
+        return response.getMembreType();
     }
 
 

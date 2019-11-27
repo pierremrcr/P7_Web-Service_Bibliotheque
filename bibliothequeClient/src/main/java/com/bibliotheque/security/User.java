@@ -7,16 +7,20 @@ public class User {
 
     private int id;
     private String prenom;
-    private String role = "Role_user";
+    private String role = "ROLE_USER";
 
     public User() {
+    }
+
+    public User(String prenom, String role) {
+        this.prenom = prenom;
+        this.role = role;
     }
 
     public User(int id, String prenom) {
         this.id = id;
         this.prenom = prenom;
     }
-
 
     public int getId() {
         return id;

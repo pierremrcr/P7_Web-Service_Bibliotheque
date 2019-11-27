@@ -8,6 +8,8 @@ import java.util.Date;
 @Table(name="emprunt")
 public class EmpruntEntity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,6 +22,12 @@ public class EmpruntEntity implements Serializable {
 
     @Column(name = "prolongation")
     private boolean prolongation;
+
+    @Column(name = "exemplaireid")
+    private int exemplaireid;
+
+    @Column(name = "membreid")
+    private int membreid;
 
     @ManyToOne
     @JoinColumn(name = "membreid", insertable = false, updatable = false)
@@ -64,6 +72,21 @@ public class EmpruntEntity implements Serializable {
         this.prolongation = prolongation;
     }
 
+    public int getExemplaireid() {
+        return exemplaireid;
+    }
+
+    public void setExemplaireid(int exemplaireid) {
+        this.exemplaireid = exemplaireid;
+    }
+
+    public int getMembreid() {
+        return membreid;
+    }
+
+    public void setMembreid(int membreid) {
+        this.membreid = membreid;
+    }
 
     public MembreEntity getMembreEntity() {
         return membreEntity;
@@ -79,5 +102,14 @@ public class EmpruntEntity implements Serializable {
 
     public void setExemplaireEntity(ExemplaireEntity exemplaireEntity) {
         this.exemplaireEntity = exemplaireEntity;
+    }
+
+    @Override
+    public String toString() {
+        return "EmpruntEntity{" +
+                "id=" + id +
+                ", date_debut=" + date_debut +
+                ", date_fin=" + date_fin +
+                ", prolongation= " + prolongation;
     }
 }

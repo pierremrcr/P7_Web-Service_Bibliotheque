@@ -17,11 +17,14 @@ public class ExemplaireEntity implements Serializable {
     @Column(name="disponibilite")
     private boolean disponibilite;
 
+    @Column(name="livreid")
+    private int livreid;
+
     @ManyToOne
     @JoinColumn(name = "livreid", insertable = false, updatable = false)
     private LivreEntity livre;
 
-    @OneToMany(mappedBy = "exemplaireEntity")
+    @OneToMany(mappedBy = "exemplaireEntity", fetch = FetchType.EAGER)
     private List<EmpruntEntity> listeEmprunts;
 
 
@@ -58,5 +61,24 @@ public class ExemplaireEntity implements Serializable {
 
     public void setListeEmprunts(List<EmpruntEntity> listeEmprunts) {
         this.listeEmprunts = listeEmprunts;
+    }
+
+    public int getLivreid() {
+        return livreid;
+    }
+
+    public void setLivreid(int livreid) {
+        this.livreid = livreid;
+    }
+
+    @Override
+    public String toString() {
+        return "ExemplaireEntity{" +
+                "id=" + id +
+                ", disponibilite=" + disponibilite +
+                ", livreid=" + livreid +
+                ", livre=" + livre +
+                ", listeEmprunts=" + listeEmprunts +
+                '}';
     }
 }

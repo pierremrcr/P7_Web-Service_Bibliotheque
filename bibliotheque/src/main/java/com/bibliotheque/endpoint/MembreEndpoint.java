@@ -1,5 +1,6 @@
 package com.bibliotheque.endpoint;
 
+import com.bibliotheque.entity.EmpruntEntity;
 import com.bibliotheque.entity.MembreEntity;
 import com.bibliotheque.gs_ws.*;
 import com.bibliotheque.service.contract.MembreEntityService;
@@ -10,7 +11,11 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Endpoint
@@ -32,10 +37,27 @@ public class MembreEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMembreByIdRequest")
     @ResponsePayload
-    public GetMembreByIdResponse getMembreById(@RequestPayload GetMembreByIdRequest request)  {
+    public GetMembreByIdResponse getMembreById(@RequestPayload GetMembreByIdRequest request)  throws DatatypeConfigurationException {
         GetMembreByIdResponse response = new GetMembreByIdResponse();
         MembreEntity membreEntity = membreEntityService.getMembreById(request.getId());
         MembreType membreType = new MembreType();
+
+        for(EmpruntEntity empruntEntity : membreEntity.getListeEmprunts()){
+            EmpruntType empruntType = new EmpruntType();
+            GregorianCalendar dateDebut = new GregorianCalendar();
+            GregorianCalendar dateFin = new GregorianCalendar();
+            dateDebut.setTime(empruntEntity.getDate_debut());
+            dateFin.setTime(empruntEntity.getDate_fin());
+            XMLGregorianCalendar dateConvertedDebut = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateDebut);
+            XMLGregorianCalendar dateConvertedFin = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFin);
+
+            empruntType.setDateDebut(dateConvertedDebut);
+            empruntType.setDateFin(dateConvertedFin);
+            BeanUtils.copyProperties(empruntEntity, empruntType);
+            membreType.getListeEmprunts().add(empruntType);
+
+        }
+
         BeanUtils.copyProperties(membreEntity, membreType);
         response.setMembreType(membreType);
         return response;
@@ -43,12 +65,30 @@ public class MembreEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllMembresRequest")
     @ResponsePayload
-    public GetAllMembresResponse getAllLivres(@RequestPayload GetAllMembresRequest request) {
+    public GetAllMembresResponse getAllMembres(@RequestPayload GetAllMembresRequest request) throws DatatypeConfigurationException {
         GetAllMembresResponse response = new GetAllMembresResponse();
         List<MembreType> membreTypeList = new ArrayList<MembreType>();
         List<MembreEntity> membreEntityList = membreEntityService.getAllMembres();
         for (MembreEntity entity : membreEntityList) {
             MembreType membreType = new MembreType();
+
+            for(EmpruntEntity empruntEntity : entity.getListeEmprunts()){
+                EmpruntType empruntType = new EmpruntType();
+
+                GregorianCalendar dateDebut = new GregorianCalendar();
+                GregorianCalendar dateFin = new GregorianCalendar();
+                dateDebut.setTime(empruntEntity.getDate_debut());
+                dateFin.setTime(empruntEntity.getDate_fin());
+                XMLGregorianCalendar dateConvertedDebut = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateDebut);
+                XMLGregorianCalendar dateConvertedFin = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFin);
+
+                empruntType.setDateDebut(dateConvertedDebut);
+                empruntType.setDateFin(dateConvertedFin);
+
+                BeanUtils.copyProperties(empruntEntity, empruntType);
+                membreType.getListeEmprunts().add(empruntType);
+            }
+
             BeanUtils.copyProperties(entity, membreType);
             membreTypeList.add(membreType);
         }

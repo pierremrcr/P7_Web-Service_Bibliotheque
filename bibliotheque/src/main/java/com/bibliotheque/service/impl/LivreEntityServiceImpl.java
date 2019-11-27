@@ -75,6 +75,20 @@ public class LivreEntityServiceImpl implements LivreEntityService {
             return false;
         }
     }
+
+    @Override
+    public List<LivreEntity> getAllLivresByKeyword(String keyword) {
+        List<LivreEntity> listeLivres = new ArrayList<>();
+        this.repository.findAllLivresByKeyword(keyword).forEach(livreEntity -> listeLivres.add(livreEntity));
+        return listeLivres;
+    }
+
+    @Override
+    public List<LivreEntity> getAllLivreEmpruntesByUser(int id) {
+        List<LivreEntity> listeLivres = new ArrayList<>();
+        this.repository.findAllLivreEmpruntesByUser(id).forEach(livreEntity -> listeLivres.add(livreEntity));
+        return listeLivres;
+    }
 }
 
 

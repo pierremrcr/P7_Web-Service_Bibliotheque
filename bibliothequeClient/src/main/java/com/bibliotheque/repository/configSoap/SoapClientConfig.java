@@ -1,8 +1,6 @@
 package com.bibliotheque.repository.configSoap;
 
-import com.bibliotheque.repository.LivreClient;
-import com.bibliotheque.repository.LoginClient;
-import com.bibliotheque.repository.MembreClient;
+import com.bibliotheque.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -45,4 +43,33 @@ public class SoapClientConfig {
         client.setUnmarshaller(marshaller);
         return client;
     }
+
+    @Bean
+    public ExemplaireClient exemplaireClient(Jaxb2Marshaller marshaller) {
+        ExemplaireClient client = new ExemplaireClient();
+        client.setDefaultUri("http://localhost:8080/ws/livres");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
+    @Bean
+    public EmpruntClient empruntClient(Jaxb2Marshaller marshaller) {
+        EmpruntClient client = new EmpruntClient();
+        client.setDefaultUri("http://localhost:8080/ws/livres");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
+    @Bean
+    public SearchClient searchClient(Jaxb2Marshaller marshaller){
+        SearchClient client = new SearchClient();
+        client.setDefaultUri("http://localhost:8080/ws/livres");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
+
 }

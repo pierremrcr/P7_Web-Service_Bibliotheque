@@ -22,26 +22,34 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div id="contenaireOuvrageDetail" class="col col-md-5">
+            <div class="col col-md-5">
 
-                <form th:action="@{/login}" th:object="${login}" method="post">
+
+
+                <form th:action="@{/loginApp}" th:object="${login}" method="post">
+
 
                     <div class="form-group">
                         <label>Adresse Mail</label>
-                        <input type="email" name="mail" class="form-control" placeholder="Enter email"/>
+                        <input type="email" name="mail" class="form-control" placeholder="Enter email" required/>
                     </div>
 
                     <div class="form-group">
                         <label>Mot de Passe</label>
-                        <input type="password" name="motDePasse" class="form-control" placeholder="Password"/>
+                        <input type="password" name="motDePasse" class="form-control" placeholder="Password" required/>
                     </div>
 
-                    <button type="submit" class="btn btn-dark" style="width: 100%">Submit</button>
+                    <div th:if="${login == 'Mot de passe ou email invalide'}" class="alert alert-danger" role="alert">
+                        Mot de passe ou email incorrect
+                    </div>
+
+                    <button type="submit" value="login" class="btn btn-dark" style="width: 100%">Submit</button>
                 </form>
+
             </div>
+
         </div>
     </div>
-
 </div>
 
 </body>

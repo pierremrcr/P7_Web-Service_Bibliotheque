@@ -12,5 +12,7 @@ public interface LivreEntityService {
     public LivreEntity addLivre(LivreEntity livreEntity);
     public boolean updateLivre(LivreEntity livreEntity);
     public boolean deleteLivreById(int id);
+    public List<LivreEntity> getAllLivresByKeyword(String Keyword);
+    public List<LivreEntity> getAllLivreEmpruntesByUser(int id);
 
 }

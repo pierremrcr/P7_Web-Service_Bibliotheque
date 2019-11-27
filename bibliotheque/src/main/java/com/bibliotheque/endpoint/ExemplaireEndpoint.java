@@ -1,5 +1,6 @@
 package com.bibliotheque.endpoint;
 
+import com.bibliotheque.entity.EmpruntEntity;
 import com.bibliotheque.entity.ExemplaireEntity;
 import com.bibliotheque.gs_ws.*;
 import com.bibliotheque.service.contract.ExemplaireEntityService;
@@ -35,6 +36,13 @@ public class ExemplaireEndpoint {
         ExemplaireEntity exemplaireEntity = exemplaireEntityService.getExemplaireById(request.getId());
         ExemplaireType exemplaireType = new ExemplaireType();
 
+        for(EmpruntEntity empruntEntity : exemplaireEntity.getListeEmprunts()){
+            EmpruntType empruntType = new EmpruntType();
+
+            BeanUtils.copyProperties(empruntEntity, empruntType);
+            exemplaireType.getListeEmprunts().add(empruntType);
+        }
+
         BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
 
         response.setExemplaireType(exemplaireType);
@@ -42,19 +50,29 @@ public class ExemplaireEndpoint {
 
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllExemplairesRequest")
+
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllExemplairesAndEmpruntsRequest")
     @ResponsePayload
     // La méthode prend en paramètre une requête et renvoit une réponse
-    public GetAllExemplairesResponse getAllExemplaires(@RequestPayload GetAllExemplairesRequest request) {
+    public GetAllExemplairesAndEmpruntsResponse getAllExemplaires(@RequestPayload GetAllExemplairesAndEmpruntsRequest request) {
         //Instanciation de l'objet réponse à renvoyer
-        GetAllExemplairesResponse response = new GetAllExemplairesResponse();
+        GetAllExemplairesAndEmpruntsResponse response = new GetAllExemplairesAndEmpruntsResponse();
         //Instanciation de l'objet exemplaireTypeList qui va contenir la liste de tous les exemplaires
         List<ExemplaireType> exemplaireTypeList = new ArrayList<ExemplaireType>();
         //On récupère tous les exemplaires que l'on stocke dans une liste
-        List<ExemplaireEntity> exemplaireEntityList = exemplaireEntityService.getAllExemlaires();
+        //List<ExemplaireEntity> exemplaireEntityList = exemplaireEntityService.getAllExemlaires();
+        List<ExemplaireEntity> exemplaireEntityList = exemplaireEntityService.getAllExemplairesAndEmprunts(request.getId());
         //Pour chaque exemplaire récupéré
         for (ExemplaireEntity entity : exemplaireEntityList) {
             ExemplaireType exemplaireType = new ExemplaireType();
+
+            for(EmpruntEntity empruntEntity : entity.getListeEmprunts()){
+                EmpruntType empruntType = new EmpruntType();
+
+                BeanUtils.copyProperties(empruntEntity, empruntType);
+                exemplaireType.getListeEmprunts().add(empruntType);
+            }
             //On copie cet exemplaire dans un objet de type Exemplaire type
             BeanUtils.copyProperties(entity, exemplaireType);
             //Puis on ajoute cet exemplaire à la liste ExemplaireTypeList
@@ -65,6 +83,8 @@ public class ExemplaireEndpoint {
 
         return response;
     }
+
+
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addExemplaireRequest")
     @ResponsePayload

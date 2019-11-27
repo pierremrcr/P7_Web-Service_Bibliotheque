@@ -11,7 +11,7 @@ public class LoginService {
     @Autowired
     private LoginRepository repository;
 
-    public MembreType login(String mail, String motDePasse){
+    public MembreType loginCompte(String mail, String motDePasse){
 
         return this.repository.loginCompte(mail, motDePasse);
     }

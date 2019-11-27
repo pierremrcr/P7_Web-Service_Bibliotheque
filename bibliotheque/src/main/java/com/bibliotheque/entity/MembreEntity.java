@@ -44,7 +44,7 @@ public class MembreEntity implements Serializable {
     @Size(min = 1, max = 50)
     private String ville;
 
-    @OneToMany(mappedBy = "membreEntity")
+    @OneToMany(mappedBy = "membreEntity", fetch = FetchType.EAGER)
     private List<EmpruntEntity> listeEmprunts;
 
     public MembreEntity() {

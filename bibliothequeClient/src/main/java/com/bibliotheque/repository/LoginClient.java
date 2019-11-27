@@ -6,11 +6,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.SoapFaultClientException;
 
+import java.util.Optional;
+
 public class LoginClient extends WebServiceGatewaySupport {
 
     private static final Logger log = LoggerFactory.getLogger(LoginClient.class);
 
-    public LoginResponse login(String mail, String motDePasse){
+    public LoginResponse loginCompte(String mail, String motDePasse){
 
         LoginResponse response = new LoginResponse();
 
@@ -32,6 +34,7 @@ public class LoginClient extends WebServiceGatewaySupport {
 
         return response;
     }
+
 
     public GetCompteAfterLoginSuccessResponse getCompteAferLoginSuccess(String mail){
 

@@ -12,4 +12,9 @@ public class AccueilController {
         return "accueil";
 
     }
+
+    @RequestMapping(value = "/403")
+    public String notAuthorized(){
+        return "error/403";
+    }
 }

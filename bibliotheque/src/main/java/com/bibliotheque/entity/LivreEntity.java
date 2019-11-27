@@ -40,7 +40,7 @@ public class LivreEntity implements Serializable {
     @Size(min = 1, max = 500)
     private String urlPhoto;
 
-    @OneToMany(mappedBy = "livre")
+    @OneToMany(mappedBy = "livre", fetch = FetchType.EAGER)
     private List<ExemplaireEntity> listeExemplaires;
 
     public LivreEntity() {

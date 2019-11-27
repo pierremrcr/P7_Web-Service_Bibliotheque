@@ -1,6 +1,7 @@
 package com.bibliotheque.controller;
 
 import com.bibliotheque.service.LivreService;
+import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,16 +23,24 @@ public class LivreController {
 
         List<LivreType> livreTypeList = livreService.livreTypeList();
 
+        livreTypeList = livreService.exemplairesDispoParLivre(livreTypeList);
+
         model.addAttribute("listeLivres", livreTypeList);
 
         return "listeLivres";
 
     }
 
+
+
     @RequestMapping(value="/livre", method = RequestMethod.GET)
     public String livreDetail(Model model, @RequestParam(name="id") Integer id){
 
         LivreType livreType = livreService.livreById(id);
+
+        List<ExemplaireType> exemplairesListe = livreService.nombreExemplaireDispo(livreType.getListeExemplaires());
+
+        model.addAttribute("exemplairesDispo",exemplairesListe);
 
         model.addAttribute("livre", livreType);
 
@@ -39,6 +48,8 @@ public class LivreController {
 
 
     }
+
+
 
 
 }

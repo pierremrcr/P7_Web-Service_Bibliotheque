@@ -1,9 +1,6 @@
 package com.bibliotheque.repository;
 
-import livres.wsdl.GetAllLivresRequest;
-import livres.wsdl.GetAllLivresResponse;
-import livres.wsdl.GetLivreByIdRequest;
-import livres.wsdl.GetLivreByIdResponse;
+import livres.wsdl.*;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
@@ -23,8 +20,14 @@ public class LivreClient extends WebServiceGatewaySupport {
 
 
     public GetAllLivresResponse getAllLivres() {
-
         GetAllLivresRequest request = new GetAllLivresRequest();
         return(GetAllLivresResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
+
+    public GetAllLivresEmpruntesResponse getAllLivresEmpruntes(int id){
+        GetAllLivresEmpruntesRequest request = new GetAllLivresEmpruntesRequest();
+        request.setId(id);
+
+        return(GetAllLivresEmpruntesResponse) getWebServiceTemplate().marshalSendAndReceive(request);
     }
 }

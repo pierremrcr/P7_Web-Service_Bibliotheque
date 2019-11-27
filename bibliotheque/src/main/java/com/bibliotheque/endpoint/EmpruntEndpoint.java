@@ -9,9 +9,13 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.thymeleaf.util.DateUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Endpoint
 public class EmpruntEndpoint {
@@ -43,25 +47,17 @@ public class EmpruntEndpoint {
 
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllEmpruntsRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllEmpruntRequest")
     @ResponsePayload
-    // La méthode prend en paramètre une requête et renvoit une réponse
     public GetAllEmpruntResponse getAllEmprunts(@RequestPayload GetAllEmpruntRequest request) {
-        //Instanciation de l'objet réponse à renvoyer
         GetAllEmpruntResponse response = new GetAllEmpruntResponse();
-        //Instanciation de l'objet empruntTypeList qui va contenir la liste de tous les emprunts
         List<EmpruntType> empruntTypeList = new ArrayList<EmpruntType>();
-        //On récupère tous les emprunts que l'on stocke dans une liste empruntEntityList
         List<EmpruntEntity> empruntEntityList = empruntEntityService.getAllEmprunts();
-        //Pour chaque emprunt récupéré
         for (EmpruntEntity entity : empruntEntityList) {
             EmpruntType empruntType = new EmpruntType();
-            //On copie cet emprunt dans un objet de type Emprunt type
             BeanUtils.copyProperties(entity, empruntType);
-            //Puis on ajoute cet emprunt à la liste EmpruntTypeList
             empruntTypeList.add(empruntType);
         }
-        //On ajoute la liste des emprunts à l'objet réponse que l'on retourne
         response.getEmpruntType().addAll(empruntTypeList);
 
         return response;
@@ -99,9 +95,10 @@ public class EmpruntEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateEmpruntRequest")
     @ResponsePayload
-    public UpdateEmpruntResponse updateEmprunt(@RequestPayload UpdateEmpruntRequest request) {
+    public UpdateEmpruntResponse updateEmprunt(@RequestPayload UpdateEmpruntRequest request) throws DatatypeConfigurationException {
         UpdateEmpruntResponse response = new UpdateEmpruntResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
+        EmpruntType empruntType = new EmpruntType();
 
         // 1. Find if livre available
         EmpruntEntity empruntFromDB = empruntEntityService.getEmpruntById(request.getEmpruntType().getId());
@@ -112,21 +109,47 @@ public class EmpruntEndpoint {
 
         } else {
 
-            // 2. Get updated livre information from the request
-          //  empruntFromDB.setDate_debut(request.getEmpruntType().getDateDebut());
-          //  empruntFromDB.setDate_fin(request.getEmpruntType().getDateFin());
+            if (!empruntFromDB.isProlongation()) {
+
+
+                GregorianCalendar calendar = new GregorianCalendar();
+                calendar.setTime(empruntFromDB.getDate_fin());
+                calendar.add(GregorianCalendar.WEEK_OF_MONTH, 4);
+                XMLGregorianCalendar dateProlongation = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+                empruntType.setDateFin(dateProlongation);
+                empruntType.setProlongation(true);
+
+
+                // 2. Get updated livre information from the request
+                //  empruntFromDB.setDate_debut(request.getEmpruntType().getDateDebut());
+                empruntFromDB.setProlongation(true);
+                empruntFromDB.setDate_fin(addDays(empruntFromDB.getDate_fin(),30));
+
+
+            }
+
+            else{
+                empruntType.setProlongation(false);
+                empruntFromDB.setProlongation(request.getEmpruntType().isProlongation());
+            }
 
             // 3. update the livre in database
+            BeanUtils.copyProperties(empruntFromDB, empruntType);
             boolean flag = empruntEntityService.updateEmprunt(empruntFromDB);
 
-            if(flag == false) {
+
+            if (flag == false) {
                 serviceStatus.setStatusCode("CONFLICT");
                 serviceStatus.setMessage("Exception while updating Entity=" + request.getEmpruntType().getId());
 
-            }else {
+            } else {
                 serviceStatus.setStatusCode("SUCCESS");
                 serviceStatus.setMessage("Content updated Successfully");
             }
+
+
+
+            System.out.println(empruntFromDB.toString());
 
         }
 
@@ -153,6 +176,13 @@ public class EmpruntEndpoint {
 
         response.setServiceStatus(serviceStatus);
         return response;
+    }
+
+    public static Date addDays(Date date, int days) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days); //minus number would decrement the days
+        return cal.getTime();
     }
 }
 

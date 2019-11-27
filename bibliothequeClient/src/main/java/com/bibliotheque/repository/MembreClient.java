@@ -25,6 +25,12 @@ public class MembreClient extends WebServiceGatewaySupport {
 
     }
 
+    public GetAllMembresResponse getAllMembres(){
+
+        GetAllMembresRequest request = new GetAllMembresRequest();
+        return (GetAllMembresResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
+
 
 
 

@@ -61,4 +61,11 @@ public class ExemplaireEntityServiceImpl implements ExemplaireEntityService {
             return false;
         }
     }
+
+    @Override
+    public List<ExemplaireEntity> getAllExemplairesAndEmprunts(int id) {
+        List<ExemplaireEntity> listeExemplaires = new ArrayList<>();
+        this.repository.findAllExemplairesAndEmprunts(id).forEach(exemplaireEntity -> listeExemplaires.add(exemplaireEntity));
+        return listeExemplaires;
+    }
 }

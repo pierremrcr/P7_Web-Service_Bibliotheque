@@ -28,7 +28,7 @@
             <xs:element name="date_publication" type="xs:date" />
             <xs:element name="resume" type="xs:string" />
             <xs:element name="url_photo" type="xs:string" />
-            <xs:element name="listeExemplaires" type="tns:exemplaireType"/>
+            <xs:element name="listeExemplaires" type="tns:exemplaireType" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -63,6 +63,25 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <!-- ==== GET ALL LIVRES EMPRUNTES ==== -->
+
+    <xs:element name="getAllLivresEmpruntesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllLivresEmpruntesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="livreType" type="tns:livreType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
 
     <!-- ==== ADD LIVRE ==== -->
 
@@ -126,8 +145,9 @@
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
             <xs:element name="disponibilite" type="xs:boolean" />
-            <xs:element name="livre" type="tns:livreType" />
-            <xs:element name="listeEmprunts" type="tns:empruntType" />
+            <xs:element name="livreid" type="xs:int" />
+            <xs:element name="livre" type="tns:livreType"/>
+            <xs:element name="listeEmprunts" type="tns:empruntType" maxOccurs="unbounded" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 
@@ -155,6 +175,24 @@
         <xs:complexType/>
     </xs:element>
     <xs:element name="getAllExemplairesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireType" type="tns:exemplaireType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== GET ALL EXEMPLAIRES AND EMPRUNTS ==== -->
+
+    <xs:element name="getAllExemplairesAndEmpruntsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllExemplairesAndEmpruntsResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="exemplaireType" type="tns:exemplaireType" maxOccurs="unbounded"/>
@@ -232,7 +270,7 @@
             <xs:element name="adresse" type="xs:string" />
             <xs:element name="code_postal" type="xs:string" />
             <xs:element name="ville" type="xs:string" />
-            <xs:element name="listeEmprunts" type="tns:empruntType" />
+            <xs:element name="listeEmprunts" type="tns:empruntType" maxOccurs="unbounded" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 
@@ -333,7 +371,9 @@
             <xs:element name="date_debut" type="xs:date" />
             <xs:element name="date_fin" type="xs:date" />
             <xs:element name="prolongation" type="xs:boolean" />
+            <xs:element name="membreid" type="xs:int" />
             <xs:element name="membreEntity" type="tns:membreType" />
+            <xs:element name="exemplaireid" type="xs:int" />
             <xs:element name="exemplaireEntity" type="tns:exemplaireType" />
         </xs:sequence>
     </xs:complexType>
@@ -450,6 +490,23 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="compteType" type="tns:membreType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== SEARCH ==== -->
+
+    <xs:element name="getSearchByKeywordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="keyword" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getSearchByKeywordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="livreType" type="tns:livreType" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

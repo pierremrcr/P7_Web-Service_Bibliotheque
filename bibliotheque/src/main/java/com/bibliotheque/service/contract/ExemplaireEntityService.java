@@ -11,6 +11,7 @@ public interface ExemplaireEntityService {
     public ExemplaireEntity addExemplaire(ExemplaireEntity exemplaireEntity);
     public boolean deleteExemplaireById(int id);
     public boolean updateExemplaire(ExemplaireEntity exemplaireEntity);
+    List<ExemplaireEntity> getAllExemplairesAndEmprunts(int id);
 
 }
 

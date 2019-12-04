@@ -149,8 +149,6 @@ public class EmpruntEndpoint {
 
 
 
-            System.out.println(empruntFromDB.toString());
-
         }
 
         response.setServiceStatus(serviceStatus);

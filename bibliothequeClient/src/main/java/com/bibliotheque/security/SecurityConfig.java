@@ -29,11 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        BCryptPasswordEncoder bcpe = getBCPE();
-        auth.inMemoryAuthentication().withUser("admin").password(bcpe.encode("1234")).roles("ADMIN","USER");
-        auth.inMemoryAuthentication().withUser("user").password(bcpe.encode("1234")).roles("USER");
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder());
-        //  auth.authenticationProvider(customAuthentication);
+       // BCryptPasswordEncoder bcpe = getBCPE();
+      //  auth.inMemoryAuthentication().withUser("admin").password(bcpe.encode("1234")).roles("ADMIN","USER");
+      //  auth.inMemoryAuthentication().withUser("user").password(bcpe.encode("1234")).roles("USER");
+      //  auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder());
+        auth.authenticationProvider(customAuthentication);
     }
 
 
@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("static", "/img/**", "/", "/livres", "/livre", "/loginApp", "/search", "/detail-membre", "/prolongation")
+                .antMatchers("static", "/img/**", "/", "/livres", "/livre", "/loginApp", "/search", "/detail-membre", "/prolongation", "/updatemembre")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

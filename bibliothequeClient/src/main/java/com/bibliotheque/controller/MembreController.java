@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
@@ -39,15 +38,16 @@ public class MembreController {
     }
 
     @RequestMapping(value="/detail-membre", method= RequestMethod.GET)
-    public String membreDetail(Model model, HttpSession session){
+    public String membreDetail(Model model, HttpSession session, MembreType membreType, @RequestParam(name="compteId") int id){
 
-        MembreType membreType = (MembreType) session.getAttribute("user");
 
-        int id = membreType.getId();
+        membreType = this.service.membreById(id);
 
         List<LivreType> listeLivres = this.livreService.getAllLivresEmpruntes(id);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        model.addAttribute("membreType", membreType);
 
         model.addAttribute("dateFormat", dateFormat);
 
@@ -67,6 +67,7 @@ public class MembreController {
     }
 
 
+
     @RequestMapping(value = "/addmembre", method = RequestMethod.POST)
     public String saveMembre(@Valid @ModelAttribute("membreType") MembreType membreType, BindingResult result, ModelMap model){
 
@@ -76,10 +77,18 @@ public class MembreController {
             this.service.addMembre(membreType);
             return "confirmationInscription";
         }
-
-
     }
 
+
+    @RequestMapping(value="/updatemembre", method = RequestMethod.POST)
+    public String confirmUpdate(@Valid @ModelAttribute("membreType") MembreType membreType, BindingResult result){
+        if(result.hasErrors()){
+            return "error";
+        } else{
+            this.service.updateMembre(membreType);
+            return "detailMembre";
+        }
+    }
 
 }
 

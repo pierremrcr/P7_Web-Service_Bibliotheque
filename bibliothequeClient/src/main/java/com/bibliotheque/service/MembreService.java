@@ -1,7 +1,6 @@
 package com.bibliotheque.service;
 
 import com.bibliotheque.repository.repository.MembreRepository;
-import livres.wsdl.EmpruntType;
 import livres.wsdl.MembreType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,8 @@ public class MembreService {
     }
 
 
+    public String updateMembre(MembreType membreType) {
 
-
-
+        return this.repository.updateMembre(membreType);
+    }
 }

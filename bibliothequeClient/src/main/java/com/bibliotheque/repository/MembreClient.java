@@ -32,6 +32,10 @@ public class MembreClient extends WebServiceGatewaySupport {
     }
 
 
+    public UpdateMembreResponse updateMembre(MembreType membreType) {
 
-
+        UpdateMembreRequest request = new UpdateMembreRequest();
+        request.setMembreType(membreType);
+        return (UpdateMembreResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
 }

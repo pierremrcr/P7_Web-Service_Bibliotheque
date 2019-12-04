@@ -1,10 +1,7 @@
 package com.bibliotheque.repository.repository;
 
 import com.bibliotheque.repository.MembreClient;
-import livres.wsdl.AddMembreResponse;
-import livres.wsdl.GetAllMembresResponse;
-import livres.wsdl.GetMembreByIdResponse;
-import livres.wsdl.MembreType;
+import livres.wsdl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -37,6 +34,11 @@ public class MembreRepository {
     }
 
 
+    public String updateMembre(MembreType membreType) {
 
+        UpdateMembreResponse response = this.client.updateMembre(membreType);
+
+        return response.getServiceStatus().getStatusCode();
+    }
 }
 

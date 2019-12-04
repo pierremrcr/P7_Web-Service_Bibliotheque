@@ -25,9 +25,8 @@
 
         <div class="logout text-right align-bottom" th:if="${session.user != null}">
             <span th:text="'Bienvenue ' + ${session.user.prenom} + ' /'"> </span>
-            <span> <a th:href="@{/logout}">logout</a> </span>
+            <span> <a th:href="@{/logout}">Se déconnecter</a> </span>
         </div>
-
 
 
         <div class="jumbotron">

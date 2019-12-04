@@ -132,7 +132,7 @@ public class MembreEndpoint {
         ServiceStatus serviceStatus = new ServiceStatus();
 
         // 1. Find if livre available
-        MembreEntity membreFromDB = membreEntityService.getMembreByNom(request.getMembreType().getNom());
+        MembreEntity membreFromDB = membreEntityService.getMembreById(request.getMembreType().getId());
 
         if(membreFromDB == null) {
             serviceStatus.setStatusCode("NOT FOUND");
@@ -150,6 +150,7 @@ public class MembreEndpoint {
             membreFromDB.setVille(request.getMembreType().getVille());
 
             // 3. update the livre in database
+            BeanUtils.copyProperties(membreFromDB, request.getMembreType());
             boolean flag = membreEntityService.updateMembre(membreFromDB);
 
             if(flag == false) {

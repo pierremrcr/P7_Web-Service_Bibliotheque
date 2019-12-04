@@ -1,5 +1,7 @@
 package com.bibliotheque.entity;
 
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;

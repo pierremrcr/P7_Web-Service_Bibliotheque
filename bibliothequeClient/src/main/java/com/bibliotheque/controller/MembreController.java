@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
@@ -81,7 +83,7 @@ public class MembreController {
 
 
     @RequestMapping(value="/updatemembre", method = RequestMethod.POST)
-    public String confirmUpdate(@Valid @ModelAttribute("membreType") MembreType membreType, BindingResult result){
+    public String confirmUpdate(@Valid MembreType membreType, BindingResult result, RedirectAttributes redirectAttributes){
         if(result.hasErrors()){
             return "error";
         } else{

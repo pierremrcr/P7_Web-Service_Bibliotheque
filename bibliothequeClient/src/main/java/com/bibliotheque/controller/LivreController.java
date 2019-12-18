@@ -1,6 +1,7 @@
 package com.bibliotheque.controller;
 
 import com.bibliotheque.service.LivreService;
+import livres.wsdl.EmpruntType;
 import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,14 @@ public class LivreController {
         LivreType livreType = livreService.livreById(id);
 
         List<ExemplaireType> exemplairesListe = livreService.nombreExemplaireDispo(livreType.getListeExemplaires());
+
+        for (ExemplaireType exemplaireType : exemplairesListe){
+            model.addAttribute("exemplaire", exemplaireType);
+        }
+
+        EmpruntType empruntType = new EmpruntType();
+
+        model.addAttribute("emprunt", empruntType);
 
         model.addAttribute("exemplairesDispo",exemplairesListe);
 

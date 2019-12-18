@@ -65,13 +65,14 @@ public class EmpruntEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addEmpruntRequest")
     @ResponsePayload
-    public AddEmpruntResponse addEmprunt(@RequestPayload AddEmpruntRequest request) {
+    public AddEmpruntResponse addEmprunt(@RequestPayload AddEmpruntRequest request) throws DatatypeConfigurationException {
         AddEmpruntResponse response = new AddEmpruntResponse();
         EmpruntType newEmpruntType = new EmpruntType();
         ServiceStatus serviceStatus = new ServiceStatus();
 
         EmpruntEntity newEmpruntEntity = new EmpruntEntity();
 
+        //On récupère les données de la requête que l'on copie dans un objet EmpruntEntity
         BeanUtils.copyProperties(request.getEmpruntType(), newEmpruntEntity);
         EmpruntEntity savedEmpruntEntity = empruntEntityService.addEmprunt(newEmpruntEntity);
 
@@ -80,6 +81,18 @@ public class EmpruntEndpoint {
             serviceStatus.setMessage("Exception while adding Entity");
 
         } else {
+
+            GregorianCalendar dateDebut = new GregorianCalendar();
+            GregorianCalendar dateFin = new GregorianCalendar();
+            Date today = Calendar.getInstance().getTime();
+            dateDebut.setTime(today);
+            dateFin.add(GregorianCalendar.WEEK_OF_MONTH,4);
+            XMLGregorianCalendar dateConvertedDebut = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateDebut);
+            XMLGregorianCalendar dateConvertedFin = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFin);
+            newEmpruntType.setDateDebut(dateConvertedDebut);
+            newEmpruntType.setDateFin(dateConvertedFin);
+            newEmpruntType.setProlongation(false);
+
 
             BeanUtils.copyProperties(savedEmpruntEntity,newEmpruntType);
             serviceStatus.setStatusCode("SUCCESS");

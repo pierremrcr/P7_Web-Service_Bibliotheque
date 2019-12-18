@@ -22,6 +22,7 @@ import java.util.List;
 @Service
 public class EmpruntService {
 
+
     @Autowired
     private EmpruntRepository repository;
 
@@ -66,10 +67,20 @@ public class EmpruntService {
         return listeLivres;
     }
 
+    public List<EmpruntType> getAllEmprunts(){
+
+        return this.repository.getAllEmprunts();
+    }
+
     public String updateEmprunt(EmpruntType empruntType){
 
        return this.empruntRepository.updateEmprunt(empruntType);
 
 
+    }
+
+    public String addEmprunt(EmpruntType empruntType) {
+
+        return this.empruntRepository.addEmprunt(empruntType);
     }
 }

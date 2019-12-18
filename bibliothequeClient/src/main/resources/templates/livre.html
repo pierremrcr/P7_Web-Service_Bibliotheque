@@ -38,10 +38,15 @@
 
                 </div>
 
+
                 <p>Pour cette ouvrage <span th:text="${#arrays.length(exemplairesDispo)}"></span> exemplaires sont/est disponible(s)</p>
 
-
-            </div>
+                <th:block th:if="${exemplairesDispo.size()!=0}">
+                    <td>
+                        <p>Vous pouvez emprunter ce livre pour une durée de 4 semaines (durée prolongeable de 4 semaines supplémentaires).</p>
+                        <p><a class="btn btn-outline-primary" href="#" th:href="@{/addEmprunt(exemplaireId=${exemplaire.getId()})}">Emprunter ce livre</a></p>
+                    </td>
+                </th:block>
 
 
             <script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>

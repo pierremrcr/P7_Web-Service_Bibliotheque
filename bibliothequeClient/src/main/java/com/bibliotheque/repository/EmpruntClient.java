@@ -29,5 +29,11 @@ public class EmpruntClient extends WebServiceGatewaySupport {
         request.setEmpruntType(empruntType);
         return(UpdateEmpruntResponse) getWebServiceTemplate().marshalSendAndReceive(request);
     }
+
+    public AddEmpruntResponse addEmprunt(EmpruntType empruntType) {
+        AddEmpruntRequest request = new AddEmpruntRequest();
+        request.setEmpruntType(empruntType);
+        return(AddEmpruntResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
 }
 

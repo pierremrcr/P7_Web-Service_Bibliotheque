@@ -1,11 +1,11 @@
 package com.bibliotheque.repository.repository;
 
 import com.bibliotheque.repository.EmpruntClient;
-import livres.wsdl.EmpruntType;
-import livres.wsdl.GetEmpruntByIdResponse;
-import livres.wsdl.UpdateEmpruntResponse;
+import livres.wsdl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class EmpruntRepository {
@@ -24,4 +24,13 @@ public class EmpruntRepository {
     }
 
 
+    public String addEmprunt(EmpruntType empruntType) {
+        AddEmpruntResponse response = this.client.addEmprunt(empruntType);
+        return response.getServiceStatus().getStatusCode();
+    }
+
+    public List<EmpruntType> getAllEmprunts() {
+        GetAllEmpruntResponse response = this.client.getAllEmprunts();
+        return response.getEmpruntType();
+    }
 }

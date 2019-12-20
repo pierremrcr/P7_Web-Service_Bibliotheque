@@ -49,12 +49,22 @@ public class EmpruntEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllEmpruntRequest")
     @ResponsePayload
-    public GetAllEmpruntResponse getAllEmprunts(@RequestPayload GetAllEmpruntRequest request) {
+    public GetAllEmpruntResponse getAllEmprunts(@RequestPayload GetAllEmpruntRequest request) throws DatatypeConfigurationException{
         GetAllEmpruntResponse response = new GetAllEmpruntResponse();
         List<EmpruntType> empruntTypeList = new ArrayList<EmpruntType>();
         List<EmpruntEntity> empruntEntityList = empruntEntityService.getAllEmprunts();
         for (EmpruntEntity entity : empruntEntityList) {
             EmpruntType empruntType = new EmpruntType();
+
+            GregorianCalendar dateDebut = new GregorianCalendar();
+            GregorianCalendar dateFin = new GregorianCalendar();
+            dateDebut.setTime(entity.getDate_debut());
+            dateFin.setTime(entity.getDate_fin());
+            XMLGregorianCalendar dateConvertedDebut = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateDebut);
+            XMLGregorianCalendar dateConvertedFin = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFin);
+
+            empruntType.setDateDebut(dateConvertedDebut);
+            empruntType.setDateFin(dateConvertedFin);
             BeanUtils.copyProperties(entity, empruntType);
             empruntTypeList.add(empruntType);
         }

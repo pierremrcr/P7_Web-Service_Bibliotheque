@@ -19,6 +19,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -58,16 +59,21 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
         List<EmpruntType> listeEmprunts = empruntService.getAllEmprunts();
 
+        System.out.println(listeEmprunts.size());
+
         long joursDeRetard;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        LocalDateTime cuttentTime = LocalDateTime.now();
-        Date dateToDay = dateFormat.parse(dateFormat.format(dateFormat.parse(cuttentTime.toLocalDate().toString())));
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        Date dateToDay = dateFormat.parse(dateFormat.format(dateFormat.parse(currentTime.toLocalDate().toString())));
 
         for (EmpruntType empruntType : listeEmprunts) {
 
             Date empruntDateFin = dateFormat.parse(dateFormat.format(dateFormat.parse(empruntType.getDateFin().toString())));
+
+            System.out.println(empruntDateFin);
 
             if (empruntDateFin.after(dateToDay)) {
 
@@ -80,30 +86,23 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
                 ExemplaireType exemplaireType = exemplaireService.exemplaireById(empruntType.getExemplaireid());
 
                 LivreType livreType = livreService.livreById(exemplaireType.getLivreid());
-
-
+                
                 joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
+
                 String nombreDeJoursStr = String.valueOf(joursDeRetard).replace("-", "");
 
                 String subject = "Restitution du livre : " + livreType.getTitre();
 
-                String text = textMail(membreType, livreType, exemplaireType, nombreDeJoursStr);
+                String text = textMail(membreType, livreType, nombreDeJoursStr);
 
-                SendingMail.sendMessage(subject, text, membreType.getAdresseMail());
+                sendingMail.sendMessage(subject, text, membreType.getAdresseMail());
 
             } else if (dateToDay.equals(empruntDateFin)) {
 
                 joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
 
-
             }
 
-            /*else {
-
-                System.out.println("How to get here?");
-            }
-
-            */
 
         }
 
@@ -111,7 +110,7 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
     }
 
 
-    private String textMail(MembreType membreType, LivreType livreType, ExemplaireType exemplaireType, String nombreDeJoursStr) {
+    private String textMail(MembreType membreType, LivreType livreType, String nombreDeJoursStr) {
 
         return ""
                 + "<div style=\"padding-left: 20px\">"

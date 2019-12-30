@@ -23,6 +23,9 @@ public class EmpruntEntity implements Serializable {
     @Column(name = "prolongation")
     private boolean prolongation;
 
+    @Column(name = "relance")
+    private boolean relance;
+
     @Column(name = "exemplaireid")
     private int exemplaireid;
 
@@ -70,6 +73,14 @@ public class EmpruntEntity implements Serializable {
 
     public void setProlongation(boolean prolongation) {
         this.prolongation = prolongation;
+    }
+
+    public boolean isRelance() {
+        return relance;
+    }
+
+    public void setRelance(boolean relance) {
+        this.relance = relance;
     }
 
     public int getExemplaireid() {

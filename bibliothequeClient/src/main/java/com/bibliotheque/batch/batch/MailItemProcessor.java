@@ -69,7 +69,7 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
         Date dateToDay = dateFormat.parse(dateFormat.format(dateFormat.parse(currentTime.toLocalDate().toString())));
 
-        for (EmpruntType empruntType : listeEmprunts) {
+        for (EmpruntType empruntType : listeEmprunts){
 
             Date empruntDateFin = dateFormat.parse(dateFormat.format(dateFormat.parse(empruntType.getDateFin().toString())));
 
@@ -79,7 +79,7 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
                 joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
 
-            } else if (empruntDateFin.before(dateToDay)) {
+            } else if (empruntDateFin.before(dateToDay) && !empruntType.isRelance()) {
 
                 MembreType membreType = membreService.membreById(empruntType.getMembreid());
 
@@ -96,6 +96,11 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
                 String text = textMail(membreType, livreType, nombreDeJoursStr);
 
                 sendingMail.sendMessage(subject, text, membreType.getAdresseMail());
+
+                empruntType.setRelance(true);
+
+                empruntService.updateEmprunt(empruntType);
+
 
             } else if (dateToDay.equals(empruntDateFin)) {
 

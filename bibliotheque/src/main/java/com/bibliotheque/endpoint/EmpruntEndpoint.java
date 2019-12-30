@@ -15,7 +15,9 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
+
 
 @Endpoint
 public class EmpruntEndpoint {
@@ -73,6 +75,35 @@ public class EmpruntEndpoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest")
+    @ResponsePayload
+    public GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse getAllEmpruntssWhereDateFinIsBeforeDateTodayResponse(@RequestPayload GetAllEmpruntsWhereDateFinIsBeforeDateTodayRequest request) throws DatatypeConfigurationException{
+        GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse response = new GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse();
+        List<EmpruntType> empruntTypeList = new ArrayList<EmpruntType>();
+        List<EmpruntEntity> empruntEntityList = empruntEntityService.getAllEmpruntsWhereDateFinIsBeforeDateToday();
+        for (EmpruntEntity entity : empruntEntityList) {
+            EmpruntType empruntType = new EmpruntType();
+
+            GregorianCalendar dateDebut = new GregorianCalendar();
+            GregorianCalendar dateFin = new GregorianCalendar();
+            dateDebut.setTime(entity.getDate_debut());
+            dateFin.setTime(entity.getDate_fin());
+            XMLGregorianCalendar dateConvertedDebut = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateDebut);
+            XMLGregorianCalendar dateConvertedFin = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFin);
+
+            empruntType.setDateDebut(dateConvertedDebut);
+            empruntType.setDateFin(dateConvertedFin);
+            BeanUtils.copyProperties(entity, empruntType);
+            empruntTypeList.add(empruntType);
+        }
+        response.getEmpruntType().addAll(empruntTypeList);
+
+        return response;
+
+    }
+
+
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addEmpruntRequest")
     @ResponsePayload
     public AddEmpruntResponse addEmprunt(@RequestPayload AddEmpruntRequest request) throws DatatypeConfigurationException {
@@ -118,10 +149,16 @@ public class EmpruntEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateEmpruntRequest")
     @ResponsePayload
-    public UpdateEmpruntResponse updateEmprunt(@RequestPayload UpdateEmpruntRequest request) throws DatatypeConfigurationException {
+    public UpdateEmpruntResponse updateEmprunt(@RequestPayload UpdateEmpruntRequest request) throws DatatypeConfigurationException, Exception {
         UpdateEmpruntResponse response = new UpdateEmpruntResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
         EmpruntType empruntType = new EmpruntType();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        Date dateToday = dateFormat.parse(dateFormat.format(dateFormat.parse(currentTime.toLocalDate().toString())));
 
         // 1. Find if livre available
         EmpruntEntity empruntFromDB = empruntEntityService.getEmpruntById(request.getEmpruntType().getId());
@@ -151,10 +188,12 @@ public class EmpruntEndpoint {
 
             }
 
+
             else{
                 empruntType.setProlongation(false);
                 empruntFromDB.setProlongation(request.getEmpruntType().isProlongation());
             }
+
 
             // 3. update the livre in database
             BeanUtils.copyProperties(empruntFromDB, empruntType);
@@ -206,4 +245,6 @@ public class EmpruntEndpoint {
         return cal.getTime();
     }
 }
+
+
 

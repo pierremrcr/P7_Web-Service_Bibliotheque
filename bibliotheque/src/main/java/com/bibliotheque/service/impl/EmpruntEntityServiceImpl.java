@@ -61,4 +61,11 @@ public class EmpruntEntityServiceImpl implements EmpruntEntityService {
             return false;
         }
     }
+
+    @Override
+    public List<EmpruntEntity> getAllEmpruntsWhereDateFinIsBeforeDateToday() {
+        List<EmpruntEntity> listeEmprunts = new ArrayList<>();
+        this.repository.findAllEmpruntWhereDateRetourIsBeforDateToday().forEach(empruntEntity -> listeEmprunts.add(empruntEntity));
+        return listeEmprunts;
+    }
 }

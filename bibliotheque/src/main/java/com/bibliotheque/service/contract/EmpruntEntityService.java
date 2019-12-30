@@ -11,6 +11,7 @@ public interface EmpruntEntityService {
     public EmpruntEntity addEmprunt(EmpruntEntity emprunt);
     public boolean updateEmprunt(EmpruntEntity emprunt);
     public boolean deleteEmpruntById(int id);
+    public List<EmpruntEntity> getAllEmpruntsWhereDateFinIsBeforeDateToday();
 
 
 }

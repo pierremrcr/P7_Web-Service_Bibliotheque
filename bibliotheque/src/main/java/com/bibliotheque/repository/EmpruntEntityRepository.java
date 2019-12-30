@@ -2,6 +2,7 @@ package com.bibliotheque.repository;
 
 import com.bibliotheque.entity.EmpruntEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,9 @@ public interface EmpruntEntityRepository extends JpaRepository<EmpruntEntity, In
     EmpruntEntity findById(int id);
 
     EmpruntEntity save(EmpruntEntity emprunt);
+
+    @Query("SELECT emprunt FROM EmpruntEntity emprunt WHERE emprunt.date_fin < CURRENT_DATE")
+    List<EmpruntEntity> findAllEmpruntWhereDateRetourIsBeforDateToday();
+
+
 }

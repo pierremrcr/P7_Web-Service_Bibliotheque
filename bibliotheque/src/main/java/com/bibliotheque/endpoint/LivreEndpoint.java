@@ -116,6 +116,7 @@ public class LivreEndpoint {
             for(ExemplaireEntity exemplaireEntity: entity.getListeExemplaires()){
                 ExemplaireType exemplaireType = new ExemplaireType();
 
+
                 BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
                 livreType.getListeExemplaires().add(exemplaireType);
 
@@ -135,9 +136,9 @@ public class LivreEndpoint {
                     BeanUtils.copyProperties(empruntEntity, empruntType);
                     exemplaireType.getListeEmprunts().add(empruntType);
                 }
+
+
             }
-
-
 
             GregorianCalendar calendar = new GregorianCalendar();
             calendar.setTime(entity.getDatePublication());
@@ -145,7 +146,9 @@ public class LivreEndpoint {
             livreType.setDatePublication(datePublication);
             BeanUtils.copyProperties(entity, livreType);
             livreTypeList.add(livreType);
+
         }
+
         response.getLivreType().addAll(livreTypeList);
         return response;
 

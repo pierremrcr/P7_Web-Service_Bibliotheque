@@ -28,7 +28,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationNom">Nom</label>
-                        <input type="text" class="form-control is-valid" id="validationNom"
+                        <input type="text" class="form-control" id="validationNom"
                                th:field="*{nom}" th:placeholder="*{nom}" required/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -36,7 +36,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationPrenom">Prénom</label>
-                        <input type="text" class="form-control is-valid" id="validationPrenom"
+                        <input type="text" class="form-control" id="validationPrenom"
                                th:field="*{prenom}" th:placeholder="*{prenom}" required/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -45,7 +45,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationAdresseMail">Adresse Mail</label>
-                        <input type="email" class="form-control is-valid" id="validationAdresseMail"
+                        <input type="email" class="form-control" id="validationAdresseMail"
                                th:field="*{adresseMail}" th:placeholder="*{adresseMail}" required/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -54,7 +54,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationMotDePasse">Mot de passe</label>
-                        <input type="password" class="form-control is-valid" id="validationMotDePasse"
+                        <input type="password" class="form-control" id="validationMotDePasse"
                                th:field="*{motDePasse}"  th:placeholder="*{motDePasse}" required/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -62,7 +62,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationAdresse">Adresse</label>
-                        <input type="text" class="form-control is-valid" id="validationAdresse"
+                        <input type="text" class="form-control" id="validationAdresse"
                                th:field="*{adresse}" th:placeholder="*{adresse}" required>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -70,7 +70,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationVille">Ville</label>
-                        <input id="validationVille" type="text" class="form-control is-valid"
+                        <input id="validationVille" type="text" class="form-control"
                                th:field="*{ville}" th:placeholder="*{ville}" required/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -78,7 +78,7 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationCodePostal">Code postal</label>
-                        <input type="text" class="form-control is-valid" id="validationCodePostal"
+                        <input type="text" class="form-control" id="validationCodePostal"
                                th:field="*{codePostal}"  th:placeholder="*{codePostal}" required/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -86,12 +86,11 @@
 
                     <div class="form-group col-6 col-md-4">
                         <label for="validationTelephone">Téléphone</label>
-                        <input type="number" class="form-control is-valid" id="validationTelephone"
+                        <input type="number" class="form-control" id="validationTelephone"
                                th:field="*{telephone}" th:placeholder="*{telephone}"/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
-
 
 
                     <button class="btn btn-primary" type="submit">VALIDEZ</button>
@@ -120,18 +119,29 @@
                         </thead>
 
 
+                        <!--
                         <th:block th:each="livre:${listeLivres}">
+
 
                             <th:block th:each="exemplaire: ${livre.getListeExemplaires()}">
 
+
                                 <th:block th:each="emprunt:${exemplaire.getListeEmprunts()}">
+
+                                -->
+
+
+                        <th:block th:each="emprunt:${listeEmprunts}">
 
                                     <tbody>
 
                                     <tr>
 
-                                        <td th:text="${livre.titre}"></td>
-                                        <td th:text="${livre.auteur}"></td>
+                                        <th:block th:if="${!emprunt.isTermine()}">
+
+
+                                        <td th:text="${emprunt.getExemplaireEntity().getLivre().getTitre()}"></td>
+                                        <td th:text="${emprunt.getExemplaireEntity().getLivre().getAuteur()}"></td>
                                         <td th:text="${dateFormat.format(dateFormat.parse(emprunt.getDateDebut().toString()))}"></td>
                                         <td th:text="${dateFormat.format(dateFormat.parse(emprunt.getDateFin().toString()))}"></td>
 
@@ -146,21 +156,33 @@
                                                 <p>Le prêt pour ce livre à déjà été prolongé</p>
                                             </td>
                                         </th:block>
+
+                                        <td>
+                                            <p><a class="btn btn-outline-primary" href="#" th:href="@{/empruntTermine(empruntId=${emprunt.getId()})}">Rendre ce livre</a></p>
+                                        </td>
+
+                                        </th:block>
+
+
                                     </tr>
 
                                     </tbody>
 
-                                </th:block>
+                        </th:block>
 
+
+                        <!--
                             </th:block>
 
                         </th:block>
 
+                        -->
+
                     </table>
+
                 </div>
 
             </div>
-
 
 
             <script type="text/javascript"

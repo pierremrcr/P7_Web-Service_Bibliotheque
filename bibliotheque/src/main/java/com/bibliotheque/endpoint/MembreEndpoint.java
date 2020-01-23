@@ -1,6 +1,8 @@
 package com.bibliotheque.endpoint;
 
 import com.bibliotheque.entity.EmpruntEntity;
+import com.bibliotheque.entity.ExemplaireEntity;
+import com.bibliotheque.entity.LivreEntity;
 import com.bibliotheque.entity.MembreEntity;
 import com.bibliotheque.gs_ws.*;
 import com.bibliotheque.service.contract.MembreEntityService;
@@ -44,6 +46,8 @@ public class MembreEndpoint {
 
         for(EmpruntEntity empruntEntity : membreEntity.getListeEmprunts()){
             EmpruntType empruntType = new EmpruntType();
+            ExemplaireType exemplaireType = new ExemplaireType();
+            LivreType livreType = new LivreType();
             GregorianCalendar dateDebut = new GregorianCalendar();
             GregorianCalendar dateFin = new GregorianCalendar();
             dateDebut.setTime(empruntEntity.getDate_debut());
@@ -56,12 +60,23 @@ public class MembreEndpoint {
             BeanUtils.copyProperties(empruntEntity, empruntType);
             membreType.getListeEmprunts().add(empruntType);
 
+            ExemplaireEntity exemplaireEntity = empruntEntity.getExemplaireEntity();
+            LivreEntity livreEntity = empruntEntity.getExemplaireEntity().getLivre();
+
+
+            BeanUtils.copyProperties(exemplaireEntity, exemplaireType);
+            BeanUtils.copyProperties(livreEntity, livreType);
+
+            empruntType.setExemplaireEntity(exemplaireType);
+            exemplaireType.setLivre(livreType);
+
         }
 
         BeanUtils.copyProperties(membreEntity, membreType);
         response.setMembreType(membreType);
         return response;
     }
+
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllMembresRequest")
     @ResponsePayload
@@ -87,6 +102,7 @@ public class MembreEndpoint {
 
                 BeanUtils.copyProperties(empruntEntity, empruntType);
                 membreType.getListeEmprunts().add(empruntType);
+
             }
 
             BeanUtils.copyProperties(entity, membreType);

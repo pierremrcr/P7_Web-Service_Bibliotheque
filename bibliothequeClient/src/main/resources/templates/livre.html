@@ -41,10 +41,10 @@
 
                 <p>Pour cette ouvrage <span th:text="${#arrays.length(exemplairesDispo)}"></span> exemplaires sont/est disponible(s)</p>
 
-                <th:block th:if="${exemplairesDispo.size()!=0}">
+                <th:block th:if="${exemplairesDispo.size()!=0 && session.user != null}">
                     <td>
                         <p>Vous pouvez emprunter ce livre pour une durée de 4 semaines (durée prolongeable de 4 semaines supplémentaires).</p>
-                        <p><a class="btn btn-outline-primary" href="#" th:href="@{/addEmprunt(exemplaireId=${exemplaire.getId()})}">Emprunter ce livre</a></p>
+                        <p><a class="btn btn-outline-primary" href="#" th:href="@{/addEmprunt(exemplaireId=${exemplaire.getId()}, compteId=${session.user.getId()})}">Emprunter ce livre</a></p>
                     </td>
                 </th:block>
 

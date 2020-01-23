@@ -1,7 +1,9 @@
 package com.bibliotheque.service.impl;
 
 import com.bibliotheque.entity.EmpruntEntity;
+import com.bibliotheque.entity.ExemplaireEntity;
 import com.bibliotheque.repository.EmpruntEntityRepository;
+import com.bibliotheque.repository.ExemplaireEntityRepository;
 import com.bibliotheque.service.contract.EmpruntEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ public class EmpruntEntityServiceImpl implements EmpruntEntityService {
 
     @Autowired
     EmpruntEntityRepository repository;
+
+    @Autowired
+    ExemplaireEntityRepository exemplaireEntityRepository;
 
     @Override
     public EmpruntEntity getEmpruntById(int id) {
@@ -32,6 +37,11 @@ public class EmpruntEntityServiceImpl implements EmpruntEntityService {
 
     @Override
     public EmpruntEntity addEmprunt(EmpruntEntity emprunt) {
+
+        int exemplaireId = emprunt.getExemplaireid();
+        ExemplaireEntity exemplaireEntity = this.exemplaireEntityRepository.findById(exemplaireId);
+        exemplaireEntity.setDisponibilite(false);
+        emprunt.setExemplaireEntity(exemplaireEntity);
         try {
             return this.repository.save(emprunt);
         } catch (Exception e) {
@@ -68,4 +78,21 @@ public class EmpruntEntityServiceImpl implements EmpruntEntityService {
         this.repository.findAllEmpruntWhereDateRetourIsBeforDateToday().forEach(empruntEntity -> listeEmprunts.add(empruntEntity));
         return listeEmprunts;
     }
+
+    @Override
+    public boolean updateEmpruntTermine(EmpruntEntity emprunt) {
+        int exemplaireId = emprunt.getExemplaireid();
+        ExemplaireEntity exemplaireEntity = this.exemplaireEntityRepository.findById(exemplaireId);
+        exemplaireEntity.setDisponibilite(true);
+        emprunt.setExemplaireEntity(exemplaireEntity);
+        try {
+            this.repository.save(emprunt);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+
+

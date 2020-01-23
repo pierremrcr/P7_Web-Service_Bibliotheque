@@ -5,6 +5,7 @@ import com.bibliotheque.service.EmpruntService;
 import com.bibliotheque.service.ExemplaireService;
 import com.bibliotheque.service.LivreService;
 import com.bibliotheque.service.MembreService;
+
 import livres.wsdl.EmpruntType;
 import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
@@ -25,8 +26,10 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+
 @Component
 public class MailItemProcessor implements Tasklet, StepExecutionListener {
+
 
     @Autowired
     private EmpruntService empruntService;
@@ -57,7 +60,8 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
     @Override
     public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
 
-        List<EmpruntType> listeEmprunts = empruntService.getAllEmprunts();
+
+        List<EmpruntType> listeEmprunts = empruntService.getAllEmpruntsWhereDateFinIsBeforeDateToday();
 
         System.out.println(listeEmprunts.size());
 
@@ -69,45 +73,31 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
         Date dateToDay = dateFormat.parse(dateFormat.format(dateFormat.parse(currentTime.toLocalDate().toString())));
 
-        for (EmpruntType empruntType : listeEmprunts){
+        for (EmpruntType empruntType : listeEmprunts) {
 
             Date empruntDateFin = dateFormat.parse(dateFormat.format(dateFormat.parse(empruntType.getDateFin().toString())));
 
             System.out.println(empruntDateFin);
 
-            if (empruntDateFin.after(dateToDay)) {
+            MembreType membreType = membreService.membreById(empruntType.getMembreid());
 
-                joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
+            ExemplaireType exemplaireType = exemplaireService.exemplaireById(empruntType.getExemplaireid());
 
-            } else if (empruntDateFin.before(dateToDay) && !empruntType.isRelance()) {
+            LivreType livreType = livreService.livreById(exemplaireType.getLivreid());
 
-                MembreType membreType = membreService.membreById(empruntType.getMembreid());
+            joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
 
-                ExemplaireType exemplaireType = exemplaireService.exemplaireById(empruntType.getExemplaireid());
+            String nombreDeJoursStr = String.valueOf(joursDeRetard).replace("-", "");
 
-                LivreType livreType = livreService.livreById(exemplaireType.getLivreid());
-                
-                joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
+            String subject = "Restitution du livre : " + livreType.getTitre();
 
-                String nombreDeJoursStr = String.valueOf(joursDeRetard).replace("-", "");
+            String text = textMail(membreType, livreType, nombreDeJoursStr);
 
-                String subject = "Restitution du livre : " + livreType.getTitre();
+            sendingMail.sendMessage(subject, text, membreType.getAdresseMail());
 
-                String text = textMail(membreType, livreType, nombreDeJoursStr);
+            empruntType.setRelance(true);
 
-                sendingMail.sendMessage(subject, text, membreType.getAdresseMail());
-
-                empruntType.setRelance(true);
-
-                empruntService.updateEmprunt(empruntType);
-
-
-            } else if (dateToDay.equals(empruntDateFin)) {
-
-                joursDeRetard = (empruntDateFin.getTime() - dateToDay.getTime()) / (1000 * 60 * 60 * 24);
-
-            }
-
+            empruntService.updateRelanceEmprunt(empruntType);
 
         }
 
@@ -123,11 +113,12 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
                 + "<p>Vous avez déjà dépassé le délai auquel vous deviez restituer votre emprunt de " + nombreDeJoursStr + " jour(s)!</p>"
                 + "<p>Merci de vous rendre à la bibliothèque au plus vite pour nous restituer le livre suivant : </p>"
                 + "<p>Titre du livre :  " + livreType.getTitre() + "</p>"
+                + "<p>Auteur :  " + livreType.getAuteur() + "</p>"
                 + "<p>Merci pour votre compréhension. Cordialement,</p>"
                 + "<p>Le personnel de la bibliothèque."
                 + "</div>";
     }
 
-
-
 }
+
+

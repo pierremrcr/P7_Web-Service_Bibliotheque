@@ -26,6 +26,9 @@ public class EmpruntEntity implements Serializable {
     @Column(name = "relance")
     private boolean relance;
 
+    @Column(name = "termine")
+    private boolean termine;
+
     @Column(name = "exemplaireid")
     private int exemplaireid;
 
@@ -77,6 +80,14 @@ public class EmpruntEntity implements Serializable {
 
     public boolean isRelance() {
         return relance;
+    }
+
+    public boolean isTermine() {
+        return termine;
+    }
+
+    public void setTermine(boolean termine) {
+        this.termine = termine;
     }
 
     public void setRelance(boolean relance) {

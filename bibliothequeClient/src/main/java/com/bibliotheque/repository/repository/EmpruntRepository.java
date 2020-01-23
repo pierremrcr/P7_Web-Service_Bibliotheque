@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public class EmpruntRepository {
 
+
+
     @Autowired
     private EmpruntClient client;
 
@@ -23,6 +25,16 @@ public class EmpruntRepository {
         return response.getServiceStatus().getStatusCode();
     }
 
+    public String updateRelanceEmprunt(EmpruntType empruntType){
+        UpdateRelanceEmpruntResponse response = this.client.updateRelanceEmprunt(empruntType);
+        return response.getServiceStatus().getStatusCode();
+    }
+
+    public String updateEmpruntTermine(EmpruntType empruntType){
+        UpdateEmpruntTermineResponse response = this.client.updateEmpruntTermine(empruntType);
+        return response.getServiceStatus().getStatusCode();
+    }
+
 
     public String addEmprunt(EmpruntType empruntType) {
         AddEmpruntResponse response = this.client.addEmprunt(empruntType);
@@ -33,4 +45,11 @@ public class EmpruntRepository {
         GetAllEmpruntResponse response = this.client.getAllEmprunts();
         return response.getEmpruntType();
     }
+
+    public List<EmpruntType> getAllEmpruntsWhereDateFinIsBeforeDateToday(){
+        GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse response = this.client.getAllEmpruntsWhereDateFinIsBeforeDateToday();
+        return response.getEmpruntType();
+    }
+
+
 }

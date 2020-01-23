@@ -26,16 +26,16 @@ public class BatchLauncher {
 
     }
 
+
     // Le batch est paramétré pour s'exécuter toutes les 24h00
-    @Scheduled(cron = "0 0 */24 * * ?")
-    public void perform() throws Exception {
+  //  @Scheduled(cron = "0 0 */24 * * ?")
+  //  public void perform() throws Exception {
 
-        JobParameters params = new JobParametersBuilder()
-                .addString("", String.valueOf(System.currentTimeMillis()))
-                .toJobParameters();
-        jobLauncher.run(job, params);
-    }
-
+   //     JobParameters params = new JobParametersBuilder()
+   //             .addString("", String.valueOf(System.currentTimeMillis()))
+   //             .toJobParameters();
+   //     jobLauncher.run(job, params);
+   // }
 
 
 

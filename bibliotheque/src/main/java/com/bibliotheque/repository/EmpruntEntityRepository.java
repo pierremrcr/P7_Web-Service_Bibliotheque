@@ -16,8 +16,9 @@ public interface EmpruntEntityRepository extends JpaRepository<EmpruntEntity, In
 
     EmpruntEntity save(EmpruntEntity emprunt);
 
-    @Query("SELECT emprunt FROM EmpruntEntity emprunt WHERE emprunt.date_fin < CURRENT_DATE")
+    @Query("SELECT emprunt FROM EmpruntEntity emprunt WHERE emprunt.date_fin < CURRENT_DATE AND emprunt.relance = false AND emprunt.termine = false")
     List<EmpruntEntity> findAllEmpruntWhereDateRetourIsBeforDateToday();
+
 
 
 }

@@ -41,17 +41,11 @@ public class SendingMail {
 
             htmlPart.setText(""
                             + "<html>"
-                            + " <body>"
-                            + "  <h1>Demande de restitution d'un livre</h1>"
+                            + "<body>"
+                            + "<h1>Demande de restitution d'un livre</h1>"
                             + "<hr/>"
-                            + "<div id=\"conteneur\" style=\" display:flex; width:70%; margin:auto\">"
-                            + "     <div style=\"\">"
-                            + "         <img style=\"display: inline-block; height: 300px; width: 200px; vertical-align: top\" src=\"cid:image-id\" />"
-                            + "     </div>"
-                            + "     <div style=\"margin-left: 20px; border-style: solid; border-bottom: white; border-top: " +
-                            "white; border-right: white; border-color: #DCDCDC; border-width: 2px;\">"
+                            + "<div id=\"conteneur\" style=\" display:flex; width:100%; margin:auto\">"
                             +                ""+ text + ""
-                            + "     </div>"
                             + "</div>"
                             + "<hr/>"
                             + "<div style=\"margin:auto; text-align:center; width:70%\">"
@@ -61,7 +55,7 @@ public class SendingMail {
                             + "<small>Téléphone : 05 17 67 58 27</small></br>"
                             + "<small>Email : mediathequedelarochelle@gmail.com</small></br>"
                             + "</div>"
-                            + " </body>"
+                            + "</body>"
                             + "</html>"
                     ,"UTF-8", "html");
 

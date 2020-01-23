@@ -8,19 +8,12 @@ import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service
 public class EmpruntService {
+
 
 
     @Autowired
@@ -72,15 +65,29 @@ public class EmpruntService {
         return this.repository.getAllEmprunts();
     }
 
+    public List<EmpruntType> getAllEmpruntsWhereDateFinIsBeforeDateToday(){
+
+        return this.repository.getAllEmpruntsWhereDateFinIsBeforeDateToday();
+    }
+
     public String updateEmprunt(EmpruntType empruntType){
 
        return this.empruntRepository.updateEmprunt(empruntType);
 
+    }
 
+    public String updateRelanceEmprunt(EmpruntType empruntType){
+        return this.empruntRepository.updateRelanceEmprunt(empruntType);
+    }
+
+    public String updateEmpruntTermine(EmpruntType empruntType){
+        return this.empruntRepository.updateEmpruntTermine(empruntType);
     }
 
     public String addEmprunt(EmpruntType empruntType) {
 
         return this.empruntRepository.addEmprunt(empruntType);
     }
+
+
 }

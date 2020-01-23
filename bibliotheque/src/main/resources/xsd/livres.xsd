@@ -292,6 +292,8 @@
         </xs:complexType>
     </xs:element>
 
+
+
     <!-- ==== GET ALL MEMBRES ==== -->
 
     <xs:element name="getAllMembresRequest">
@@ -304,6 +306,8 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+
 
     <!-- ==== ADD MEMBRE ==== -->
 
@@ -372,6 +376,7 @@
             <xs:element name="date_fin" type="xs:date" />
             <xs:element name="prolongation" type="xs:boolean" />
             <xs:element name="relance" type="xs:boolean" />
+            <xs:element name="termine" type="xs:boolean" />
             <xs:element name="membreid" type="xs:int" />
             <xs:element name="membreEntity" type="tns:membreType" />
             <xs:element name="exemplaireid" type="xs:int" />
@@ -407,6 +412,8 @@
         </xs:complexType>
     </xs:element>
 
+
+
     <!-- ==== GET ALL EMPRUNTS WHERE DATE FIN IS BEFORE DATE TODAY ==== -->
     <xs:element name="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest">
         <xs:complexType/>
@@ -418,6 +425,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
 
     <!-- ==== ADD EMPRUNT ==== -->
     <xs:element name="addEmpruntRequest">
@@ -445,6 +453,38 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="updateEmpruntResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE EMPRUNT ==== -->
+    <xs:element name="updateRelanceEmpruntRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntType" type="tns:empruntType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateRelanceEmpruntResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==== UPDATE EMPRUNT ==== -->
+    <xs:element name="updateEmpruntTermineRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empruntType" type="tns:empruntType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateEmpruntTermineResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>

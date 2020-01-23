@@ -12,4 +12,5 @@ public interface MembreEntityService {
     public MembreEntity addMembre(MembreEntity membreEntity);
     public boolean updateMembre(MembreEntity membreEntity);
     public boolean deleteMembreById(int id);
+
 }

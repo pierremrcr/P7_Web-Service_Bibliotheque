@@ -4,6 +4,8 @@ import com.bibliotheque.service.EmpruntService;
 import com.bibliotheque.service.ExemplaireService;
 import com.bibliotheque.service.LivreService;
 import com.bibliotheque.service.MembreService;
+import livres.wsdl.EmpruntType;
+import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import livres.wsdl.MembreType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +25,16 @@ import java.util.List;
 @Controller
 public class MembreController {
 
+    @Autowired
     private MembreService service;
 
+    @Autowired
     private EmpruntService empruntService;
 
     @Autowired
     private LivreService livreService;
 
+    @Autowired
     private ExemplaireService exemplaireService;
 
 
@@ -42,10 +47,11 @@ public class MembreController {
     @RequestMapping(value="/detail-membre", method= RequestMethod.GET)
     public String membreDetail(Model model, HttpSession session, MembreType membreType, @RequestParam(name="compteId") int id){
 
-
         membreType = this.service.membreById(id);
 
         List<LivreType> listeLivres = this.livreService.getAllLivresEmpruntes(id);
+
+        List<EmpruntType> listeEmprunts = membreType.getListeEmprunts();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -55,17 +61,22 @@ public class MembreController {
 
         model.addAttribute("listeLivres", listeLivres);
 
+        model.addAttribute("listeEmprunts", listeEmprunts);
+
         return "detailMembre";
 
     }
+
 
     @RequestMapping(value="/addmembre", method = RequestMethod.GET)
     public String addMembre(Model model){
 
         MembreType membreType = new MembreType();
+
         model.addAttribute("membreType", membreType);
 
        return "formulaireMembre";
+
     }
 
 

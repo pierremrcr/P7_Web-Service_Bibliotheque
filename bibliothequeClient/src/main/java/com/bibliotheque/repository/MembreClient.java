@@ -38,4 +38,11 @@ public class MembreClient extends WebServiceGatewaySupport {
         request.setMembreType(membreType);
         return (UpdateMembreResponse) getWebServiceTemplate().marshalSendAndReceive(request);
     }
+
+    public DeleteMembreResponse deleteMembreById(int id) {
+
+        DeleteMembreRequest request = new DeleteMembreRequest();
+        request.setId(id);
+        return (DeleteMembreResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+    }
 }

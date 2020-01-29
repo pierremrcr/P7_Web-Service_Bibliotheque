@@ -42,21 +42,6 @@ public class EmpruntController {
 
     }
 
-    /*
-
-    @RequestMapping(value="/addEmprunt", method = RequestMethod.GET)
-    public String doBorrow(Model model){
-
-        ExemplaireType exemplaireType = new ExemplaireType();
-
-        model.addAttribute("exemplaire", exemplaireType);
-
-        return "reservationForm";
-
-    }
-
-    */
-
 
 
     @RequestMapping(value="/addEmprunt", method = RequestMethod.GET)
@@ -66,27 +51,16 @@ public class EmpruntController {
                            HttpSession session){
 
         MembreType membreType = membreService.membreById(compteId);
-
         EmpruntType empruntType = new EmpruntType();
-
         ExemplaireType exemplaireType = exemplaireService.exemplaireById(exemplaireId);
-
         exemplaireType.setDisponibilite(false);
-
         empruntType.setExemplaireEntity(exemplaireType);
-
         empruntType.setExemplaireid(exemplaireId);
-
         empruntType.setMembreid(compteId);
-
         empruntType.setProlongation(false);
-
         empruntType.setTermine(false);
-
         empruntType.setRelance(false);
-
         empruntType.setMembreEntity(membreType);
-
         empruntService.addEmprunt(empruntType);
 
         return "confirmationReservation";

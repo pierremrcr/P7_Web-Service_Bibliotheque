@@ -28,14 +28,14 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value="/loginApp", method = RequestMethod.GET)
+    @RequestMapping(value="/login", method = RequestMethod.GET)
     public String init(Model model){
         MembreType membreType = new MembreType();
         model.addAttribute("login", membreType);
         return "login";
     }
 
-    @RequestMapping(value="/loginApp", method = RequestMethod.POST)
+    @RequestMapping(value="/login", method = RequestMethod.POST)
     public String submit(Model model,
                          @Valid @ModelAttribute("login") MembreType membreType,
                          @RequestParam(name="mail") String mail,

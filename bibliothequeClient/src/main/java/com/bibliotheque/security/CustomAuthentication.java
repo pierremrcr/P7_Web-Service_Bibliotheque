@@ -3,18 +3,14 @@ package com.bibliotheque.security;
 import com.bibliotheque.repository.repository.LoginRepository;
 import livres.wsdl.MembreType;
 import livres.wsdl.ServiceStatus;
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
+
+/*
 
 @Service
 public class CustomAuthentication implements AuthenticationProvider {
@@ -61,3 +57,5 @@ public class CustomAuthentication implements AuthenticationProvider {
         return false;
     }
 }
+
+*/

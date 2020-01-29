@@ -47,4 +47,9 @@ public class MembreService {
 
         return this.repository.updateMembre(membreType);
     }
+
+    public String deleteMembreById(int id) {
+
+        return this.repository.deleteMembreById(id);
+    }
 }

@@ -17,5 +17,7 @@ public interface MembreEntityRepository extends JpaRepository<MembreEntity, Inte
 
     MembreEntity save(MembreEntity membreEntity);
 
+    MembreEntity deleteById(int id);
+
 
 }

@@ -40,5 +40,12 @@ public class MembreRepository {
 
         return response.getServiceStatus().getStatusCode();
     }
+
+    public String deleteMembreById(int id) {
+
+        DeleteMembreResponse response = this.client.deleteMembreById(id);
+
+        return response.getServiceStatus().getStatusCode();
+    }
 }
 

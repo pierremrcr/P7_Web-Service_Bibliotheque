@@ -1,5 +1,6 @@
 package com.bibliotheque.service.impl;
 
+import com.bibliotheque.entity.EmpruntEntity;
 import com.bibliotheque.entity.MembreEntity;
 import com.bibliotheque.repository.MembreEntityRepository;
 import com.bibliotheque.service.contract.MembreEntityService;
@@ -65,6 +66,10 @@ public class MembreEntityServiceImpl implements MembreEntityService {
     @Override
     public boolean deleteMembreById(int id) {
         try {
+            MembreEntity membre = this.repository.findById(id);
+            for(EmpruntEntity entity : membre.getListeEmprunts()){
+                entity.getExemplaireEntity().setDisponibilite(true);
+            }
             this.repository.deleteById(id);
             return true;
         } catch (Exception e) {
@@ -72,6 +77,5 @@ public class MembreEntityServiceImpl implements MembreEntityService {
             return false;
         }
     }
-
 
 }

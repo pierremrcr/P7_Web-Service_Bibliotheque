@@ -48,21 +48,13 @@ public class MembreController {
     public String membreDetail(Model model, HttpSession session, MembreType membreType, @RequestParam(name="compteId") int id){
 
         membreType = this.service.membreById(id);
-
         List<LivreType> listeLivres = this.livreService.getAllLivresEmpruntes(id);
-
         List<EmpruntType> listeEmprunts = membreType.getListeEmprunts();
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         model.addAttribute("membreType", membreType);
-
         model.addAttribute("dateFormat", dateFormat);
-
         model.addAttribute("listeLivres", listeLivres);
-
         model.addAttribute("listeEmprunts", listeEmprunts);
-
         return "detailMembre";
 
     }
@@ -72,9 +64,7 @@ public class MembreController {
     public String addMembre(Model model){
 
         MembreType membreType = new MembreType();
-
         model.addAttribute("membreType", membreType);
-
        return "formulaireMembre";
 
     }
@@ -103,6 +93,14 @@ public class MembreController {
         }
     }
 
+    @RequestMapping(value="/deleteAccount", method = RequestMethod.GET)
+    public String deleteAccount(@RequestParam(name="compteId") int id, HttpSession session){
+            this.service.deleteMembreById(id);
+        session.removeAttribute("user");
+            return "accueil";
+        }
 }
+
+
 
 

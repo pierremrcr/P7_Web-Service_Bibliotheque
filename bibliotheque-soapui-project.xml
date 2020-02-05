@@ -1,0 +1,1617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="19ccef38-1fa1-411c-97f3-4322f894f61f" activeEnvironment="Default" name="bibliotheque" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="46e71d06-2348-422b-87f1-1c45bff85dbf" wsaVersion="NONE" name="LivresPortSoap11" type="wsdl" bindingName="{http://www.bibliotheque.com/livres-ws}LivresPortSoap11" soapVersion="1_1" anonymous="optional" definition="file:/Users/Pierre/Desktop/livres.wsdl.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/Pierre/Desktop/livres.wsdl.xml"><con:part><con:url>file:/Users/Pierre/Desktop/livres.wsdl.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.bibliotheque.com/livres-ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.bibliotheque.com/livres-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.bibliotheque.com/livres-ws">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.bibliotheque.com/livres-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--==== STATUT ====-->
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--=========================-->
+      <!--==== SERVICES LIVRE =====-->
+      <!--=========================-->
+      <!--==== LIVRE TYPE ====-->
+      <xs:complexType name="livreType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="titre" type="xs:string"/>
+          <xs:element name="auteur" type="xs:string"/>
+          <xs:element name="genre" type="xs:string"/>
+          <xs:element name="date_publication" type="xs:date"/>
+          <xs:element name="resume" type="xs:string"/>
+          <xs:element name="url_photo" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listeExemplaires" type="tns:exemplaireType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--==== GET LIVRE BY ID ====-->
+      <xs:element name="getLivreByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLivreByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL LIVRES ====-->
+      <xs:element name="getAllLivresRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllLivresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL LIVRES EMPRUNTES ====-->
+      <xs:element name="getAllLivresEmpruntesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllLivresEmpruntesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== ADD LIVRE ====-->
+      <xs:element name="addLivreRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addLivreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== UPDATE LIVRE ====-->
+      <xs:element name="updateLivreRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateLivreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== DELETE LIVRE ====-->
+      <xs:element name="deleteLivreRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteLivreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--=========================-->
+      <!--== SERVICES EXEMPLAIRE ==-->
+      <!--=========================-->
+      <!--==== TYPE EXEMPLAIRE ====-->
+      <xs:complexType name="exemplaireType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="disponibilite" type="xs:boolean"/>
+          <xs:element name="livreid" type="xs:int"/>
+          <xs:element name="livre" type="tns:livreType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listeEmprunts" type="tns:empruntType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--==== GET EXEMPLAIRE BY ID ====-->
+      <xs:element name="getExemplaireByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getExemplaireByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="exemplaireType" type="tns:exemplaireType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL EXEMPLAIRES ====-->
+      <xs:element name="getAllExemplairesRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllExemplairesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="exemplaireType" type="tns:exemplaireType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL EXEMPLAIRES AND EMPRUNTS ====-->
+      <xs:element name="getAllExemplairesAndEmpruntsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllExemplairesAndEmpruntsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="exemplaireType" type="tns:exemplaireType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== ADD EXEMPLAIRE ====-->
+      <xs:element name="addExemplaireRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="exemplaireType" type="tns:exemplaireType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addExemplaireResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="exemplaireType" type="tns:exemplaireType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== UPDATE EXEMPLAIRE ====-->
+      <xs:element name="updateExemplaireRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="exemplaireType" type="tns:exemplaireType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateExemplaireResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== DELETE EXEMPLAIRE ====-->
+      <xs:element name="deleteExemplaireRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteExemplaireResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--=========================-->
+      <!--==== SERVICES MEMBRE=====-->
+      <!--=========================-->
+      <!--==== TYPE MEMBRE ====-->
+      <xs:complexType name="membreType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nom" type="xs:string"/>
+          <xs:element name="prenom" type="xs:string"/>
+          <xs:element name="adresse_mail" type="xs:string"/>
+          <xs:element name="mot_de_passe" type="xs:string"/>
+          <xs:element name="telephone" type="xs:string"/>
+          <xs:element name="adresse" type="xs:string"/>
+          <xs:element name="code_postal" type="xs:string"/>
+          <xs:element name="ville" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listeEmprunts" type="tns:empruntType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--==== GET MEMBRE BY ID ====-->
+      <xs:element name="getMembreByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getMembreByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="membreType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL MEMBRES ====-->
+      <xs:element name="getAllMembresRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllMembresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="membreType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== ADD MEMBRE ====-->
+      <xs:element name="addMembreRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="membreType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addMembreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="membreType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== UPDATE MEMBRE ====-->
+      <xs:element name="updateMembreRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="membreType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateMembreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== DELETE MEMBRE ====-->
+      <xs:element name="deleteMembreRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteMembreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--=========================-->
+      <!--==== SERVICES EMPRUNT =====-->
+      <!--=========================-->
+      <!--==== EMPRUNT TYPE ====-->
+      <xs:complexType name="empruntType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="date_debut" type="xs:date"/>
+          <xs:element name="date_fin" type="xs:date"/>
+          <xs:element name="prolongation" type="xs:boolean"/>
+          <xs:element name="relance" type="xs:boolean"/>
+          <xs:element name="termine" type="xs:boolean"/>
+          <xs:element name="membreid" type="xs:int"/>
+          <xs:element name="membreEntity" type="tns:membreType"/>
+          <xs:element name="exemplaireid" type="xs:int"/>
+          <xs:element name="exemplaireEntity" type="tns:exemplaireType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--==== GET EMPRUNT BY ID ====-->
+      <xs:element name="getEmpruntByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEmpruntByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL EMPRUNT ====-->
+      <xs:element name="getAllEmpruntRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllEmpruntResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET ALL EMPRUNTS WHERE DATE FIN IS BEFORE DATE TODAY ====-->
+      <xs:element name="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== ADD EMPRUNT ====-->
+      <xs:element name="addEmpruntRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addEmpruntResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== UPDATE EMPRUNT ====-->
+      <xs:element name="updateEmpruntRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateEmpruntResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== UPDATE EMPRUNT ====-->
+      <xs:element name="updateRelanceEmpruntRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateRelanceEmpruntResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== UPDATE EMPRUNT ====-->
+      <xs:element name="updateEmpruntTermineRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="empruntType" type="tns:empruntType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateEmpruntTermineResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== DELETE EMPRUNT ====-->
+      <xs:element name="deleteEmpruntRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="empruntId" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteEmpruntResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--=========================-->
+      <!--==== SERVICES LOGIN =====-->
+      <!--=========================-->
+      <!--==== GET COMPTE BY MAIL AND PASSWORD FOR LOGIN ====-->
+      <xs:element name="loginRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="adresseMail" type="xs:string"/>
+            <xs:element name="motDePasse" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="compteType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== GET COMPTE AFTER LOGIN SUCCESS ====-->
+      <xs:element name="getCompteAfterLoginSuccessRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="adresseMail" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCompteAfterLoginSuccessResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="compteType" type="tns:membreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--==== SEARCH ====-->
+      <xs:element name="getSearchByKeywordRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="keyword" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getSearchByKeywordResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="livreType" type="tns:livreType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updateEmpruntTermineRequest">
+    <wsdl:part element="tns:updateEmpruntTermineRequest" name="updateEmpruntTermineRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllMembresRequest">
+    <wsdl:part element="tns:getAllMembresRequest" name="getAllMembresRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="tns:loginResponse" name="loginResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteLivreRequest">
+    <wsdl:part element="tns:deleteLivreRequest" name="deleteLivreRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExemplaireRequest">
+    <wsdl:part element="tns:updateExemplaireRequest" name="updateExemplaireRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteLivreResponse">
+    <wsdl:part element="tns:deleteLivreResponse" name="deleteLivreResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllLivresRequest">
+    <wsdl:part element="tns:getAllLivresRequest" name="getAllLivresRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSearchByKeywordRequest">
+    <wsdl:part element="tns:getSearchByKeywordRequest" name="getSearchByKeywordRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addExemplaireRequest">
+    <wsdl:part element="tns:addExemplaireRequest" name="addExemplaireRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCompteAfterLoginSuccessResponse">
+    <wsdl:part element="tns:getCompteAfterLoginSuccessResponse" name="getCompteAfterLoginSuccessResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllMembresResponse">
+    <wsdl:part element="tns:getAllMembresResponse" name="getAllMembresResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEmpruntRequest">
+    <wsdl:part element="tns:addEmpruntRequest" name="addEmpruntRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMembreResponse">
+    <wsdl:part element="tns:deleteMembreResponse" name="deleteMembreResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateRelanceEmpruntRequest">
+    <wsdl:part element="tns:updateRelanceEmpruntRequest" name="updateRelanceEmpruntRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllExemplairesAndEmpruntsRequest">
+    <wsdl:part element="tns:getAllExemplairesAndEmpruntsRequest" name="getAllExemplairesAndEmpruntsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateRelanceEmpruntResponse">
+    <wsdl:part element="tns:updateRelanceEmpruntResponse" name="updateRelanceEmpruntResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteExemplaireResponse">
+    <wsdl:part element="tns:deleteExemplaireResponse" name="deleteExemplaireResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmpruntByIdRequest">
+    <wsdl:part element="tns:getEmpruntByIdRequest" name="getEmpruntByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteEmpruntRequest">
+    <wsdl:part element="tns:deleteEmpruntRequest" name="deleteEmpruntRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllExemplairesRequest">
+    <wsdl:part element="tns:getAllExemplairesRequest" name="getAllExemplairesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSearchByKeywordResponse">
+    <wsdl:part element="tns:getSearchByKeywordResponse" name="getSearchByKeywordResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllExemplairesResponse">
+    <wsdl:part element="tns:getAllExemplairesResponse" name="getAllExemplairesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLivreByIdRequest">
+    <wsdl:part element="tns:getLivreByIdRequest" name="getLivreByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addLivreRequest">
+    <wsdl:part element="tns:addLivreRequest" name="addLivreRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateLivreResponse">
+    <wsdl:part element="tns:updateLivreResponse" name="updateLivreResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMembreRequest">
+    <wsdl:part element="tns:updateMembreRequest" name="updateMembreRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMembreResponse">
+    <wsdl:part element="tns:addMembreResponse" name="addMembreResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMembreByIdRequest">
+    <wsdl:part element="tns:getMembreByIdRequest" name="getMembreByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part element="tns:loginRequest" name="loginRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEmpruntResponse">
+    <wsdl:part element="tns:getAllEmpruntResponse" name="getAllEmpruntResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getExemplaireByIdResponse">
+    <wsdl:part element="tns:getExemplaireByIdResponse" name="getExemplaireByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExemplaireResponse">
+    <wsdl:part element="tns:updateExemplaireResponse" name="updateExemplaireResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllExemplairesAndEmpruntsResponse">
+    <wsdl:part element="tns:getAllExemplairesAndEmpruntsResponse" name="getAllExemplairesAndEmpruntsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteEmpruntResponse">
+    <wsdl:part element="tns:deleteEmpruntResponse" name="deleteEmpruntResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllLivresEmpruntesResponse">
+    <wsdl:part element="tns:getAllLivresEmpruntesResponse" name="getAllLivresEmpruntesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteMembreRequest">
+    <wsdl:part element="tns:deleteMembreRequest" name="deleteMembreRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse">
+    <wsdl:part element="tns:getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse" name="getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmpruntRequest">
+    <wsdl:part element="tns:updateEmpruntRequest" name="updateEmpruntRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMembreResponse">
+    <wsdl:part element="tns:updateMembreResponse" name="updateMembreResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest">
+    <wsdl:part element="tns:getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest" name="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmpruntByIdResponse">
+    <wsdl:part element="tns:getEmpruntByIdResponse" name="getEmpruntByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteExemplaireRequest">
+    <wsdl:part element="tns:deleteExemplaireRequest" name="deleteExemplaireRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCompteAfterLoginSuccessRequest">
+    <wsdl:part element="tns:getCompteAfterLoginSuccessRequest" name="getCompteAfterLoginSuccessRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addExemplaireResponse">
+    <wsdl:part element="tns:addExemplaireResponse" name="addExemplaireResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLivreByIdResponse">
+    <wsdl:part element="tns:getLivreByIdResponse" name="getLivreByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateLivreRequest">
+    <wsdl:part element="tns:updateLivreRequest" name="updateLivreRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMembreByIdResponse">
+    <wsdl:part element="tns:getMembreByIdResponse" name="getMembreByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addLivreResponse">
+    <wsdl:part element="tns:addLivreResponse" name="addLivreResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getExemplaireByIdRequest">
+    <wsdl:part element="tns:getExemplaireByIdRequest" name="getExemplaireByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEmpruntRequest">
+    <wsdl:part element="tns:getAllEmpruntRequest" name="getAllEmpruntRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMembreRequest">
+    <wsdl:part element="tns:addMembreRequest" name="addMembreRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmpruntResponse">
+    <wsdl:part element="tns:updateEmpruntResponse" name="updateEmpruntResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllLivresEmpruntesRequest">
+    <wsdl:part element="tns:getAllLivresEmpruntesRequest" name="getAllLivresEmpruntesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEmpruntResponse">
+    <wsdl:part element="tns:addEmpruntResponse" name="addEmpruntResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmpruntTermineResponse">
+    <wsdl:part element="tns:updateEmpruntTermineResponse" name="updateEmpruntTermineResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllLivresResponse">
+    <wsdl:part element="tns:getAllLivresResponse" name="getAllLivresResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LivresPort">
+    <wsdl:operation name="updateEmpruntTermine">
+      <wsdl:input message="tns:updateEmpruntTermineRequest" name="updateEmpruntTermineRequest"></wsdl:input>
+      <wsdl:output message="tns:updateEmpruntTermineResponse" name="updateEmpruntTermineResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMembres">
+      <wsdl:input message="tns:getAllMembresRequest" name="getAllMembresRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllMembresResponse" name="getAllMembresResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:loginRequest" name="loginRequest"></wsdl:input>
+      <wsdl:output message="tns:loginResponse" name="loginResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteLivre">
+      <wsdl:input message="tns:deleteLivreRequest" name="deleteLivreRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteLivreResponse" name="deleteLivreResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExemplaire">
+      <wsdl:input message="tns:updateExemplaireRequest" name="updateExemplaireRequest"></wsdl:input>
+      <wsdl:output message="tns:updateExemplaireResponse" name="updateExemplaireResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllLivres">
+      <wsdl:input message="tns:getAllLivresRequest" name="getAllLivresRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllLivresResponse" name="getAllLivresResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSearchByKeyword">
+      <wsdl:input message="tns:getSearchByKeywordRequest" name="getSearchByKeywordRequest"></wsdl:input>
+      <wsdl:output message="tns:getSearchByKeywordResponse" name="getSearchByKeywordResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addExemplaire">
+      <wsdl:input message="tns:addExemplaireRequest" name="addExemplaireRequest"></wsdl:input>
+      <wsdl:output message="tns:addExemplaireResponse" name="addExemplaireResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompteAfterLoginSuccess">
+      <wsdl:input message="tns:getCompteAfterLoginSuccessRequest" name="getCompteAfterLoginSuccessRequest"></wsdl:input>
+      <wsdl:output message="tns:getCompteAfterLoginSuccessResponse" name="getCompteAfterLoginSuccessResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEmprunt">
+      <wsdl:input message="tns:addEmpruntRequest" name="addEmpruntRequest"></wsdl:input>
+      <wsdl:output message="tns:addEmpruntResponse" name="addEmpruntResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMembre">
+      <wsdl:input message="tns:deleteMembreRequest" name="deleteMembreRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteMembreResponse" name="deleteMembreResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRelanceEmprunt">
+      <wsdl:input message="tns:updateRelanceEmpruntRequest" name="updateRelanceEmpruntRequest"></wsdl:input>
+      <wsdl:output message="tns:updateRelanceEmpruntResponse" name="updateRelanceEmpruntResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllExemplairesAndEmprunts">
+      <wsdl:input message="tns:getAllExemplairesAndEmpruntsRequest" name="getAllExemplairesAndEmpruntsRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllExemplairesAndEmpruntsResponse" name="getAllExemplairesAndEmpruntsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteExemplaire">
+      <wsdl:input message="tns:deleteExemplaireRequest" name="deleteExemplaireRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteExemplaireResponse" name="deleteExemplaireResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmpruntById">
+      <wsdl:input message="tns:getEmpruntByIdRequest" name="getEmpruntByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getEmpruntByIdResponse" name="getEmpruntByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmprunt">
+      <wsdl:input message="tns:deleteEmpruntRequest" name="deleteEmpruntRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteEmpruntResponse" name="deleteEmpruntResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllExemplaires">
+      <wsdl:input message="tns:getAllExemplairesRequest" name="getAllExemplairesRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllExemplairesResponse" name="getAllExemplairesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLivreById">
+      <wsdl:input message="tns:getLivreByIdRequest" name="getLivreByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getLivreByIdResponse" name="getLivreByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addLivre">
+      <wsdl:input message="tns:addLivreRequest" name="addLivreRequest"></wsdl:input>
+      <wsdl:output message="tns:addLivreResponse" name="addLivreResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLivre">
+      <wsdl:input message="tns:updateLivreRequest" name="updateLivreRequest"></wsdl:input>
+      <wsdl:output message="tns:updateLivreResponse" name="updateLivreResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMembre">
+      <wsdl:input message="tns:updateMembreRequest" name="updateMembreRequest"></wsdl:input>
+      <wsdl:output message="tns:updateMembreResponse" name="updateMembreResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMembre">
+      <wsdl:input message="tns:addMembreRequest" name="addMembreRequest"></wsdl:input>
+      <wsdl:output message="tns:addMembreResponse" name="addMembreResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMembreById">
+      <wsdl:input message="tns:getMembreByIdRequest" name="getMembreByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getMembreByIdResponse" name="getMembreByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmprunt">
+      <wsdl:input message="tns:getAllEmpruntRequest" name="getAllEmpruntRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllEmpruntResponse" name="getAllEmpruntResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getExemplaireById">
+      <wsdl:input message="tns:getExemplaireByIdRequest" name="getExemplaireByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getExemplaireByIdResponse" name="getExemplaireByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllLivresEmpruntes">
+      <wsdl:input message="tns:getAllLivresEmpruntesRequest" name="getAllLivresEmpruntesRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllLivresEmpruntesResponse" name="getAllLivresEmpruntesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmpruntsWhereDateFinIsBeforeDateToday">
+      <wsdl:input message="tns:getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest" name="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse" name="getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmprunt">
+      <wsdl:input message="tns:updateEmpruntRequest" name="updateEmpruntRequest"></wsdl:input>
+      <wsdl:output message="tns:updateEmpruntResponse" name="updateEmpruntResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LivresPortSoap11" type="tns:LivresPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updateEmpruntTermine">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateEmpruntTermineRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateEmpruntTermineResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMembres">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllMembresRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllMembresResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="loginRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteLivre">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteLivreRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteLivreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExemplaire">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateExemplaireRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateExemplaireResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllLivres">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllLivresRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllLivresResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSearchByKeyword">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getSearchByKeywordRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSearchByKeywordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addExemplaire">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addExemplaireRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addExemplaireResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompteAfterLoginSuccess">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCompteAfterLoginSuccessRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCompteAfterLoginSuccessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEmprunt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addEmpruntRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addEmpruntResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMembre">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteMembreRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteMembreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRelanceEmprunt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateRelanceEmpruntRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateRelanceEmpruntResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllExemplairesAndEmprunts">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllExemplairesAndEmpruntsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllExemplairesAndEmpruntsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteExemplaire">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteExemplaireRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteExemplaireResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmpruntById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEmpruntByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmpruntByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmprunt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteEmpruntRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteEmpruntResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllExemplaires">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllExemplairesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllExemplairesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLivreById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getLivreByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLivreByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addLivre">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addLivreRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addLivreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLivre">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateLivreRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateLivreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMembre">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateMembreRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateMembreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMembre">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addMembreRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addMembreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMembreById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMembreByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMembreByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmprunt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllEmpruntRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllEmpruntResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getExemplaireById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getExemplaireByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getExemplaireByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllLivresEmpruntes">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllLivresEmpruntesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllLivresEmpruntesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmpruntsWhereDateFinIsBeforeDateToday">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmprunt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateEmpruntRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateEmpruntResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LivresPortService">
+    <wsdl:port binding="tns:LivresPortSoap11" name="LivresPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="f7999fb7-0a19-4ea0-a550-d4a8988e3004" isOneWay="false" action="" name="addEmprunt" bindingOperationName="addEmprunt" type="Request-Response" outputName="addEmpruntResponse" inputName="addEmpruntRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f9e509e2-1499-4144-ae96-482dce3ebe8f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:addEmpruntRequest>
+         <liv:empruntType>
+            <liv:id>?</liv:id>
+            <liv:date_debut>?</liv:date_debut>
+            <liv:date_fin>?</liv:date_fin>
+            <liv:prolongation>?</liv:prolongation>
+            <liv:relance>?</liv:relance>
+            <liv:termine>?</liv:termine>
+            <liv:membreid>?</liv:membreid>
+            <liv:membreEntity>
+               <liv:id>?</liv:id>
+               <liv:nom>?</liv:nom>
+               <liv:prenom>?</liv:prenom>
+               <liv:adresse_mail>?</liv:adresse_mail>
+               <liv:mot_de_passe>?</liv:mot_de_passe>
+               <liv:telephone>?</liv:telephone>
+               <liv:adresse>?</liv:adresse>
+               <liv:code_postal>?</liv:code_postal>
+               <liv:ville>?</liv:ville>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:membreEntity>
+            <liv:exemplaireid>?</liv:exemplaireid>
+            <liv:exemplaireEntity>
+               <liv:id>?</liv:id>
+               <liv:disponibilite>?</liv:disponibilite>
+               <liv:livreid>?</liv:livreid>
+               <liv:livre>
+                  <liv:id>?</liv:id>
+                  <liv:titre>?</liv:titre>
+                  <liv:auteur>?</liv:auteur>
+                  <liv:genre>?</liv:genre>
+                  <liv:date_publication>?</liv:date_publication>
+                  <liv:resume>?</liv:resume>
+                  <liv:url_photo>?</liv:url_photo>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeExemplaires/>
+               </liv:livre>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:exemplaireEntity>
+         </liv:empruntType>
+      </liv:addEmpruntRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/addEmpruntRequest"/></con:call></con:operation><con:operation id="31ace52a-1fe1-4ffb-9bfa-283f14709bab" isOneWay="false" action="" name="addExemplaire" bindingOperationName="addExemplaire" type="Request-Response" outputName="addExemplaireResponse" inputName="addExemplaireRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="978f8f28-2ce4-478f-b899-9841cd334316" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:addExemplaireRequest>
+         <liv:exemplaireType>
+            <liv:id>?</liv:id>
+            <liv:disponibilite>?</liv:disponibilite>
+            <liv:livreid>?</liv:livreid>
+            <liv:livre>
+               <liv:id>?</liv:id>
+               <liv:titre>?</liv:titre>
+               <liv:auteur>?</liv:auteur>
+               <liv:genre>?</liv:genre>
+               <liv:date_publication>?</liv:date_publication>
+               <liv:resume>?</liv:resume>
+               <liv:url_photo>?</liv:url_photo>
+               <!--Zero or more repetitions:-->
+               <liv:listeExemplaires/>
+            </liv:livre>
+            <!--Zero or more repetitions:-->
+            <liv:listeEmprunts>
+               <liv:id>?</liv:id>
+               <liv:date_debut>?</liv:date_debut>
+               <liv:date_fin>?</liv:date_fin>
+               <liv:prolongation>?</liv:prolongation>
+               <liv:relance>?</liv:relance>
+               <liv:termine>?</liv:termine>
+               <liv:membreid>?</liv:membreid>
+               <liv:membreEntity>
+                  <liv:id>?</liv:id>
+                  <liv:nom>?</liv:nom>
+                  <liv:prenom>?</liv:prenom>
+                  <liv:adresse_mail>?</liv:adresse_mail>
+                  <liv:mot_de_passe>?</liv:mot_de_passe>
+                  <liv:telephone>?</liv:telephone>
+                  <liv:adresse>?</liv:adresse>
+                  <liv:code_postal>?</liv:code_postal>
+                  <liv:ville>?</liv:ville>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeEmprunts/>
+               </liv:membreEntity>
+               <liv:exemplaireid>?</liv:exemplaireid>
+               <liv:exemplaireEntity/>
+            </liv:listeEmprunts>
+         </liv:exemplaireType>
+      </liv:addExemplaireRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/addExemplaireRequest"/></con:call></con:operation><con:operation id="d2c19680-78bc-446e-b6ee-61aa13632341" isOneWay="false" action="" name="addLivre" bindingOperationName="addLivre" type="Request-Response" outputName="addLivreResponse" inputName="addLivreRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9b202621-7cf6-430c-8f29-6182828f8d89" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:addLivreRequest>
+         <liv:livreType>
+            <liv:id>?</liv:id>
+            <liv:titre>?</liv:titre>
+            <liv:auteur>?</liv:auteur>
+            <liv:genre>?</liv:genre>
+            <liv:date_publication>?</liv:date_publication>
+            <liv:resume>?</liv:resume>
+            <liv:url_photo>?</liv:url_photo>
+            <!--Zero or more repetitions:-->
+            <liv:listeExemplaires>
+               <liv:id>?</liv:id>
+               <liv:disponibilite>?</liv:disponibilite>
+               <liv:livreid>?</liv:livreid>
+               <liv:livre/>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts>
+                  <liv:id>?</liv:id>
+                  <liv:date_debut>?</liv:date_debut>
+                  <liv:date_fin>?</liv:date_fin>
+                  <liv:prolongation>?</liv:prolongation>
+                  <liv:relance>?</liv:relance>
+                  <liv:termine>?</liv:termine>
+                  <liv:membreid>?</liv:membreid>
+                  <liv:membreEntity>
+                     <liv:id>?</liv:id>
+                     <liv:nom>?</liv:nom>
+                     <liv:prenom>?</liv:prenom>
+                     <liv:adresse_mail>?</liv:adresse_mail>
+                     <liv:mot_de_passe>?</liv:mot_de_passe>
+                     <liv:telephone>?</liv:telephone>
+                     <liv:adresse>?</liv:adresse>
+                     <liv:code_postal>?</liv:code_postal>
+                     <liv:ville>?</liv:ville>
+                     <!--Zero or more repetitions:-->
+                     <liv:listeEmprunts/>
+                  </liv:membreEntity>
+                  <liv:exemplaireid>?</liv:exemplaireid>
+                  <liv:exemplaireEntity/>
+               </liv:listeEmprunts>
+            </liv:listeExemplaires>
+         </liv:livreType>
+      </liv:addLivreRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/addLivreRequest"/></con:call></con:operation><con:operation id="785b13cc-9386-454c-9f6c-4f9038e6e0db" isOneWay="false" action="" name="addMembre" bindingOperationName="addMembre" type="Request-Response" outputName="addMembreResponse" inputName="addMembreRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cef5d362-87f4-4262-8f27-46dadc814a3b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:addMembreRequest>
+         <liv:membreType>
+            <liv:id>?</liv:id>
+            <liv:nom>?</liv:nom>
+            <liv:prenom>?</liv:prenom>
+            <liv:adresse_mail>?</liv:adresse_mail>
+            <liv:mot_de_passe>?</liv:mot_de_passe>
+            <liv:telephone>?</liv:telephone>
+            <liv:adresse>?</liv:adresse>
+            <liv:code_postal>?</liv:code_postal>
+            <liv:ville>?</liv:ville>
+            <!--Zero or more repetitions:-->
+            <liv:listeEmprunts>
+               <liv:id>?</liv:id>
+               <liv:date_debut>?</liv:date_debut>
+               <liv:date_fin>?</liv:date_fin>
+               <liv:prolongation>?</liv:prolongation>
+               <liv:relance>?</liv:relance>
+               <liv:termine>?</liv:termine>
+               <liv:membreid>?</liv:membreid>
+               <liv:membreEntity/>
+               <liv:exemplaireid>?</liv:exemplaireid>
+               <liv:exemplaireEntity>
+                  <liv:id>?</liv:id>
+                  <liv:disponibilite>?</liv:disponibilite>
+                  <liv:livreid>?</liv:livreid>
+                  <liv:livre>
+                     <liv:id>?</liv:id>
+                     <liv:titre>?</liv:titre>
+                     <liv:auteur>?</liv:auteur>
+                     <liv:genre>?</liv:genre>
+                     <liv:date_publication>?</liv:date_publication>
+                     <liv:resume>?</liv:resume>
+                     <liv:url_photo>?</liv:url_photo>
+                     <!--Zero or more repetitions:-->
+                     <liv:listeExemplaires/>
+                  </liv:livre>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeEmprunts/>
+               </liv:exemplaireEntity>
+            </liv:listeEmprunts>
+         </liv:membreType>
+      </liv:addMembreRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/addMembreRequest"/></con:call></con:operation><con:operation id="b0017fb6-f40a-4ef0-9a77-4736e3b1835e" isOneWay="false" action="" name="deleteEmprunt" bindingOperationName="deleteEmprunt" type="Request-Response" outputName="deleteEmpruntResponse" inputName="deleteEmpruntRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc331f1b-3a15-41e2-973b-6d86eca75c9c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:deleteEmpruntRequest>
+         <liv:empruntId>?</liv:empruntId>
+      </liv:deleteEmpruntRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/deleteEmpruntRequest"/></con:call></con:operation><con:operation id="6e352473-1140-4eb1-9476-be593ac15c1d" isOneWay="false" action="" name="deleteExemplaire" bindingOperationName="deleteExemplaire" type="Request-Response" outputName="deleteExemplaireResponse" inputName="deleteExemplaireRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ef2dd692-7aa8-4020-a33c-05b684df64ac" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:deleteExemplaireRequest>
+         <liv:id>?</liv:id>
+      </liv:deleteExemplaireRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/deleteExemplaireRequest"/></con:call></con:operation><con:operation id="ce92dd58-d5a5-446a-9b07-952a693096aa" isOneWay="false" action="" name="deleteLivre" bindingOperationName="deleteLivre" type="Request-Response" outputName="deleteLivreResponse" inputName="deleteLivreRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="11edf20c-7e1c-4983-9f54-29b551dbca40" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:deleteLivreRequest>
+         <liv:id>?</liv:id>
+      </liv:deleteLivreRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/deleteLivreRequest"/></con:call></con:operation><con:operation id="7a6c20c0-f417-4ba5-9d1f-c46e7e835ea9" isOneWay="false" action="" name="deleteMembre" bindingOperationName="deleteMembre" type="Request-Response" outputName="deleteMembreResponse" inputName="deleteMembreRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="00918614-91db-4d52-837c-42c991ad3d4d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:deleteMembreRequest>
+         <liv:id>?</liv:id>
+      </liv:deleteMembreRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/deleteMembreRequest"/></con:call></con:operation><con:operation id="35630bfe-6d89-4609-9f82-1bf65b45d465" isOneWay="false" action="" name="getAllEmprunt" bindingOperationName="getAllEmprunt" type="Request-Response" outputName="getAllEmpruntResponse" inputName="getAllEmpruntRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ceeb4bce-ed40-413b-bad7-3b593a07b5dc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllEmpruntRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllEmpruntRequest"/></con:call></con:operation><con:operation id="fda46240-cc25-4773-8d5b-ed26bebb249e" isOneWay="false" action="" name="getAllEmpruntsWhereDateFinIsBeforeDateToday" bindingOperationName="getAllEmpruntsWhereDateFinIsBeforeDateToday" type="Request-Response" outputName="getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse" inputName="getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5ee960c0-d469-4615-81bd-42765f456dc4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest"/></con:call></con:operation><con:operation id="a774dd48-9f5d-483e-be4c-4a005eb3354a" isOneWay="false" action="" name="getAllExemplaires" bindingOperationName="getAllExemplaires" type="Request-Response" outputName="getAllExemplairesResponse" inputName="getAllExemplairesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be625d0b-9a14-49b8-a036-bbc2849a444a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllExemplairesRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllExemplairesRequest"/></con:call></con:operation><con:operation id="76292a49-e9b2-47d8-bcc1-d6b01587c8e4" isOneWay="false" action="" name="getAllExemplairesAndEmprunts" bindingOperationName="getAllExemplairesAndEmprunts" type="Request-Response" outputName="getAllExemplairesAndEmpruntsResponse" inputName="getAllExemplairesAndEmpruntsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ce619702-793f-4636-a646-53a51db6a259" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllExemplairesAndEmpruntsRequest>
+         <liv:id>?</liv:id>
+      </liv:getAllExemplairesAndEmpruntsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllExemplairesAndEmpruntsRequest"/></con:call></con:operation><con:operation id="d2dffa69-6e58-4147-83bb-ba779c45011f" isOneWay="false" action="" name="getAllLivres" bindingOperationName="getAllLivres" type="Request-Response" outputName="getAllLivresResponse" inputName="getAllLivresRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1b0cde68-b5cb-4b88-b4ae-52066b40567a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllLivresRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllLivresRequest"/></con:call></con:operation><con:operation id="c9633260-252c-47ab-af7f-be57f9f3aeed" isOneWay="false" action="" name="getAllLivresEmpruntes" bindingOperationName="getAllLivresEmpruntes" type="Request-Response" outputName="getAllLivresEmpruntesResponse" inputName="getAllLivresEmpruntesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7b88d517-a389-49c4-9c8b-1ecd59a71ca1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllLivresEmpruntesRequest>
+         <liv:id>?</liv:id>
+      </liv:getAllLivresEmpruntesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllLivresEmpruntesRequest"/></con:call></con:operation><con:operation id="5a384486-decc-49e5-957a-941bffe17e1f" isOneWay="false" action="" name="getAllMembres" bindingOperationName="getAllMembres" type="Request-Response" outputName="getAllMembresResponse" inputName="getAllMembresRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="720b03b7-833d-4b0d-98bf-0f9e22523769" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getAllMembresRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getAllMembresRequest"/></con:call></con:operation><con:operation id="2f3827d2-1e5a-45cf-8798-590aece786de" isOneWay="false" action="" name="getCompteAfterLoginSuccess" bindingOperationName="getCompteAfterLoginSuccess" type="Request-Response" outputName="getCompteAfterLoginSuccessResponse" inputName="getCompteAfterLoginSuccessRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5392a3f2-07fa-4959-96b0-da4496327e42" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getCompteAfterLoginSuccessRequest>
+         <liv:adresseMail>?</liv:adresseMail>
+      </liv:getCompteAfterLoginSuccessRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getCompteAfterLoginSuccessRequest"/></con:call></con:operation><con:operation id="77aca432-dfdf-434f-b8c6-4e884a347612" isOneWay="false" action="" name="getEmpruntById" bindingOperationName="getEmpruntById" type="Request-Response" outputName="getEmpruntByIdResponse" inputName="getEmpruntByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8e60ce90-5327-45c2-80a8-777b699b9fcb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getEmpruntByIdRequest>
+         <liv:id>?</liv:id>
+      </liv:getEmpruntByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getEmpruntByIdRequest"/></con:call></con:operation><con:operation id="68f3c5ae-e09b-4b30-a18c-28f41c89f576" isOneWay="false" action="" name="getExemplaireById" bindingOperationName="getExemplaireById" type="Request-Response" outputName="getExemplaireByIdResponse" inputName="getExemplaireByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bc0a3312-6301-4e02-9b0a-d0da3a86d464" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getExemplaireByIdRequest>
+         <liv:id>?</liv:id>
+      </liv:getExemplaireByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getExemplaireByIdRequest"/></con:call></con:operation><con:operation id="22d79894-45e2-4ec0-a2c5-e62566455fbb" isOneWay="false" action="" name="getLivreById" bindingOperationName="getLivreById" type="Request-Response" outputName="getLivreByIdResponse" inputName="getLivreByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="576a6d3c-62c0-4afb-acc2-087104c19ea0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getLivreByIdRequest>
+         <liv:id>?</liv:id>
+      </liv:getLivreByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getLivreByIdRequest"/></con:call></con:operation><con:operation id="1bcb4df6-a57d-4024-b54b-f8c413461238" isOneWay="false" action="" name="getMembreById" bindingOperationName="getMembreById" type="Request-Response" outputName="getMembreByIdResponse" inputName="getMembreByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="88ca27e1-b837-4d40-9530-88117ffe4f23" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getMembreByIdRequest>
+         <liv:id>?</liv:id>
+      </liv:getMembreByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getMembreByIdRequest"/></con:call></con:operation><con:operation id="0818ad92-59e7-45f8-bdf2-57b0f0a691f3" isOneWay="false" action="" name="getSearchByKeyword" bindingOperationName="getSearchByKeyword" type="Request-Response" outputName="getSearchByKeywordResponse" inputName="getSearchByKeywordRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a88aeef8-15bf-404f-a041-dd57fdea1c58" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:getSearchByKeywordRequest>
+         <liv:keyword>?</liv:keyword>
+      </liv:getSearchByKeywordRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/getSearchByKeywordRequest"/></con:call></con:operation><con:operation id="00295c35-daa1-4393-ae26-932ab73e4d1f" isOneWay="false" action="" name="login" bindingOperationName="login" type="Request-Response" outputName="loginResponse" inputName="loginRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a87df085-40d4-4e90-9d91-7c446ac27cfb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:loginRequest>
+         <liv:adresseMail>?</liv:adresseMail>
+         <liv:motDePasse>?</liv:motDePasse>
+      </liv:loginRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/loginRequest"/></con:call></con:operation><con:operation id="acb792f5-ad62-4323-b86b-9261890a5e1c" isOneWay="false" action="" name="updateEmprunt" bindingOperationName="updateEmprunt" type="Request-Response" outputName="updateEmpruntResponse" inputName="updateEmpruntRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a8ba4995-3c77-42cb-89f1-df9e0a3ea867" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:updateEmpruntRequest>
+         <liv:empruntType>
+            <liv:id>?</liv:id>
+            <liv:date_debut>?</liv:date_debut>
+            <liv:date_fin>?</liv:date_fin>
+            <liv:prolongation>?</liv:prolongation>
+            <liv:relance>?</liv:relance>
+            <liv:termine>?</liv:termine>
+            <liv:membreid>?</liv:membreid>
+            <liv:membreEntity>
+               <liv:id>?</liv:id>
+               <liv:nom>?</liv:nom>
+               <liv:prenom>?</liv:prenom>
+               <liv:adresse_mail>?</liv:adresse_mail>
+               <liv:mot_de_passe>?</liv:mot_de_passe>
+               <liv:telephone>?</liv:telephone>
+               <liv:adresse>?</liv:adresse>
+               <liv:code_postal>?</liv:code_postal>
+               <liv:ville>?</liv:ville>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:membreEntity>
+            <liv:exemplaireid>?</liv:exemplaireid>
+            <liv:exemplaireEntity>
+               <liv:id>?</liv:id>
+               <liv:disponibilite>?</liv:disponibilite>
+               <liv:livreid>?</liv:livreid>
+               <liv:livre>
+                  <liv:id>?</liv:id>
+                  <liv:titre>?</liv:titre>
+                  <liv:auteur>?</liv:auteur>
+                  <liv:genre>?</liv:genre>
+                  <liv:date_publication>?</liv:date_publication>
+                  <liv:resume>?</liv:resume>
+                  <liv:url_photo>?</liv:url_photo>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeExemplaires/>
+               </liv:livre>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:exemplaireEntity>
+         </liv:empruntType>
+      </liv:updateEmpruntRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/updateEmpruntRequest"/></con:call></con:operation><con:operation id="b389825a-a46d-47fc-92c2-061b1beaebe1" isOneWay="false" action="" name="updateEmpruntTermine" bindingOperationName="updateEmpruntTermine" type="Request-Response" outputName="updateEmpruntTermineResponse" inputName="updateEmpruntTermineRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="36b5b460-a42d-4790-8b14-2b6b9c99d324" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:updateEmpruntTermineRequest>
+         <liv:empruntType>
+            <liv:id>?</liv:id>
+            <liv:date_debut>?</liv:date_debut>
+            <liv:date_fin>?</liv:date_fin>
+            <liv:prolongation>?</liv:prolongation>
+            <liv:relance>?</liv:relance>
+            <liv:termine>?</liv:termine>
+            <liv:membreid>?</liv:membreid>
+            <liv:membreEntity>
+               <liv:id>?</liv:id>
+               <liv:nom>?</liv:nom>
+               <liv:prenom>?</liv:prenom>
+               <liv:adresse_mail>?</liv:adresse_mail>
+               <liv:mot_de_passe>?</liv:mot_de_passe>
+               <liv:telephone>?</liv:telephone>
+               <liv:adresse>?</liv:adresse>
+               <liv:code_postal>?</liv:code_postal>
+               <liv:ville>?</liv:ville>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:membreEntity>
+            <liv:exemplaireid>?</liv:exemplaireid>
+            <liv:exemplaireEntity>
+               <liv:id>?</liv:id>
+               <liv:disponibilite>?</liv:disponibilite>
+               <liv:livreid>?</liv:livreid>
+               <liv:livre>
+                  <liv:id>?</liv:id>
+                  <liv:titre>?</liv:titre>
+                  <liv:auteur>?</liv:auteur>
+                  <liv:genre>?</liv:genre>
+                  <liv:date_publication>?</liv:date_publication>
+                  <liv:resume>?</liv:resume>
+                  <liv:url_photo>?</liv:url_photo>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeExemplaires/>
+               </liv:livre>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:exemplaireEntity>
+         </liv:empruntType>
+      </liv:updateEmpruntTermineRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/updateEmpruntTermineRequest"/></con:call></con:operation><con:operation id="92db02d4-7399-4a59-9b00-0d4d719254b7" isOneWay="false" action="" name="updateExemplaire" bindingOperationName="updateExemplaire" type="Request-Response" outputName="updateExemplaireResponse" inputName="updateExemplaireRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0588fb07-e7d7-432e-a7cb-15a6f656c189" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:updateExemplaireRequest>
+         <liv:exemplaireType>
+            <liv:id>?</liv:id>
+            <liv:disponibilite>?</liv:disponibilite>
+            <liv:livreid>?</liv:livreid>
+            <liv:livre>
+               <liv:id>?</liv:id>
+               <liv:titre>?</liv:titre>
+               <liv:auteur>?</liv:auteur>
+               <liv:genre>?</liv:genre>
+               <liv:date_publication>?</liv:date_publication>
+               <liv:resume>?</liv:resume>
+               <liv:url_photo>?</liv:url_photo>
+               <!--Zero or more repetitions:-->
+               <liv:listeExemplaires/>
+            </liv:livre>
+            <!--Zero or more repetitions:-->
+            <liv:listeEmprunts>
+               <liv:id>?</liv:id>
+               <liv:date_debut>?</liv:date_debut>
+               <liv:date_fin>?</liv:date_fin>
+               <liv:prolongation>?</liv:prolongation>
+               <liv:relance>?</liv:relance>
+               <liv:termine>?</liv:termine>
+               <liv:membreid>?</liv:membreid>
+               <liv:membreEntity>
+                  <liv:id>?</liv:id>
+                  <liv:nom>?</liv:nom>
+                  <liv:prenom>?</liv:prenom>
+                  <liv:adresse_mail>?</liv:adresse_mail>
+                  <liv:mot_de_passe>?</liv:mot_de_passe>
+                  <liv:telephone>?</liv:telephone>
+                  <liv:adresse>?</liv:adresse>
+                  <liv:code_postal>?</liv:code_postal>
+                  <liv:ville>?</liv:ville>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeEmprunts/>
+               </liv:membreEntity>
+               <liv:exemplaireid>?</liv:exemplaireid>
+               <liv:exemplaireEntity/>
+            </liv:listeEmprunts>
+         </liv:exemplaireType>
+      </liv:updateExemplaireRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/updateExemplaireRequest"/></con:call></con:operation><con:operation id="14f2b787-13e7-4e6a-9bac-fc907e1210c1" isOneWay="false" action="" name="updateLivre" bindingOperationName="updateLivre" type="Request-Response" outputName="updateLivreResponse" inputName="updateLivreRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="57c44eb5-e08e-4ecc-a167-14a8e4f6302d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:updateLivreRequest>
+         <liv:livreType>
+            <liv:id>?</liv:id>
+            <liv:titre>?</liv:titre>
+            <liv:auteur>?</liv:auteur>
+            <liv:genre>?</liv:genre>
+            <liv:date_publication>?</liv:date_publication>
+            <liv:resume>?</liv:resume>
+            <liv:url_photo>?</liv:url_photo>
+            <!--Zero or more repetitions:-->
+            <liv:listeExemplaires>
+               <liv:id>?</liv:id>
+               <liv:disponibilite>?</liv:disponibilite>
+               <liv:livreid>?</liv:livreid>
+               <liv:livre/>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts>
+                  <liv:id>?</liv:id>
+                  <liv:date_debut>?</liv:date_debut>
+                  <liv:date_fin>?</liv:date_fin>
+                  <liv:prolongation>?</liv:prolongation>
+                  <liv:relance>?</liv:relance>
+                  <liv:termine>?</liv:termine>
+                  <liv:membreid>?</liv:membreid>
+                  <liv:membreEntity>
+                     <liv:id>?</liv:id>
+                     <liv:nom>?</liv:nom>
+                     <liv:prenom>?</liv:prenom>
+                     <liv:adresse_mail>?</liv:adresse_mail>
+                     <liv:mot_de_passe>?</liv:mot_de_passe>
+                     <liv:telephone>?</liv:telephone>
+                     <liv:adresse>?</liv:adresse>
+                     <liv:code_postal>?</liv:code_postal>
+                     <liv:ville>?</liv:ville>
+                     <!--Zero or more repetitions:-->
+                     <liv:listeEmprunts/>
+                  </liv:membreEntity>
+                  <liv:exemplaireid>?</liv:exemplaireid>
+                  <liv:exemplaireEntity/>
+               </liv:listeEmprunts>
+            </liv:listeExemplaires>
+         </liv:livreType>
+      </liv:updateLivreRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/updateLivreRequest"/></con:call></con:operation><con:operation id="f60a3dde-0cc5-4729-99ee-b5efda7bd6d0" isOneWay="false" action="" name="updateMembre" bindingOperationName="updateMembre" type="Request-Response" outputName="updateMembreResponse" inputName="updateMembreRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="17d422d6-60d8-497e-ba73-989de817d1eb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:updateMembreRequest>
+         <liv:membreType>
+            <liv:id>?</liv:id>
+            <liv:nom>?</liv:nom>
+            <liv:prenom>?</liv:prenom>
+            <liv:adresse_mail>?</liv:adresse_mail>
+            <liv:mot_de_passe>?</liv:mot_de_passe>
+            <liv:telephone>?</liv:telephone>
+            <liv:adresse>?</liv:adresse>
+            <liv:code_postal>?</liv:code_postal>
+            <liv:ville>?</liv:ville>
+            <!--Zero or more repetitions:-->
+            <liv:listeEmprunts>
+               <liv:id>?</liv:id>
+               <liv:date_debut>?</liv:date_debut>
+               <liv:date_fin>?</liv:date_fin>
+               <liv:prolongation>?</liv:prolongation>
+               <liv:relance>?</liv:relance>
+               <liv:termine>?</liv:termine>
+               <liv:membreid>?</liv:membreid>
+               <liv:membreEntity/>
+               <liv:exemplaireid>?</liv:exemplaireid>
+               <liv:exemplaireEntity>
+                  <liv:id>?</liv:id>
+                  <liv:disponibilite>?</liv:disponibilite>
+                  <liv:livreid>?</liv:livreid>
+                  <liv:livre>
+                     <liv:id>?</liv:id>
+                     <liv:titre>?</liv:titre>
+                     <liv:auteur>?</liv:auteur>
+                     <liv:genre>?</liv:genre>
+                     <liv:date_publication>?</liv:date_publication>
+                     <liv:resume>?</liv:resume>
+                     <liv:url_photo>?</liv:url_photo>
+                     <!--Zero or more repetitions:-->
+                     <liv:listeExemplaires/>
+                  </liv:livre>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeEmprunts/>
+               </liv:exemplaireEntity>
+            </liv:listeEmprunts>
+         </liv:membreType>
+      </liv:updateMembreRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/updateMembreRequest"/></con:call></con:operation><con:operation id="684aba04-98eb-40be-beff-b79afc8486ea" isOneWay="false" action="" name="updateRelanceEmprunt" bindingOperationName="updateRelanceEmprunt" type="Request-Response" outputName="updateRelanceEmpruntResponse" inputName="updateRelanceEmpruntRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d6cfc9fc-8730-481f-9334-308c0d0f2c14" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.bibliotheque.com/livres-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <liv:updateRelanceEmpruntRequest>
+         <liv:empruntType>
+            <liv:id>?</liv:id>
+            <liv:date_debut>?</liv:date_debut>
+            <liv:date_fin>?</liv:date_fin>
+            <liv:prolongation>?</liv:prolongation>
+            <liv:relance>?</liv:relance>
+            <liv:termine>?</liv:termine>
+            <liv:membreid>?</liv:membreid>
+            <liv:membreEntity>
+               <liv:id>?</liv:id>
+               <liv:nom>?</liv:nom>
+               <liv:prenom>?</liv:prenom>
+               <liv:adresse_mail>?</liv:adresse_mail>
+               <liv:mot_de_passe>?</liv:mot_de_passe>
+               <liv:telephone>?</liv:telephone>
+               <liv:adresse>?</liv:adresse>
+               <liv:code_postal>?</liv:code_postal>
+               <liv:ville>?</liv:ville>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:membreEntity>
+            <liv:exemplaireid>?</liv:exemplaireid>
+            <liv:exemplaireEntity>
+               <liv:id>?</liv:id>
+               <liv:disponibilite>?</liv:disponibilite>
+               <liv:livreid>?</liv:livreid>
+               <liv:livre>
+                  <liv:id>?</liv:id>
+                  <liv:titre>?</liv:titre>
+                  <liv:auteur>?</liv:auteur>
+                  <liv:genre>?</liv:genre>
+                  <liv:date_publication>?</liv:date_publication>
+                  <liv:resume>?</liv:resume>
+                  <liv:url_photo>?</liv:url_photo>
+                  <!--Zero or more repetitions:-->
+                  <liv:listeExemplaires/>
+               </liv:livre>
+               <!--Zero or more repetitions:-->
+               <liv:listeEmprunts/>
+            </liv:exemplaireEntity>
+         </liv:empruntType>
+      </liv:updateRelanceEmpruntRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.bibliotheque.com/livres-ws/LivresPort/updateRelanceEmpruntRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

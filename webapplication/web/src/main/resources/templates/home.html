@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<head>
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"/>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container-fluid">
+
+        <div class="logout text-right align-bottom" th:if="${session.user != null}">
+            <span th:text="'Bienvenue ' + ${session.user.prenom} + ' /'"> </span>
+            <span> <a th:href="@{/logout}">Se déconnecter</a> </span>
+        </div>
+
+
+        <div class="jumbotron">
+            <h1 class="display-4">Médiathèque</h1>
+            <h3 class="display-6">Agglomération de La Rochelle</h3>
+            <p class="lead">Bienvenue sur le site officiel de la médiathèque de votre ville !</p>
+            <hr class="my-4">
+
+            <div th:if="${session.user == null}">
+
+
+                <p>Connectez-vous pour un accès étendu au site.</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Connectez-vous</a>
+                    <a class="btn btn-primary btn-lg" th:href="@{/addmembre}" role="button">Nouveau compte</a>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

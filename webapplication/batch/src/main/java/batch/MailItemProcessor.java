@@ -1,3 +1,5 @@
+package batch;
+
 import com.bibliotheque.service.EmpruntService;
 import com.bibliotheque.service.ExemplaireService;
 import com.bibliotheque.service.LivreService;
@@ -6,6 +8,7 @@ import livres.wsdl.EmpruntType;
 import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import livres.wsdl.MembreType;
+import mail.SendingMail;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.StepExecution;

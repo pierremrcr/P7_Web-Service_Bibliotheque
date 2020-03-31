@@ -1,3 +1,6 @@
+package config;
+
+import batch.MailItemProcessor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -11,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableBatchProcessing
-@ComponentScan
+@ComponentScan(basePackages = "batch")
 public class BatchConfig {
 
     @Autowired

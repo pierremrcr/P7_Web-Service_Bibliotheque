@@ -1,3 +1,5 @@
+package mail;
+
 import com.sun.mail.smtp.SMTPMessage;
 
 import javax.mail.*;

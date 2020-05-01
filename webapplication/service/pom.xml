@@ -18,11 +18,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.bibliotheque</groupId>
-            <artifactId>entity</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
         <dependency>
             <groupId>com.bibliotheque</groupId>
@@ -30,11 +25,6 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.bibliotheque</groupId>
-            <artifactId>batch</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
     </dependencies>
 

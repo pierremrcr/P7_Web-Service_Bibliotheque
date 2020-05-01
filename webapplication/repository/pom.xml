@@ -18,6 +18,8 @@
             <artifactId>entity</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -27,32 +29,5 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.13.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>livres.wsdl</generatePackage>
-                    <schemas>
-                        <schema>
-                            <url>http://localhost:8080/ws/livres.wsdl</url>
-                        </schema>
-                    </schemas>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 
 </project>

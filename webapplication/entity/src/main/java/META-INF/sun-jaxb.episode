@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+  <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
+Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2020.05.01 à 11:00:43 AM CEST 
+
+  -->
+  <bindings xmlns:tns="http://www.bibliotheque.com/livres-ws" if-exists="true" scd="x-schema::tns">
+    <schemaBindings map="false">
+      <package name="livres.wsdl"/>
+    </schemaBindings>
+    <bindings if-exists="true" scd="tns:getLivreByIdRequest">
+      <class ref="livres.wsdl.GetLivreByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getLivreByIdResponse">
+      <class ref="livres.wsdl.GetLivreByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:livreType">
+      <class ref="livres.wsdl.LivreType"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllLivresRequest">
+      <class ref="livres.wsdl.GetAllLivresRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllLivresResponse">
+      <class ref="livres.wsdl.GetAllLivresResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllLivresEmpruntesRequest">
+      <class ref="livres.wsdl.GetAllLivresEmpruntesRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllLivresEmpruntesResponse">
+      <class ref="livres.wsdl.GetAllLivresEmpruntesResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addLivreRequest">
+      <class ref="livres.wsdl.AddLivreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addLivreResponse">
+      <class ref="livres.wsdl.AddLivreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:serviceStatus">
+      <class ref="livres.wsdl.ServiceStatus"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateLivreRequest">
+      <class ref="livres.wsdl.UpdateLivreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateLivreResponse">
+      <class ref="livres.wsdl.UpdateLivreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteLivreRequest">
+      <class ref="livres.wsdl.DeleteLivreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteLivreResponse">
+      <class ref="livres.wsdl.DeleteLivreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByIdRequest">
+      <class ref="livres.wsdl.GetExemplaireByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByIdResponse">
+      <class ref="livres.wsdl.GetExemplaireByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:exemplaireType">
+      <class ref="livres.wsdl.ExemplaireType"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllExemplairesRequest">
+      <class ref="livres.wsdl.GetAllExemplairesRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllExemplairesResponse">
+      <class ref="livres.wsdl.GetAllExemplairesResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllExemplairesAndEmpruntsRequest">
+      <class ref="livres.wsdl.GetAllExemplairesAndEmpruntsRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllExemplairesAndEmpruntsResponse">
+      <class ref="livres.wsdl.GetAllExemplairesAndEmpruntsResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addExemplaireRequest">
+      <class ref="livres.wsdl.AddExemplaireRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addExemplaireResponse">
+      <class ref="livres.wsdl.AddExemplaireResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateExemplaireRequest">
+      <class ref="livres.wsdl.UpdateExemplaireRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateExemplaireResponse">
+      <class ref="livres.wsdl.UpdateExemplaireResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteExemplaireRequest">
+      <class ref="livres.wsdl.DeleteExemplaireRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteExemplaireResponse">
+      <class ref="livres.wsdl.DeleteExemplaireResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getMembreByIdRequest">
+      <class ref="livres.wsdl.GetMembreByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getMembreByIdResponse">
+      <class ref="livres.wsdl.GetMembreByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:membreType">
+      <class ref="livres.wsdl.MembreType"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllMembresRequest">
+      <class ref="livres.wsdl.GetAllMembresRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllMembresResponse">
+      <class ref="livres.wsdl.GetAllMembresResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addMembreRequest">
+      <class ref="livres.wsdl.AddMembreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addMembreResponse">
+      <class ref="livres.wsdl.AddMembreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateMembreRequest">
+      <class ref="livres.wsdl.UpdateMembreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateMembreResponse">
+      <class ref="livres.wsdl.UpdateMembreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteMembreRequest">
+      <class ref="livres.wsdl.DeleteMembreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteMembreResponse">
+      <class ref="livres.wsdl.DeleteMembreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getEmpruntByIdRequest">
+      <class ref="livres.wsdl.GetEmpruntByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getEmpruntByIdResponse">
+      <class ref="livres.wsdl.GetEmpruntByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:empruntType">
+      <class ref="livres.wsdl.EmpruntType"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllEmpruntRequest">
+      <class ref="livres.wsdl.GetAllEmpruntRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllEmpruntResponse">
+      <class ref="livres.wsdl.GetAllEmpruntResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllEmpruntsWhereDateFinIsBeforeDateTodayRequest">
+      <class ref="livres.wsdl.GetAllEmpruntsWhereDateFinIsBeforeDateTodayRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllEmpruntsWhereDateFinIsBeforeDateTodayResponse">
+      <class ref="livres.wsdl.GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addEmpruntRequest">
+      <class ref="livres.wsdl.AddEmpruntRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addEmpruntResponse">
+      <class ref="livres.wsdl.AddEmpruntResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateEmpruntRequest">
+      <class ref="livres.wsdl.UpdateEmpruntRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateEmpruntResponse">
+      <class ref="livres.wsdl.UpdateEmpruntResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateRelanceEmpruntRequest">
+      <class ref="livres.wsdl.UpdateRelanceEmpruntRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateRelanceEmpruntResponse">
+      <class ref="livres.wsdl.UpdateRelanceEmpruntResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateEmpruntTermineRequest">
+      <class ref="livres.wsdl.UpdateEmpruntTermineRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:updateEmpruntTermineResponse">
+      <class ref="livres.wsdl.UpdateEmpruntTermineResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteEmpruntRequest">
+      <class ref="livres.wsdl.DeleteEmpruntRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteEmpruntResponse">
+      <class ref="livres.wsdl.DeleteEmpruntResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:loginRequest">
+      <class ref="livres.wsdl.LoginRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:loginResponse">
+      <class ref="livres.wsdl.LoginResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getCompteAfterLoginSuccessRequest">
+      <class ref="livres.wsdl.GetCompteAfterLoginSuccessRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getCompteAfterLoginSuccessResponse">
+      <class ref="livres.wsdl.GetCompteAfterLoginSuccessResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getSearchByKeywordRequest">
+      <class ref="livres.wsdl.GetSearchByKeywordRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getSearchByKeywordResponse">
+      <class ref="livres.wsdl.GetSearchByKeywordResponse"/>
+    </bindings>
+  </bindings>
+</bindings>

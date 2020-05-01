@@ -16,10 +16,10 @@
       <IntrospectionStateNumber>506</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
-      <Relations>sequence|table|74743|74745|1
+      <Relations>sequence|table|82940|82942|1
 sequence|table|74762|74764|1
 sequence|table|74773|74775|1
-sequence|table|82940|82942|1
+sequence|table|74743|74745|1
 </Relations>
     </database>
     <database id="4" parent="1" name="postgres">

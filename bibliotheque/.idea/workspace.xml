@@ -2,127 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2874bd2e-6906-4cd9-8e9d-878a58f58770" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/BibliothequeClientApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/RunClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/controller/AccueilController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/controller/EmpruntController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/controller/LivreController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/controller/MembreController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/EmpruntClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/ExemplaireClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/LivreClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/LoginClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/MembreClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/SearchClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/configSoap/SoapClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/repository/EmpruntRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/repository/ExemplaireRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/repository/LivreRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/repository/LoginRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/repository/MembreRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/repository/repository/SearchRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/security/CustomAuthentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/security/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/security/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/security/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/service/EmpruntService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/service/ExemplaireService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/service/LivreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/service/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/service/MembreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/java/com/bibliotheque/service/SearchService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/accueil.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/compte.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/confirmationInscription.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/confirmationProlongation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/detailMembre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/error/403.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/formulaireMembre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/listeLivres.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/livre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/main/resources/templates/searchResult.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bibliothequeClient/src/test/java/com/bibliotheque/BibliothequeClientApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/batch/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/entity/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/repository/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/ExemplaireClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/LivreClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/RunClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/config/ConfigSoap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/LivreRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/src/main/java/com/bibliotheque/webapplication/WebapplicationApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/src/test/java/com/bibliotheque/webapplication/WebapplicationApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/WebApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/livres.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aaae1733-9396-4b67-a41a-6dd27f8f5ec7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aaae1733-9396-4b67-a41a-6dd27f8f5ec7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/src/main/java/com/bibliotheque/batch/BatchApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/batch/src/test/java/com/bibliotheque/batch/BatchApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/entity/src/test/java/com/bibliotheque/entity/EntityApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/repository/src/test/java/com/bibliotheque/repository/RepositoryApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/service/src/test/java/com/bibliotheque/service/ServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/src/main/java/com/bibliotheque/web/WebApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-app/web/src/test/java/com/bibliotheque/web/WebApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/src/main/java/BatchLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/java/BatchLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/repository/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/config/ConfigSoap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/config/ConfigSoap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -230,16 +118,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="656">
+              <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="37">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -260,10 +148,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/ExemplaireEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
+            <state relative-caret-position="315">
               <caret line="23" column="71" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -275,7 +163,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/LivreEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
+            <state relative-caret-position="570">
               <caret line="42" column="58" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -287,7 +175,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/LivreEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
+            <state relative-caret-position="1770">
               <caret line="139" selection-start-line="139" selection-end-line="139" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -407,10 +295,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
+    <option name="x" value="5" />
     <option name="y" value="23" />
     <option name="width" value="1263" />
-    <option name="height" value="746" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -450,52 +338,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="endpoint" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -684,11 +526,14 @@
       <workItem from="1584103963256" duration="288000" />
       <workItem from="1584440087063" duration="698000" />
       <workItem from="1584441846775" duration="87000" />
+      <workItem from="1585828251180" duration="1849000" />
+      <workItem from="1588259693691" duration="840000" />
+      <workItem from="1588319264812" duration="2556000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="398659000" />
+    <option name="totallyTimeSpent" value="403904000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -700,10 +545,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="23" width="1263" height="746" extended-state="0" />
-    <editor active="true" />
+    <frame x="5" y="23" width="1263" height="773" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35298935" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37018836" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -713,7 +557,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5488" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.83994126" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2224" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -779,13 +623,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/jaxb/com/bibliotheque/gs_ws/ExemplaireType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/generated-sources/jaxb/com/bibliotheque/gs_ws/GetAllMembresRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1115,20 +952,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.2.10/postgresql-42.2.10-sources.jar!/org/postgresql/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="-140">
+          <caret line="692" selection-start-line="692" selection-end-line="692" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="656">
+          <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1136,6 +970,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/ExemplaireEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="71" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/LivreEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="42" column="58" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/LivreEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="139" selection-start-line="139" selection-end-line="139" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1152,30 +1016,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/LivreEndpoint.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="139" selection-start-line="139" selection-end-line="139" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/LivreEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="42" column="58" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/ExemplaireEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="23" column="71" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="71" />
+        <state relative-caret-position="37">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

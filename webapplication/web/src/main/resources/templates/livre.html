@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>MicroLibrary</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <div class="col col-md-10">
+
+
+                <p th:text="${livre.titre}" class="font-weight-bold"></p>
+
+                <p th:text="${livre.auteur}"></p>
+
+                <p th:text="${livre.genre}"></p>
+
+                <p th:text="${livre.resume}"></p>
+
+
+                <div class="row">
+                    <div class="col col-md-5">
+                        <p><img id="imageDetail" th:src="@{'/img/' + ${livre.getUrlPhoto()}}"></p>
+                    </div>
+
+                </div>
+
+
+                <p>Pour cette ouvrage <span th:text="${#arrays.length(exemplairesDispo)}"></span> exemplaires sont/est disponible(s)</p>
+
+                <th:block th:if="${exemplairesDispo.size()!=0 && session.user != null}">
+                    <td>
+                        <p>Vous pouvez emprunter ce livre pour une durée de 4 semaines (durée prolongeable de 4 semaines supplémentaires).</p>
+                        <p><a class="btn btn-outline-primary" href="#" th:href="@{/addEmprunt(exemplaireId=${exemplaire.getId()}, compteId=${session.user.getId()})}">Emprunter ce livre</a></p>
+                    </td>
+                </th:block>
+
+
+                <script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

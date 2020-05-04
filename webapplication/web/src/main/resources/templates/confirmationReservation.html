@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Confirmation prolongation</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container-fluid" >
+
+        <p>Le prêt pour ce livre a bien été confirmé. Il est valable pour une durée de 28 jours.</p>
+
+        <p>Vous pouvez retrouver l'historique de vos emprunts sur votre espace personnel :
+            <a th:href="@{/detail-membre(compteId=${session.user.getId()})}">Mes informations</a>.
+        </p>
+
+        <a th:href="@{/}">Revenir à l'accueil</a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

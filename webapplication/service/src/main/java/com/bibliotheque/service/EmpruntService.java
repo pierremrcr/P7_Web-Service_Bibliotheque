@@ -8,7 +8,6 @@ import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 

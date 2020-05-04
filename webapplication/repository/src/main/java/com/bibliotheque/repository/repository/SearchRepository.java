@@ -4,9 +4,11 @@ import com.bibliotheque.repository.client.SearchClient;
 import livres.wsdl.GetSearchByKeywordResponse;
 import livres.wsdl.LivreType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class SearchRepository {
 
     @Autowired
@@ -16,5 +18,7 @@ public class SearchRepository {
         GetSearchByKeywordResponse response = this.client.getSearchByKeyword(keyword);
         return response.getLivreType();
     }
+
+
 
 }

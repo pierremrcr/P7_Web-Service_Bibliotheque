@@ -3,6 +3,7 @@ package com.bibliotheque.web.controller;
 import com.bibliotheque.service.LivreService;
 import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +15,10 @@ import java.util.List;
 @Controller
 public class LivreController {
 
-    LivreService livreService = new LivreService();
+    @Autowired
+    private LivreService livreService;
 
-    @RequestMapping(value="/livres", method= RequestMethod.GET)
+    @RequestMapping(value="/livres", method = RequestMethod.GET)
     public String livres(final Model model){
 
         List<LivreType> livreTypeList = livreService.livreTypeList();

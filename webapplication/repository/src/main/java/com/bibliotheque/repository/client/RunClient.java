@@ -17,6 +17,5 @@ public class RunClient {
                 ", resume=" + response.getLivreType().getResume()
         );
 
-
     }
 }

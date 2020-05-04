@@ -5,6 +5,7 @@ import livres.wsdl.GetAllLivresEmpruntesResponse;
 import livres.wsdl.GetAllLivresResponse;
 import livres.wsdl.GetLivreByIdResponse;
 import livres.wsdl.LivreType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
 @Repository
 public class LivreRepository {
 
-    LivreClient client = new LivreClient();
+    @Autowired
+    private LivreClient client;
 
     public LivreType livreById(int id){
         GetLivreByIdResponse response = this.client.getLivreById(id);

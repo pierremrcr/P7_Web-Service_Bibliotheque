@@ -2,15 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2874bd2e-6906-4cd9-8e9d-878a58f58770" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aaae1733-9396-4b67-a41a-6dd27f8f5ec7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aaae1733-9396-4b67-a41a-6dd27f8f5ec7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/confirmationInscription.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/confirmationProlongation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/confirmationReservation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/detailMembre.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/formulaireMembre.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/livre.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/searchResult.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/batch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/batch/src/main/java/BatchLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/java/BatchLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/entity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/repository/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/config/ConfigSoap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/config/ConfigSoap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/RunClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/RunClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/LivreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/LivreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/SearchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/SearchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/EmpruntService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/EmpruntService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/src/main/java/com/bibliotheque/webapplication/WebapplicationApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/src/test/java/com/bibliotheque/webapplication/WebapplicationApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/WebApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/WebApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,16 +130,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+            <state relative-caret-position="885">
+              <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
+            <state relative-caret-position="135">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -136,11 +148,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/config/WebServiceConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="227">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -246,7 +267,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/repository/ExemplaireEntityRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/service/contract/LivreEntityService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/EmpruntEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/service/impl/LivreEntityServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/repository/LivreEntityRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/service/contract/MembreEntityService.java" />
@@ -263,6 +283,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/com/bibliotheque/config/WebServiceConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -294,7 +315,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="5" />
     <option name="y" value="23" />
     <option name="width" value="1263" />
@@ -329,15 +350,7 @@
               <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -528,12 +541,15 @@
       <workItem from="1584441846775" duration="87000" />
       <workItem from="1585828251180" duration="1849000" />
       <workItem from="1588259693691" duration="840000" />
-      <workItem from="1588319264812" duration="2556000" />
+      <workItem from="1588319264812" duration="2775000" />
+      <workItem from="1588336470463" duration="1258000" />
+      <workItem from="1588515459288" duration="1811000" />
+      <workItem from="1588581151981" duration="1547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403904000" />
+    <option name="totallyTimeSpent" value="408739000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,9 +561,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="23" width="1263" height="773" extended-state="0" />
+    <frame x="5" y="23" width="1263" height="773" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37018836" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3882064" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -557,13 +574,13 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.83994126" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2907489" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2224" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.328" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.624" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.17914832" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.24" />
@@ -932,13 +949,6 @@
         <state relative-caret-position="-20" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -961,15 +971,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+        <state relative-caret-position="885">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/config/WebServiceConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="135">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1016,13 +1026,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/config/WebServiceConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="227">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<head>
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"/>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container">
+
+        <form action="#"  th:action="@{/addmembre}" th:object="${membreType}" method="post">
+
+            <input type="hidden" th:field="*{id}" th:placeholder="*{id}"/>
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationNom">Nom</label>
+                <input type="text" class="form-control is-valid" id="validationNom"
+                       th:field="*{nom}" th:placeholder="*{nom}" required/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationPrenom">Prénom</label>
+                <input type="text" class="form-control is-valid" id="validationPrenom"
+                       th:field="*{prenom}" th:placeholder="*{prenom}" required/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationAdresseMail">Adresse Mail</label>
+                <input type="email" class="form-control is-valid" id="validationAdresseMail"
+                       th:field="*{adresseMail}" th:placeholder="*{adresseMail}" required/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationMotDePasse">Mot de passe</label>
+                <input type="password" class="form-control is-valid" id="validationMotDePasse"
+                       th:field="*{motDePasse}"  th:placeholder="*{motDePasse}" required/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationAdresse">Adresse</label>
+                <input type="text" class="form-control is-valid" id="validationAdresse"
+                       th:field="*{adresse}" th:placeholder="*{adresse}" required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationVille">Ville</label>
+                <input id="validationVille" type="text" class="form-control is-valid"
+                       th:field="*{ville}" th:placeholder="*{ville}" required/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationCodePostal">Code postal</label>
+                <input type="text" class="form-control is-valid" id="validationCodePostal"
+                       th:field="*{codePostal}"  th:placeholder="*{codePostal}" required/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group col-6 col-md-4">
+                <label for="validationTelephone">Téléphone</label>
+                <input type="number" class="form-control is-valid" id="validationTelephone"
+                       th:field="*{telephone}" th:placeholder="*{telephone}"/>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+
+            <hr/>
+            <button class="btn btn-primary" type="submit">VALIDEZ</button>
+        </form>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -12,7 +12,8 @@ import java.util.List;
 @Service
 public class LivreService {
 
-    LivreRepository repository = new LivreRepository();
+    @Autowired
+    private LivreRepository repository;
 
     public LivreType livreById(int id){
 
@@ -25,6 +26,7 @@ public class LivreService {
     }
 
     public List<LivreType> getAllLivresEmpruntes(int id){
+
         return this.repository.getAllLivresEmpruntes(id);
     }
 

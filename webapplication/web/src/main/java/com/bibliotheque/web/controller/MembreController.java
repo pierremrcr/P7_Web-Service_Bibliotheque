@@ -98,6 +98,6 @@ public class MembreController {
     public String deleteAccount(@RequestParam(name="compteId") int id, HttpSession session){
         this.service.deleteMembreById(id);
         session.removeAttribute("user");
-        return "accueil";
+        return "home";
     }
 }

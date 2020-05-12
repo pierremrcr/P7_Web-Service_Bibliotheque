@@ -1,6 +1,6 @@
-package config;
+package com.bibliotheque.batch.config;
 
-import batch.MailItemProcessor;
+import com.bibliotheque.batch.batch.MailItemProcessor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -9,12 +9,13 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableBatchProcessing
-@ComponentScan(basePackages = "batch")
+@ComponentScan(basePackages = "com.bibliotheque")
 public class BatchConfig {
 
     @Autowired
@@ -25,6 +26,11 @@ public class BatchConfig {
 
     @Autowired
     private MailItemProcessor mailItemProcessor;
+
+    @Bean
+    public MailItemProcessor processor(){
+        return new MailItemProcessor();
+    }
 
 
     @Bean

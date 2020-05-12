@@ -16,12 +16,8 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-    private LoginService service;
-
     @Autowired
-    public LoginController(LoginService service) {
-        this.service = service;
-    }
+    private LoginService service;
 
 
     @RequestMapping(value="/login", method = RequestMethod.GET)
@@ -34,7 +30,7 @@ public class LoginController {
     @RequestMapping(value="/login", method = RequestMethod.POST)
     public String submit(Model model,
                          @Valid @ModelAttribute("login") MembreType membreType,
-                         @RequestParam(name="mail") String mail,
+                         @RequestParam(name="com.bibliotheque.batch.mail") String mail,
                          @RequestParam(name="motDePasse") String motDePasse,
                          HttpSession session) {
 
@@ -48,7 +44,7 @@ public class LoginController {
 
             if (membreType != null) {
                 session.setAttribute("user", membreType);
-                result = "accueil";
+                result = "home";
 
             } else{
                 model.addAttribute("login", "Mot de passe ou email invalide");
@@ -68,6 +64,6 @@ public class LoginController {
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "accueil";
+        return "home";
     }
 }

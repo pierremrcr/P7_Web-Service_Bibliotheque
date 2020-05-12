@@ -2,27 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2874bd2e-6906-4cd9-8e9d-878a58f58770" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/confirmationInscription.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/confirmationProlongation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/confirmationReservation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/detailMembre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/formulaireMembre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/livre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/searchResult.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/static/img/belami.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/static/img/berezina.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/static/img/celine.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/static/img/ecosysteme.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/static/img/levent.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/static/img/surlaroute.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/RunClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/client/RunClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/LivreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/LivreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/SearchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/repository/src/main/java/com/bibliotheque/repository/repository/SearchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/EmpruntService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/EmpruntService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/src/main/java/com/bibliotheque/webapplication/WebapplicationApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/src/test/java/com/bibliotheque/webapplication/WebapplicationApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/WebApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/WebApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/src/main/java/BatchLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/java/com/bibliotheque/batch/BatchLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/src/main/java/batch/MailItemProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/java/com/bibliotheque/batch/batch/MailItemProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/src/main/java/config/BatchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/java/com/bibliotheque/batch/config/BatchConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/batch/src/main/java/mail/SendingMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/batch/src/main/java/com/bibliotheque/batch/mail/SendingMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/META-INF/sun-jaxb.episode" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/META-INF/sun-jaxb.episode" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddEmpruntRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddEmpruntRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddEmpruntResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddEmpruntResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddExemplaireRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddExemplaireRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddExemplaireResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddExemplaireResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddLivreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddLivreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddLivreResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddLivreResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddMembreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddMembreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddMembreResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/AddMembreResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteEmpruntRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteEmpruntRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteEmpruntResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteEmpruntResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteExemplaireRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteExemplaireRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteExemplaireResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteExemplaireResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteLivreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteLivreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteLivreResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteLivreResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteMembreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteMembreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteMembreResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/DeleteMembreResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/EmpruntType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/EmpruntType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/ExemplaireType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/ExemplaireType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntsWhereDateFinIsBeforeDateTodayRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntsWhereDateFinIsBeforeDateTodayRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllEmpruntsWhereDateFinIsBeforeDateTodayResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesAndEmpruntsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesAndEmpruntsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesAndEmpruntsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesAndEmpruntsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllExemplairesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresEmpruntesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresEmpruntesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresEmpruntesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresEmpruntesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllLivresResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllMembresRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllMembresRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllMembresResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetAllMembresResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetCompteAfterLoginSuccessRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetCompteAfterLoginSuccessRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetCompteAfterLoginSuccessResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetCompteAfterLoginSuccessResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetEmpruntByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetEmpruntByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetEmpruntByIdResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetEmpruntByIdResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetExemplaireByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetExemplaireByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetExemplaireByIdResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetExemplaireByIdResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetLivreByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetLivreByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetLivreByIdResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetLivreByIdResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetMembreByIdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetMembreByIdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetMembreByIdResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetMembreByIdResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetSearchByKeywordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetSearchByKeywordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetSearchByKeywordResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/GetSearchByKeywordResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/LivreType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/LivreType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/LoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/MembreType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/MembreType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/ObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/ServiceStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/ServiceStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntTermineRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntTermineRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntTermineResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateEmpruntTermineResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateExemplaireRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateExemplaireRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateExemplaireResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateExemplaireResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateLivreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateLivreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateLivreResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateLivreResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateMembreRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateMembreRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateMembreResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateMembreResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateRelanceEmpruntRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateRelanceEmpruntRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateRelanceEmpruntResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/UpdateRelanceEmpruntResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/entity/src/main/java/livres/wsdl/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/EmpruntController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/EmpruntController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/MembreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/MembreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/login.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -130,8 +193,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+            <state relative-caret-position="1095">
+              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
             </state>
           </provider>
         </entry>
@@ -139,7 +202,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="150">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -149,67 +212,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/EmpruntEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/config/WebServiceConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/ExemplaireEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="23" column="71" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/LivreEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="42" column="58" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/LivreEndpoint.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1770">
-              <caret line="139" selection-start-line="139" selection-end-line="139" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/service/impl/LivreEntityServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="88" column="109" selection-start-line="88" selection-start-column="109" selection-end-line="88" selection-end-column="109" />
+            <state relative-caret-position="24">
+              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -316,7 +322,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="5" />
+    <option name="x" value="33" />
     <option name="y" value="23" />
     <option name="width" value="1263" />
     <option name="height" value="773" />
@@ -324,6 +330,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -350,14 +357,107 @@
               <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="endpoint" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="xsd" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -544,12 +644,19 @@
       <workItem from="1588319264812" duration="2775000" />
       <workItem from="1588336470463" duration="1258000" />
       <workItem from="1588515459288" duration="1811000" />
-      <workItem from="1588581151981" duration="1547000" />
+      <workItem from="1588581151981" duration="2973000" />
+      <workItem from="1588604394894" duration="1139000" />
+      <workItem from="1588856471550" duration="2015000" />
+      <workItem from="1588874053473" duration="849000" />
+      <workItem from="1588925307935" duration="868000" />
+      <workItem from="1589120995672" duration="2467000" />
+      <workItem from="1589212591253" duration="2141000" />
+      <workItem from="1589272220413" duration="2975000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="408739000" />
+    <option name="totallyTimeSpent" value="422619000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -561,10 +668,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="23" width="1263" height="773" extended-state="1" />
-    <editor active="true" />
+    <frame x="33" y="23" width="1263" height="773" extended-state="1" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3882064" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2972973" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -574,13 +680,13 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2907489" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.49632892" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2224" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.328" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.17914832" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.37004405" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.24" />
@@ -789,13 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/xsd/livres.xsd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1597">
-          <caret line="428" column="4" selection-start-line="428" selection-start-column="4" selection-end-line="428" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/ExemplaireEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1042">
@@ -848,16 +947,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1779#1780#0" expanded="true" />
             <element signature="e#1809#1810#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/repository/EmpruntEntityRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -931,16 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/EmpruntEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="267" selection-start-line="267" selection-end-line="267" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/dataSources.local.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -969,27 +1048,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/ExemplaireEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="71" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="71" />
+        <state relative-caret-position="210">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -998,7 +1067,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/entity/LivreEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="630">
           <caret line="42" column="58" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1008,8 +1077,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/LivreEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
+        <state relative-caret-position="2085">
           <caret line="139" selection-start-line="139" selection-end-line="139" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/repository/EmpruntEntityRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1018,28 +1097,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/service/impl/LivreEntityServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="88" column="109" selection-start-line="88" selection-start-column="109" selection-end-line="88" selection-end-column="109" />
+        <state relative-caret-position="1065">
+          <caret line="71" column="43" lean-forward="true" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/xsd/livres.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="428" lean-forward="true" selection-start-line="428" selection-end-line="428" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/config/WebServiceConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="211">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+        <state relative-caret-position="1095">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/BibliothequeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/EmpruntEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

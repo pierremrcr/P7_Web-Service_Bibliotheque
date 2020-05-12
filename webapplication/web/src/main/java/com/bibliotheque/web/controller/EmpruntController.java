@@ -71,6 +71,6 @@ public class EmpruntController {
         empruntType.setTermine(true);
         empruntService.updateEmpruntTermine(empruntType);
 
-        return "accueil";
+        return "home";
     }
 }

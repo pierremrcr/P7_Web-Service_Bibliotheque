@@ -1,6 +1,7 @@
-package mail;
+package com.bibliotheque.batch.mail;
 
 import com.sun.mail.smtp.SMTPMessage;
+import org.springframework.stereotype.Component;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -9,6 +10,7 @@ import javax.mail.internet.MimeMultipart;
 import java.io.InputStream;
 import java.util.Properties;
 
+@Component
 public class SendingMail {
 
     public static void sendMessage(String subject, String text, String adresseMail) {
@@ -17,7 +19,7 @@ public class SendingMail {
         InputStream stream = null;
 
         final String username = "bibliotheque.oc17@gmail.com";
-        final String password = "bibliothequeOC";
+        final String password = "batchbibliotheque";
 
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.host", "true");
@@ -25,7 +27,7 @@ public class SendingMail {
         properties.setProperty("mail.smtp.host", "smtp.gmail.com");
         properties.setProperty("mail.smtp.port", "587");
         properties.setProperty("mail.smtp.auth", "true");
-        // properties.setProperty("mail.transport.protocol", "smtp");
+        properties.setProperty("mail.transport.protocol", "smtp");
 
 
         Session session = Session.getInstance(properties);

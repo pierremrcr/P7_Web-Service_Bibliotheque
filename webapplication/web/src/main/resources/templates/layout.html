@@ -59,7 +59,7 @@
                         <div class="dropdown-menu" x-placement="bottom-start"
                              style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
                             <a class="dropdown-item" th:href="@{/detail-membre(compteId=${session.user.getId()})}">Mes informations</a>
-                            <a class="dropdown-item" href="#">Supprimer le compte</a>
+                            <a class="dropdown-item" th:href="@{/deleteAccount(compteId=${session.user.getId()})}">Supprimer le compte</a>
                             <a class="dropdown-item" th:href="@{/logout}">Déconnexion</a>
 
                         </div>

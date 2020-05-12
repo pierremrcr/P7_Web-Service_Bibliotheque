@@ -40,6 +40,10 @@ public class LivreController {
 
         model.addAttribute("exemplairesDispo",exemplairesListe);
 
+        for (ExemplaireType exemplaireType : exemplairesListe){
+            model.addAttribute("exemplaire", exemplaireType);
+        }
+
         model.addAttribute("livre", livreType);
 
         return "livre";

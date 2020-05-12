@@ -14,7 +14,7 @@
     <artifactId>batch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>batch</name>
+    <name>com.bibliotheque.batch.batch</name>
 
     <dependencies>
 
@@ -24,6 +24,11 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.sun.mail</groupId>
@@ -33,7 +38,7 @@
 
         <dependency>
             <groupId>org.springframework.batch</groupId>
-            <artifactId>spring-batch-test</artifactId>
+            <artifactId>spring-batch-core</artifactId>
             <version>4.1.2.RELEASE</version>
         </dependency>
 
@@ -43,8 +48,23 @@
         </dependency>
 
 
-
     </dependencies>
+
+    <build>
+
+    <plugins>
+
+    <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+            <mainClass>com.bibliotheque.BatchLauncher</mainClass>
+        </configuration>
+    </plugin>
+
+    </plugins>
+
+    </build>
 
 
 </project>

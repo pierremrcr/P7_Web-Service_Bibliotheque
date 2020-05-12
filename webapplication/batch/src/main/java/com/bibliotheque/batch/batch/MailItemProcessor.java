@@ -1,4 +1,4 @@
-package batch;
+package com.bibliotheque.batch.batch;
 
 import com.bibliotheque.service.EmpruntService;
 import com.bibliotheque.service.ExemplaireService;
@@ -8,7 +8,7 @@ import livres.wsdl.EmpruntType;
 import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import livres.wsdl.MembreType;
-import mail.SendingMail;
+import com.bibliotheque.batch.mail.SendingMail;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.StepExecution;
@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-
 
 @Component
 public class MailItemProcessor implements Tasklet, StepExecutionListener {
@@ -52,11 +51,14 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
     @Override
     public ExitStatus afterStep(StepExecution stepExecution) {
+
         return ExitStatus.COMPLETED;
     }
 
     @Override
     public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
+
+        //On récupère tous les emprunts dont la date de fin de l'emprunt est avant la date d'aujourd'hui et dont l'emprunt n'est pas au statut "terminé"
         List<EmpruntType> listeEmprunts = empruntService.getAllEmpruntsWhereDateFinIsBeforeDateToday();
 
         System.out.println(listeEmprunts.size());

@@ -17,10 +17,6 @@ public interface ExemplaireEntityRepository extends JpaRepository<ExemplaireEnti
 
     ExemplaireEntity save(ExemplaireEntity exemplaireEntity);
 
-    //Query qui me retourne une liste d'exemplaires et ses emprunts
-   // @Query("SELECT exemplaire FROM ExemplaireEntity exemplaire INNER JOIN exemplaire.listeEmprunts WHERE membre.id =:id")
-  //  List<ExemplaireEntity> findAllExemplairesAndEmprunts(@Param("id") int id);
-
 
     @Query("SELECT exemplaire, emprunt, membre FROM ExemplaireEntity exemplaire, EmpruntEntity emprunt, MembreEntity membre WHERE exemplaire.id = emprunt.exemplaireid AND membre.id =:id")
     List<ExemplaireEntity> findAllExemplairesAndEmprunts(@Param("id") int id);

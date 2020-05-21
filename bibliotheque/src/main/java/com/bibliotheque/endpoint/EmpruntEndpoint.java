@@ -1,10 +1,8 @@
 package com.bibliotheque.endpoint;
 
 import com.bibliotheque.entity.EmpruntEntity;
-import com.bibliotheque.entity.ExemplaireEntity;
 import com.bibliotheque.gs_ws.*;
 import com.bibliotheque.service.contract.EmpruntEntityService;
-import com.bibliotheque.service.contract.ExemplaireEntityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;

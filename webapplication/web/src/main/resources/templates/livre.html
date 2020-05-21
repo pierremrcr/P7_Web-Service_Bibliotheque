@@ -39,7 +39,6 @@
                 </div>
 
 
-                <p>Pour cette ouvrage <span th:text="${#arrays.length(exemplairesDispo)}"></span> exemplaires sont/est disponible(s)</p>
 
                 <th:block th:if="${exemplairesDispo.size()!=0 && session.user != null}">
                     <td>

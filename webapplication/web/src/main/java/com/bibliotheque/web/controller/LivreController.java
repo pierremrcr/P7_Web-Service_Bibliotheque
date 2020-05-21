@@ -21,8 +21,10 @@ public class LivreController {
     @RequestMapping(value="/livres", method = RequestMethod.GET)
     public String livres(final Model model){
 
+        //On récupère la liste de tous les livres
         List<LivreType> livreTypeList = livreService.livreTypeList();
 
+        //Méthode qui permet de récupérer la liste des exemplaires dispo pour chaque livre
         livreTypeList = livreService.exemplairesDispoParLivre(livreTypeList);
 
         model.addAttribute("listeLivres", livreTypeList);
@@ -36,6 +38,7 @@ public class LivreController {
 
         LivreType livreType = livreService.livreById(id);
 
+        //Méthode qui permet de récupérer la liste des exemplaires dispo en fonction d'un livre et de ses exemplaires
         List<ExemplaireType> exemplairesListe = livreService.nombreExemplaireDispo(livreType.getListeExemplaires());
 
         model.addAttribute("exemplairesDispo",exemplairesListe);

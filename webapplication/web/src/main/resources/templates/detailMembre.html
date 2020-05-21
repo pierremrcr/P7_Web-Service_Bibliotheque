@@ -55,7 +55,7 @@
                     <div class="form-group col-6 col-md-4">
                         <label for="validationMotDePasse">Mot de passe</label>
                         <input type="password" class="form-control" id="validationMotDePasse"
-                               th:field="*{motDePasse}"  th:placeholder="*{motDePasse}" required/>
+                               th:field="*{motDePasse}"   required  th:value="secret"/>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
@@ -118,17 +118,6 @@
                         </tr>
                         </thead>
 
-
-                        <!--
-                        <th:block th:each="livre:${listeLivres}">
-
-
-                            <th:block th:each="exemplaire: ${livre.getListeExemplaires()}">
-
-
-                                <th:block th:each="emprunt:${exemplaire.getListeEmprunts()}">
-
-                                -->
 
 
                         <th:block th:each="emprunt:${listeEmprunts}">

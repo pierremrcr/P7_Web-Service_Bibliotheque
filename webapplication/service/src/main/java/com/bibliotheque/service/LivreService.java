@@ -33,10 +33,12 @@ public class LivreService {
     public List<ExemplaireType> nombreExemplaireDispo(List<ExemplaireType> exemplaireTypeList){
 
         List<ExemplaireType> listeExemplairesDispo = new ArrayList<>();
+
         for(ExemplaireType exemplaireType: exemplaireTypeList){
             if(exemplaireType.isDisponibilite()){
                 listeExemplairesDispo.add(exemplaireType);
             }
+
         }
         return listeExemplairesDispo;
     }

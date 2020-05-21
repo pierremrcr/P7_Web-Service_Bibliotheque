@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2874bd2e-6906-4cd9-8e9d-878a58f58770" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/EmpruntEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/EmpruntEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bibliotheque/repository/ExemplaireEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bibliotheque/repository/ExemplaireEntityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/service/src/main/java/com/bibliotheque/service/LivreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/java/com/bibliotheque/web/controller/LivreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/detailMembre.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/detailMembre.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/livre.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapplication/web/src/main/resources/templates/livre.html" afterDir="false" />
-    </list>
+    <list default="true" id="2874bd2e-6906-4cd9-8e9d-878a58f58770" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +108,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/ExemplaireEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
+            <state relative-caret-position="171">
               <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -504,12 +496,12 @@
       <workItem from="1589545475113" duration="896000" />
       <workItem from="1589898966107" duration="392000" />
       <workItem from="1589963389533" duration="5490000" />
-      <workItem from="1590065736764" duration="393000" />
+      <workItem from="1590065736764" duration="670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="432420000" />
+    <option name="totallyTimeSpent" value="432697000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -523,7 +515,7 @@
   <component name="ToolWindowManager">
     <frame x="19" y="23" width="1263" height="773" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33169532" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33169532" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -539,7 +531,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.328" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.17767988" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2819383" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.24" />
@@ -991,7 +983,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bibliotheque/endpoint/ExemplaireEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
+        <state relative-caret-position="171">
           <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />

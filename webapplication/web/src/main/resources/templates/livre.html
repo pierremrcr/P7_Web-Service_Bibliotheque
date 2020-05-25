@@ -21,22 +21,38 @@
         <div class="row">
             <div class="col col-md-10">
 
+                <div class="table-responsive">
 
-                <p th:text="${livre.titre}" class="font-weight-bold"></p>
 
-                <p th:text="${livre.auteur}"></p>
+                    <table class="table table-hover table-border">
 
-                <p th:text="${livre.genre}"></p>
+                        <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Genre</th>
+                            <th>Résumé</th>
+                        </tr>
+                        </thead>
 
-                <p th:text="${livre.resume}"></p>
+
+                <td th:text="${livre.titre}" class="font-weight-bold"></td>
+
+                <td th:text="${livre.auteur}"></td>
+
+                <td th:text="${livre.genre}"></td>
+
+                <td th:text="${livre.resume}"></td>
 
 
                 <div class="row">
                     <div class="col col-md-5">
-                        <p><img id="imageDetail" th:src="@{'/img/' + ${livre.getUrlPhoto()}}"></p>
+                        <td><img id="imageDetail" th:src="@{'/img/' + ${livre.getUrlPhoto()}}"></td>
                     </div>
 
                 </div>
+
+                    </table>
 
 
 
@@ -55,6 +71,10 @@
         </div>
 
     </div>
+
+    </div>
+
+</div>
 
 </body>
 

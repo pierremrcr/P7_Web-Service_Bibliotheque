@@ -26,6 +26,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor02">
+
             <ul class="navbar-nav mr-auto">
 
                 <th:block th:if="${session.user == null}">
@@ -39,6 +40,19 @@
                                style="width: 300px" type="search" placeholder="Rechercher un livre" aria-label="Search">
                         <button  class="btn btn-primary" type="submit">Search</button>
                     </form>
+
+                    <li><p>' '</p></li>
+
+                    <form th:action="@{/login}" class="form-inline my-2 my-lg-0">
+                        <button  class="btn btn-primary" type="submit">Connectez-vous</button>
+                    </form>
+
+                    <li><p>' '</p></li>
+
+                    <form th:action="@{/addmembre}" class="form-inline my-2 my-lg-0">
+                        <button  class="btn btn-primary" type="submit">Nouveau compte</button>
+                    </form>
+                    
 
                 </th:block>
 

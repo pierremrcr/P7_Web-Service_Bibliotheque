@@ -1,11 +1,8 @@
-Déploiement de l’application
-
 I Téléchargements des outils et logiciels nécessaires 
 
 Pour déployer l'application vous aurez besoin des logiciels suivants :
 Java et JDK, Apache Tomcat, Apache Maven, PostgreSQL. 
 Pour ce faire, créez vous un dossier nommé « projet7 » par exemple sur le bureau afin d’y mettre les logiciels nécessaires au déploiement.
-
 
 II Déploiement de la base de données
 
@@ -63,6 +60,8 @@ IV Lancement du batch
 Pour lancer le batch, placez vous dans le dossier « webapplication » puis dans le dossier « batch » et enfin dans le dossier target.
 
 Ouvrez votre invite de commande et collez le chemin suivant : P7_Web-Service_Bibliotheque \ webapplication \ batch \ target > java –jar batch.jar
+
+
 
 
 

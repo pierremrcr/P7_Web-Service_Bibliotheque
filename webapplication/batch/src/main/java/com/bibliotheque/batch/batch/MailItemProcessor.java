@@ -9,6 +9,7 @@ import livres.wsdl.ExemplaireType;
 import livres.wsdl.LivreType;
 import livres.wsdl.MembreType;
 import com.bibliotheque.batch.mail.SendingMail;
+import org.apache.log4j.Logger;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.StepExecution;
@@ -27,6 +28,7 @@ import java.util.List;
 @Component
 public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
+    private static final Logger logger = Logger.getLogger(MailItemProcessor.class);
 
     @Autowired
     private EmpruntService empruntService;
@@ -61,7 +63,7 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
         //On récupère tous les emprunts dont la date de fin de l'emprunt est avant la date d'aujourd'hui et dont l'emprunt n'est pas au statut "terminé"
         List<EmpruntType> listeEmprunts = empruntService.getAllEmpruntsWhereDateFinIsBeforeDateToday();
 
-        System.out.println(listeEmprunts.size());
+        logger.info(listeEmprunts.size());
 
         long joursDeRetard;
 
@@ -75,7 +77,7 @@ public class MailItemProcessor implements Tasklet, StepExecutionListener {
 
             Date empruntDateFin = dateFormat.parse(dateFormat.format(dateFormat.parse(empruntType.getDateFin().toString())));
 
-            System.out.println(empruntDateFin);
+            logger.info(empruntDateFin);
 
             MembreType membreType = membreService.membreById(empruntType.getMembreid());
 
